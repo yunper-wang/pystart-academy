@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyStart Academy - Python 初学者在线学习平台</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="回到首页"><span class="brand-icon">Py</span><span>PyStart Academy</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#home" data-nav="home">首页</a>
+      <a href="#courses" data-nav="courses">课程学习</a>
+      <a href="#practice" data-nav="practice">在线练习</a>
+      <a href="#editor" data-nav="editor">Python 编辑器</a>
+      <a href="#quiz" data-nav="quiz">章节测验</a>
+      <a href="#projects" data-nav="projects">项目实战</a>
+      <a href="#progress" data-nav="progress">学习进度</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="section hero-section">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <span class="eyebrow">零基础到独立完成小项目</span>
+          <h1>像真实在线教育平台一样学习 Python</h1>
+          <p>10 个学习阶段、30 个核心章节、100+ 练习任务、多题型测验和 7 个项目实战，从“看懂代码”逐步过渡到“能写项目”。</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="startBtn">立即开始学习</button>
+            <button class="ghost-btn" data-go="projects">进入项目实战</button>
+          </div>
+          <div class="hero-stats" id="heroStats"></div>
+        </div>
+        <div class="code-preview" aria-label="Python 示例代码">
+          <div class="editor-dots"><span></span><span></span><span></span></div>
+          <pre><code># 第一个小程序：学习打卡提醒
+name = "新同学"
+days = 3
+for day in range(1, days + 1):
+    print(f"{name}，第{day}天继续学习 Python！")</code></pre>
+        </div>
+      </div>
+
+      <div class="section-heading compact">
+        <span class="eyebrow">Learning Path</span>
+        <h2>完整学习路线</h2>
+        <p>每个阶段都遵循：概念讲解 → 示例代码 → 常见错误 → 练习任务 → 章节测验 → 项目应用。</p>
+      </div>
+      <div class="stage-roadmap" id="homeStages"></div>
+
+      <div class="features-grid">
+        <article class="feature-card"><div class="feature-icon">🧭</div><h3>路径清晰</h3><p>按初学者认知顺序拆成 10 个阶段，知道现在学什么、下一步学什么。</p></article>
+        <article class="feature-card"><div class="feature-icon">🧪</div><h3>练习丰富</h3><p>每章配套练习，覆盖基础、进阶和挑战难度。</p></article>
+        <article class="feature-card"><div class="feature-icon">✅</div><h3>反馈及时</h3><p>测验提交后显示分数、答案解析、错题提示和推荐复习章节。</p></article>
+        <article class="feature-card"><div class="feature-icon">🚀</div><h3>项目驱动</h3><p>通过 BMI、猜数字、通讯录、词频统计等项目巩固知识。</p></article>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Course Learning</span>
+        <h2>课程学习</h2>
+        <p>把原来的“课程中心、课程详情、交互课程”合并到一个页面：先选章节，再看详情，也可以直接进入分步闯关。</p>
+      </div>
+      <div class="toolbar">
+        <input id="courseSearch" class="search-input" type="search" placeholder="搜索章节、知识点，例如：循环、函数、文件" />
+        <select id="stageFilter" class="select-input"><option value="all">全部阶段</option></select>
+      </div>
+      <div class="courses-layout">
+        <aside class="stage-sidebar" id="stageSidebar"></aside>
+        <div class="course-stage-list" id="courseStageList"></div>
+      </div>
+
+      <div class="section-heading compact merged-heading">
+        <span class="eyebrow">Selected Lesson</span>
+        <h2>当前章节详情</h2>
+        <p>选择上方任意课程后，这里会同步显示完整讲解、示例、课后练习和学习操作。</p>
+      </div>
+      <div class="lesson-shell">
+        <aside class="lesson-list" id="lessonList"></aside>
+        <article class="lesson-detail" id="lessonDetail"></article>
+      </div>
+
+      <div class="section-heading compact merged-heading">
+        <span class="eyebrow">Step-by-step Course</span>
+        <h2>交互式闯关</h2>
+        <p>同一章节下的分步学习模式：观察代码、动手练习、运行检查、复盘总结。</p>
+      </div>
+      <div class="guided-layout" id="guided">
+        <aside class="guided-toc" id="guidedToc"></aside>
+        <article class="guided-panel">
+          <div class="guided-header" id="guidedHeader"></div>
+          <div class="guided-stepper" id="guidedStepper"></div>
+          <div class="guided-content" id="guidedContent"></div>
+          <label class="editor-label" for="guidedEditor">本步骤代码区</label>
+          <textarea id="guidedEditor" class="code-editor guided-editor" spellcheck="false"></textarea>
+          <div class="button-row">
+            <button class="primary-btn" id="runGuidedBtn">运行并检查</button>
+            <button class="soft-btn" id="guidedHintBtn">提示</button>
+            <button class="soft-btn" id="guidedAnswerBtn">填入答案</button>
+            <button class="ghost-btn" id="guidedResetBtn">重置本步</button>
+          </div>
+          <div class="feedback-box" id="guidedFeedback"></div>
+          <div class="output-box"><div class="output-title">运行结果</div><pre id="guidedOutput">选择左侧章节后开始闯关。</pre></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Practice Lab</span>
+        <h2>在线代码练习</h2>
+        <p>选择一个练习，先自己写，再查看提示和参考答案。运行区会模拟常见 Python 输出。</p>
+      </div>
+      <div class="practice-layout">
+        <aside class="practice-picker" id="practicePicker"></aside>
+        <div class="practice-workbench">
+          <div class="task-card" id="practiceTask"></div>
+          <label class="editor-label" for="codeEditor">代码编辑区</label>
+          <textarea id="codeEditor" class="code-editor" spellcheck="false"></textarea>
+          <div class="button-row">
+            <button class="primary-btn" id="runCodeBtn">运行代码</button>
+            <button class="soft-btn" id="hintBtn">查看提示</button>
+            <button class="soft-btn" id="answerBtn">参考答案</button>
+            <button class="ghost-btn" id="resetCodeBtn">重置</button>
+          </div>
+          <div class="feedback-box" id="practiceFeedback"></div>
+          <div class="output-box"><div class="output-title">模拟输出</div><pre id="codeOutput">点击“运行代码”查看结果</pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="editor" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Python Playground</span>
+        <h2>独立 Python 在线编辑器</h2>
+        <p>这里不绑定课程题目，你可以自由编写和运行 Python 代码。支持函数、循环、文件读写、标准库导入等基础学习场景。</p>
+      </div>
+      <div class="editor-shell">
+        <div class="editor-main">
+          <div class="editor-toolbar">
+            <div>
+              <strong>自由代码区</strong>
+              <small>草稿会自动保存在浏览器本地</small>
+            </div>
+            <div class="button-row compact-buttons">
+              <button class="primary-btn" id="runPlaygroundBtn">运行代码</button>
+              <button class="soft-btn" id="savePlaygroundBtn">保存草稿</button>
+              <button class="soft-btn" id="loadExampleBtn">载入示例</button>
+              <button class="ghost-btn" id="clearPlaygroundBtn">清空</button>
+            </div>
+          </div>
+          <textarea id="playgroundEditor" class="code-editor playground-editor" spellcheck="false"></textarea>
+          <div class="output-box playground-output"><div class="output-title">运行结果</div><pre id="playgroundOutput">点击“运行代码”查看结果</pre></div>
+          <div class="feedback-box" id="playgroundFeedback"></div>
+        </div>
+        <aside class="editor-help">
+          <h3>适合练习什么？</h3>
+          <ul class="summary-list">
+            <li>临时验证课堂示例和自己的想法。</li>
+            <li>练习 print、变量、条件、循环、函数和列表字典。</li>
+            <li>尝试 math、random、datetime 等标准库。</li>
+            <li>练习文本文件读写；每次运行都在独立临时目录中执行。</li>
+          </ul>
+          <div class="info-panel">
+            <strong>安全限制</strong>
+            <p>编辑器会阻止明显的系统命令相关代码，运行超时时会自动停止。</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Quiz System</span>
+        <h2>章节测验</h2>
+        <p>包含选择题、判断题、填空题、代码补全题和代码阅读题，提交后给出详细解析。</p>
+      </div>
+      <div class="quiz-topbar">
+        <select id="quizLessonSelect" class="select-input"></select>
+        <button class="primary-btn" id="submitQuizBtn">提交测验</button>
+      </div>
+      <div id="quizAdvice" class="quiz-advice"></div>
+      <div class="quiz-list" id="quizList"></div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Project Lab</span>
+        <h2>项目实战</h2>
+        <p>从需求、思路、关键代码到完整参考代码，帮助你把知识连成可运行的小作品。</p>
+      </div>
+      <div class="projects-layout">
+        <div class="project-grid" id="projectGrid"></div>
+        <article class="project-detail" id="projectDetail"></article>
+      </div>
+    </section>
+
+    <section id="progress" class="section">
+      <div class="section-heading">
+        <span class="eyebrow">Learning Progress</span>
+        <h2>学习进度</h2>
+        <p>系统会在浏览器本地保存章节完成、项目完成和测验结果。</p>
+      </div>
+      <div class="progress-dashboard" id="progressDashboard"></div>
+    </section>
+  </main>
+
+  <button class="to-top" id="toTopBtn" aria-label="回到顶部">↑</button>
+  <script src="app.js"></script>
+</body>
+</html>
