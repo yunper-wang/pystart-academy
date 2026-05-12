@@ -130,6 +130,72 @@
           "answerCode": "cases = [\"自动化\", \"数据整理\", \"小游戏\"]\nprint(len(cases))",
           "taskGoal": "用列表保存 3 个应用场景并输出数量。",
           "analysis": "使用 len() 统计列表长度。"
+        },
+        {
+          "level": "基础",
+          "title": "认识脚本的三步结构",
+          "text": "认识脚本的三步结构：用三行 print 分别输出：准备数据、处理数据、展示结果，理解脚本通常由哪些部分组成。",
+          "description": "用三行 print 分别输出：准备数据、处理数据、展示结果，理解脚本通常由哪些部分组成。",
+          "hint": "每一步用一个 print()，注意输出顺序。",
+          "answer": "print(\"准备数据\")\nprint(\"处理数据\")\nprint(\"展示结果\")\n",
+          "starter": "# 按顺序输出脚本的三个步骤\nprint(\"准备数据\")\n",
+          "expectedOutput": "准备数据\n处理数据\n展示结果",
+          "answerCode": "print(\"准备数据\")\nprint(\"处理数据\")\nprint(\"展示结果\")\n",
+          "taskGoal": "用三行 print 分别输出：准备数据、处理数据、展示结果，理解脚本通常由哪些部分组成。",
+          "analysis": "这道题不是考复杂语法，而是建立编程任务的基本框架：先准备数据，再处理，最后展示。初学者养成这种顺序意识，后面写列表统计、文件处理都会更清晰。",
+          "tags": [
+            "基础语法",
+            "print",
+            "脚本结构"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "准备数据\n处理数据\n展示结果"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出三步结构",
+              "expected": "准备数据\n处理数据\n展示结果"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "基础",
+          "title": "给学习任务添加注释",
+          "text": "给学习任务添加注释：写两行注释说明今天要练习的内容，然后输出“开始练习 Python”。",
+          "description": "写两行注释说明今天要练习的内容，然后输出“开始练习 Python”。",
+          "hint": "注释以 # 开头，真正显示到屏幕上的内容仍然需要 print()。",
+          "answer": "# 今天练习：输出和注释\n# 目标：让代码更容易被自己读懂\nprint(\"开始练习 Python\")\n",
+          "starter": "# 今天练习：\n# 目标：\nprint(\"开始\")\n",
+          "expectedOutput": "开始练习 Python",
+          "answerCode": "# 今天练习：输出和注释\n# 目标：让代码更容易被自己读懂\nprint(\"开始练习 Python\")\n",
+          "taskGoal": "写两行注释说明今天要练习的内容，然后输出“开始练习 Python”。",
+          "analysis": "注释不会被 Python 执行，但能帮助读代码的人理解意图。高质量代码不只是能运行，还应该让几天后的自己也能看懂。",
+          "tags": [
+            "基础语法",
+            "注释",
+            "print"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "开始练习 Python"
+            }
+          ],
+          "tests": [
+            {
+              "name": "包含目标输出",
+              "expected": "开始练习 Python"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -1586,6 +1652,72 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "变量保存课程信息",
+          "text": "变量保存课程信息：创建变量 course 和 minutes，分别保存“Python 入门”和 45，并输出“Python 入门 学习 45 分钟”。",
+          "description": "创建变量 course 和 minutes，分别保存“Python 入门”和 45，并输出“Python 入门 学习 45 分钟”。",
+          "hint": "print(course, \"学习\", minutes, \"分钟\") 会自动在各部分之间加入空格。",
+          "answer": "course = \"Python 入门\"\nminutes = 45\nprint(course, \"学习\", minutes, \"分钟\")\n",
+          "starter": "course = \"Python 入门\"\nminutes = 45\n# 输出学习记录\n",
+          "expectedOutput": "Python 入门 学习 45 分钟",
+          "answerCode": "course = \"Python 入门\"\nminutes = 45\nprint(course, \"学习\", minutes, \"分钟\")\n",
+          "taskGoal": "创建变量 course 和 minutes，分别保存“Python 入门”和 45，并输出“Python 入门 学习 45 分钟”。",
+          "analysis": "变量名应该表达含义。course 表示课程，minutes 表示分钟数。print 可以接收多个参数，默认用空格分隔，适合初学者先完成清晰输出。",
+          "tags": [
+            "变量",
+            "命名",
+            "字符串拼接"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "Python 入门 学习 45 分钟"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出课程和时长",
+              "expected": "Python 入门 学习 45 分钟"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "交换两个变量的值",
+          "text": "交换两个变量的值：变量 morning 和 evening 分别保存“阅读”和“练习”，用 Python 的解包语法交换它们并输出交换后的计划。",
+          "description": "变量 morning 和 evening 分别保存“阅读”和“练习”，用 Python 的解包语法交换它们并输出交换后的计划。",
+          "hint": "等号右侧的顺序决定交换后的结果。",
+          "answer": "morning = \"阅读\"\nevening = \"练习\"\nmorning, evening = evening, morning\nprint(\"上午：\" + morning)\nprint(\"晚上：\" + evening)\n",
+          "starter": "morning = \"阅读\"\nevening = \"练习\"\n# 在这里交换两个变量\n",
+          "expectedOutput": "上午：练习\n晚上：阅读",
+          "answerCode": "morning = \"阅读\"\nevening = \"练习\"\nmorning, evening = evening, morning\nprint(\"上午：\" + morning)\nprint(\"晚上：\" + evening)\n",
+          "taskGoal": "变量 morning 和 evening 分别保存“阅读”和“练习”，用 Python 的解包语法交换它们并输出交换后的计划。",
+          "analysis": "Python 支持同时给多个变量赋值。morning, evening = evening, morning 会先计算右侧两个值，再一次性放回左侧变量，因此不需要临时变量。",
+          "tags": [
+            "变量",
+            "解包赋值",
+            "基础语法"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "上午：练习\n晚上：阅读"
+            }
+          ],
+          "tests": [
+            {
+              "name": "交换后输出计划",
+              "expected": "上午：练习\n晚上：阅读"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -3099,6 +3231,72 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "计算订单金额",
+          "text": "计算订单金额：已知单价 price 为 12.5、数量 count 为 4，计算总价并输出“总价：50.0”。",
+          "description": "已知单价 price 为 12.5、数量 count 为 4，计算总价并输出“总价：50.0”。",
+          "hint": "total 是数字，拼接到字符串时需要 str(total)。",
+          "answer": "price = 12.5\ncount = 4\ntotal = price * count\nprint(\"总价：\" + str(total))\n",
+          "starter": "price = 12.5\ncount = 4\n# 计算 total\n",
+          "expectedOutput": "总价：50.0",
+          "answerCode": "price = 12.5\ncount = 4\ntotal = price * count\nprint(\"总价：\" + str(total))\n",
+          "taskGoal": "已知单价 price 为 12.5、数量 count 为 4，计算总价并输出“总价：50.0”。",
+          "analysis": "数字可以直接做乘法，但和字符串拼接前要先用 str() 转成字符串。这个习惯能避免 TypeError，也能帮助你区分数据计算和文本展示。",
+          "tags": [
+            "数字",
+            "变量",
+            "算术运算"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "总价：50.0"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出正确总价",
+              "expected": "总价：50.0"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "布尔值判断学习目标",
+          "text": "布尔值判断学习目标：给变量 finished 和 score 赋值，判断是否“已完成并且分数不低于 80”，输出判断结果。",
+          "description": "给变量 finished 和 score 赋值，判断是否“已完成并且分数不低于 80”，输出判断结果。",
+          "hint": "先写 score >= 80，再用 and 和 finished 组合。",
+          "answer": "finished = True\nscore = 86\npassed = finished and score >= 80\nprint(passed)\n",
+          "starter": "finished = True\nscore = 86\n# 判断是否达标\n",
+          "expectedOutput": "True",
+          "answerCode": "finished = True\nscore = 86\npassed = finished and score >= 80\nprint(passed)\n",
+          "taskGoal": "给变量 finished 和 score 赋值，判断是否“已完成并且分数不低于 80”，输出判断结果。",
+          "analysis": "布尔表达式可以把多个条件组合成一个结果。and 要求左右两边都为 True，本题同时检查完成状态和分数线。",
+          "tags": [
+            "布尔值",
+            "比较运算",
+            "逻辑运算"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "True"
+            }
+          ],
+          "tests": [
+            {
+              "name": "完成且分数达标",
+              "expected": "True"
+            }
+          ],
+          "direction": "Python 基础语法",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -11714,6 +11912,109 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "根据温度给出提醒",
+          "text": "根据温度给出提醒：变量 temperature 表示当前温度。低于 10 输出“穿厚外套”，10 到 28 输出“正常出门”，高于 28 输出“注意防晒”。",
+          "description": "变量 temperature 表示当前温度。低于 10 输出“穿厚外套”，10 到 28 输出“正常出门”，高于 28 输出“注意防晒”。",
+          "hint": "elif 的判断建立在前面条件不成立的基础上。",
+          "answer": "temperature = 31\nif temperature < 10:\n    print(\"穿厚外套\")\nelif temperature <= 28:\n    print(\"正常出门\")\nelse:\n    print(\"注意防晒\")\n",
+          "starter": "temperature = 31\n# 根据温度输出提醒\n",
+          "expectedOutput": "注意防晒",
+          "answerCode": "temperature = 31\nif temperature < 10:\n    print(\"穿厚外套\")\nelif temperature <= 28:\n    print(\"正常出门\")\nelse:\n    print(\"注意防晒\")\n",
+          "taskGoal": "变量 temperature 表示当前温度。低于 10 输出“穿厚外套”，10 到 28 输出“正常出门”，高于 28 输出“注意防晒”。",
+          "analysis": "多分支条件要注意边界。第一个条件处理小于 10，第二个条件只会在 temperature >= 10 时继续判断，因此 <= 28 覆盖 10 到 28。",
+          "tags": [
+            "条件判断",
+            "elif",
+            "比较运算"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "注意防晒"
+            }
+          ],
+          "tests": [
+            {
+              "name": "高温提醒",
+              "expected": "注意防晒"
+            },
+            {
+              "name": "边界说明",
+              "expected": "10 到 28 输出正常出门"
+            }
+          ],
+          "direction": "条件判断和循环",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "统计及格人数",
+          "text": "统计及格人数：遍历 scores 列表，统计大于等于 60 的成绩数量，并输出“及格人数：3”。",
+          "description": "遍历 scores 列表，统计大于等于 60 的成绩数量，并输出“及格人数：3”。",
+          "hint": "循环里只在 score >= 60 时执行 passed += 1。",
+          "answer": "scores = [58, 90, 61, 45, 77]\npassed = 0\nfor score in scores:\n    if score >= 60:\n        passed += 1\nprint(\"及格人数：\" + str(passed))\n",
+          "starter": "scores = [58, 90, 61, 45, 77]\npassed = 0\n# 遍历并计数\n",
+          "expectedOutput": "及格人数：3",
+          "answerCode": "scores = [58, 90, 61, 45, 77]\npassed = 0\nfor score in scores:\n    if score >= 60:\n        passed += 1\nprint(\"及格人数：\" + str(passed))\n",
+          "taskGoal": "遍历 scores 列表，统计大于等于 60 的成绩数量，并输出“及格人数：3”。",
+          "analysis": "计数器模式非常常见：先把计数变量设为 0，循环中遇到符合条件的数据就加 1。它是后续统计、筛选和数据分析的基础。",
+          "tags": [
+            "循环",
+            "条件判断",
+            "计数器"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "及格人数：3"
+            }
+          ],
+          "tests": [
+            {
+              "name": "统计及格数量",
+              "expected": "及格人数：3"
+            }
+          ],
+          "direction": "条件判断和循环",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "寻找第一个超预算项目",
+          "text": "寻找第一个超预算项目：遍历 costs，找到第一个超过 budget 的金额并输出；找到后立即停止循环。",
+          "description": "遍历 costs，找到第一个超过 budget 的金额并输出；找到后立即停止循环。",
+          "hint": "找到后记得 break，否则会继续检查后面的金额。",
+          "answer": "costs = [80, 120, 260, 90]\nbudget = 200\nfor cost in costs:\n    if cost > budget:\n        print(\"第一个超预算：\" + str(cost))\n        break\n",
+          "starter": "costs = [80, 120, 260, 90]\nbudget = 200\n# 找到第一个超预算金额\n",
+          "expectedOutput": "第一个超预算：260",
+          "answerCode": "costs = [80, 120, 260, 90]\nbudget = 200\nfor cost in costs:\n    if cost > budget:\n        print(\"第一个超预算：\" + str(cost))\n        break\n",
+          "taskGoal": "遍历 costs，找到第一个超过 budget 的金额并输出；找到后立即停止循环。",
+          "analysis": "当只需要第一个匹配项时，break 可以避免无意义的后续循环。这个模式常用于搜索、告警和校验。",
+          "tags": [
+            "循环",
+            "break",
+            "条件判断"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "第一个超预算：260"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出第一个超预算金额",
+              "expected": "第一个超预算：260"
+            }
+          ],
+          "direction": "条件判断和循环",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -15878,6 +16179,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "清洗用户名",
+          "text": "清洗用户名：把 username 两侧空格去掉，并统一转成小写后输出。",
+          "description": "把 username 两侧空格去掉，并统一转成小写后输出。",
+          "hint": "先 strip 再 lower，两个方法都会返回新字符串。",
+          "answer": "username = \"  Alice_01  \"\nclean_name = username.strip().lower()\nprint(clean_name)\n",
+          "starter": "username = \"  Alice_01  \"\n# 清洗用户名\n",
+          "expectedOutput": "alice_01",
+          "answerCode": "username = \"  Alice_01  \"\nclean_name = username.strip().lower()\nprint(clean_name)\n",
+          "taskGoal": "把 username 两侧空格去掉，并统一转成小写后输出。",
+          "analysis": "字符串方法可以链式调用。strip() 先去掉两侧空白，lower() 再统一大小写，这是处理用户输入时最常见的清洗步骤之一。",
+          "tags": [
+            "字符串",
+            "strip",
+            "lower"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "alice_01"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出清洗后的用户名",
+              "expected": "alice_01"
+            }
+          ],
+          "direction": "字符串",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "提取邮箱用户名",
+          "text": "提取邮箱用户名：变量 email 保存邮箱地址，提取 @ 前面的用户名并输出。",
+          "description": "变量 email 保存邮箱地址，提取 @ 前面的用户名并输出。",
+          "hint": "email.split('@') 的结果是列表。",
+          "answer": "email = \"student@example.com\"\nname = email.split(\"@\")[0]\nprint(name)\n",
+          "starter": "email = \"student@example.com\"\n# 输出 student\n",
+          "expectedOutput": "student",
+          "answerCode": "email = \"student@example.com\"\nname = email.split(\"@\")[0]\nprint(name)\n",
+          "taskGoal": "变量 email 保存邮箱地址，提取 @ 前面的用户名并输出。",
+          "analysis": "split('@') 会把邮箱拆成两部分：用户名和域名。取索引 0 就能得到 @ 前面的内容。真实项目中还要校验邮箱格式，这里先练习切分。",
+          "tags": [
+            "字符串",
+            "split",
+            "索引"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "student"
+            }
+          ],
+          "tests": [
+            {
+              "name": "提取 @ 前内容",
+              "expected": "student"
+            }
+          ],
+          "direction": "字符串",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "统计句子中的 Python 次数",
+          "text": "统计句子中的 Python 次数：不区分大小写统计 text 中 Python 出现的次数，并输出“出现次数：3”。",
+          "description": "不区分大小写统计 text 中 Python 出现的次数，并输出“出现次数：3”。",
+          "hint": "先 lower()，否则 PYTHON 不会被 count('python') 统计到。",
+          "answer": "text = \"Python is fun. I use python to learn PYTHON.\"\ncount = text.lower().count(\"python\")\nprint(\"出现次数：\" + str(count))\n",
+          "starter": "text = \"Python is fun. I use python to learn PYTHON.\"\n# 统计 python 出现次数\n",
+          "expectedOutput": "出现次数：3",
+          "answerCode": "text = \"Python is fun. I use python to learn PYTHON.\"\ncount = text.lower().count(\"python\")\nprint(\"出现次数：\" + str(count))\n",
+          "taskGoal": "不区分大小写统计 text 中 Python 出现的次数，并输出“出现次数：3”。",
+          "analysis": "不区分大小写时，先把整段文本统一成小写，再 count('python')。这是文本检索和日志分析里很常见的预处理思路。",
+          "tags": [
+            "字符串",
+            "lower",
+            "count"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "出现次数：3"
+            }
+          ],
+          "tests": [
+            {
+              "name": "大小写不敏感统计",
+              "expected": "出现次数：3"
+            }
+          ],
+          "direction": "字符串",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -22301,6 +22701,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "列表切片获取前三天",
+          "text": "列表切片获取前三天：days 保存一周计划，输出前三天组成的新列表。",
+          "description": "days 保存一周计划，输出前三天组成的新列表。",
+          "hint": "切片右边界不包含在结果中。",
+          "answer": "days = [\"周一\", \"周二\", \"周三\", \"周四\", \"周五\"]\nprint(days[:3])\n",
+          "starter": "days = [\"周一\", \"周二\", \"周三\", \"周四\", \"周五\"]\n# 输出前三天\n",
+          "expectedOutput": "['周一', '周二', '周三']",
+          "answerCode": "days = [\"周一\", \"周二\", \"周三\", \"周四\", \"周五\"]\nprint(days[:3])\n",
+          "taskGoal": "days 保存一周计划，输出前三天组成的新列表。",
+          "analysis": "切片 days[:3] 表示从开头取到索引 3 之前，也就是索引 0、1、2。切片会生成新列表，不会修改原列表。",
+          "tags": [
+            "列表",
+            "切片",
+            "索引"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "['周一', '周二', '周三']"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出前三个元素",
+              "expected": "['周一', '周二', '周三']"
+            }
+          ],
+          "direction": "列表",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "列表推导式生成平方数",
+          "text": "列表推导式生成平方数：用列表推导式把 nums 中每个数字平方，输出 [1, 4, 9, 16]。",
+          "description": "用列表推导式把 nums 中每个数字平方，输出 [1, 4, 9, 16]。",
+          "hint": "先写普通 for 循环思路，再压缩成 [表达式 for 变量 in 列表]。",
+          "answer": "nums = [1, 2, 3, 4]\nsquares = [n * n for n in nums]\nprint(squares)\n",
+          "starter": "nums = [1, 2, 3, 4]\n# 生成平方数列表\n",
+          "expectedOutput": "[1, 4, 9, 16]",
+          "answerCode": "nums = [1, 2, 3, 4]\nsquares = [n * n for n in nums]\nprint(squares)\n",
+          "taskGoal": "用列表推导式把 nums 中每个数字平方，输出 [1, 4, 9, 16]。",
+          "analysis": "列表推导式适合把一个列表转换成另一个列表。n * n 是转换规则，for n in nums 说明数据来源。",
+          "tags": [
+            "列表",
+            "列表推导式",
+            "循环"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "[1, 4, 9, 16]"
+            }
+          ],
+          "tests": [
+            {
+              "name": "生成平方列表",
+              "expected": "[1, 4, 9, 16]"
+            }
+          ],
+          "direction": "列表",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "元组保存不可变坐标",
+          "text": "元组保存不可变坐标：用元组保存 point 的 x、y 坐标，解包后输出“x=3, y=5”。",
+          "description": "用元组保存 point 的 x、y 坐标，解包后输出“x=3, y=5”。",
+          "hint": "左侧变量数量要和元组元素数量一致。",
+          "answer": "point = (3, 5)\nx, y = point\nprint(f\"x={x}, y={y}\")\n",
+          "starter": "point = (3, 5)\n# 解包并输出坐标\n",
+          "expectedOutput": "x=3, y=5",
+          "answerCode": "point = (3, 5)\nx, y = point\nprint(f\"x={x}, y={y}\")\n",
+          "taskGoal": "用元组保存 point 的 x、y 坐标，解包后输出“x=3, y=5”。",
+          "analysis": "元组常用于表示固定结构的数据，例如坐标、颜色 RGB、日期片段。解包能让代码比 point[0]、point[1] 更易读。",
+          "tags": [
+            "元组",
+            "解包",
+            "格式化字符串"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "x=3, y=5"
+            }
+          ],
+          "tests": [
+            {
+              "name": "解包坐标",
+              "expected": "x=3, y=5"
+            }
+          ],
+          "direction": "元组",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -22763,6 +23262,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "集合去重统计城市",
+          "text": "集合去重统计城市：cities 中有重复城市，用集合去重后输出不同城市数量。",
+          "description": "cities 中有重复城市，用集合去重后输出不同城市数量。",
+          "hint": "set(cities) 会自动去掉重复的“北京”。",
+          "answer": "cities = [\"北京\", \"上海\", \"北京\", \"深圳\"]\nunique_cities = set(cities)\nprint(\"不同城市：\" + str(len(unique_cities)))\n",
+          "starter": "cities = [\"北京\", \"上海\", \"北京\", \"深圳\"]\n# 统计不同城市数量\n",
+          "expectedOutput": "不同城市：3",
+          "answerCode": "cities = [\"北京\", \"上海\", \"北京\", \"深圳\"]\nunique_cities = set(cities)\nprint(\"不同城市：\" + str(len(unique_cities)))\n",
+          "taskGoal": "cities 中有重复城市，用集合去重后输出不同城市数量。",
+          "analysis": "集合 set 的特点是不保留重复元素。把列表转成集合后再 len()，就能得到去重后的数量。",
+          "tags": [
+            "集合",
+            "去重",
+            "len"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "不同城市：3"
+            }
+          ],
+          "tests": [
+            {
+              "name": "统计去重数量",
+              "expected": "不同城市：3"
+            }
+          ],
+          "direction": "集合",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "字典统计标签次数",
+          "text": "字典统计标签次数：遍历 tags 列表，统计每个标签出现次数，并输出统计字典。",
+          "description": "遍历 tags 列表，统计每个标签出现次数，并输出统计字典。",
+          "hint": "get 的第二个参数是默认值。",
+          "answer": "tags = [\"Python\", \"练习\", \"Python\", \"项目\"]\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\nprint(counts)\n",
+          "starter": "tags = [\"Python\", \"练习\", \"Python\", \"项目\"]\ncounts = {}\n# 统计每个标签\n",
+          "expectedOutput": "{'Python': 2, '练习': 1, '项目': 1}",
+          "answerCode": "tags = [\"Python\", \"练习\", \"Python\", \"项目\"]\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\nprint(counts)\n",
+          "taskGoal": "遍历 tags 列表，统计每个标签出现次数，并输出统计字典。",
+          "analysis": "counts.get(tag, 0) 可以在标签第一次出现时给出默认值 0，避免 KeyError。这是字典计数的核心套路。",
+          "tags": [
+            "字典",
+            "计数",
+            "循环"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "{'Python': 2, '练习': 1, '项目': 1}"
+            }
+          ],
+          "tests": [
+            {
+              "name": "统计标签次数",
+              "expected": "{'Python': 2, '练习': 1, '项目': 1}"
+            }
+          ],
+          "direction": "字典",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "集合交集找共同兴趣",
+          "text": "集合交集找共同兴趣：用集合找出 alice 和 bob 都喜欢的主题，并按字母顺序输出列表。",
+          "description": "用集合找出 alice 和 bob 都喜欢的主题，并按字母顺序输出列表。",
+          "hint": "如果直接 print(common)，顺序可能不稳定；测试友好的做法是 sorted(common)。",
+          "answer": "alice = {\"python\", \"music\", \"reading\"}\nbob = {\"python\", \"game\", \"reading\"}\ncommon = alice & bob\nprint(sorted(common))\n",
+          "starter": "alice = {\"python\", \"music\", \"reading\"}\nbob = {\"python\", \"game\", \"reading\"}\n# 找共同兴趣\n",
+          "expectedOutput": "['python', 'reading']",
+          "answerCode": "alice = {\"python\", \"music\", \"reading\"}\nbob = {\"python\", \"game\", \"reading\"}\ncommon = alice & bob\nprint(sorted(common))\n",
+          "taskGoal": "用集合找出 alice 和 bob 都喜欢的主题，并按字母顺序输出列表。",
+          "analysis": "集合的 & 运算表示交集，也就是两边都存在的元素。集合本身无固定顺序，所以输出前用 sorted() 得到稳定结果。",
+          "tags": [
+            "集合",
+            "交集",
+            "排序"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "['python', 'reading']"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出共同兴趣",
+              "expected": "['python', 'reading']"
+            }
+          ],
+          "direction": "集合",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -23813,6 +24411,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "函数返回问候语",
+          "text": "函数返回问候语：定义函数 greet(name)，返回“你好，名字！”，调用并输出 greet('小明') 的结果。",
+          "description": "定义函数 greet(name)，返回“你好，名字！”，调用并输出 greet('小明') 的结果。",
+          "hint": "函数内部用 return，函数外部再 print(greet(...))。",
+          "answer": "def greet(name):\n    return \"你好，\" + name + \"！\"\n\nprint(greet(\"小明\"))\n",
+          "starter": "def greet(name):\n    # 返回问候语\n    pass\n\nprint(greet(\"小明\"))\n",
+          "expectedOutput": "你好，小明！",
+          "answerCode": "def greet(name):\n    return \"你好，\" + name + \"！\"\n\nprint(greet(\"小明\"))\n",
+          "taskGoal": "定义函数 greet(name)，返回“你好，名字！”，调用并输出 greet('小明') 的结果。",
+          "analysis": "return 会把结果交还给调用者，调用者可以选择 print、保存到变量或继续计算。函数不要总是直接 print，返回值更灵活。",
+          "tags": [
+            "函数",
+            "参数",
+            "return"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "你好，小明！"
+            }
+          ],
+          "tests": [
+            {
+              "name": "返回并输出问候语",
+              "expected": "你好，小明！"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "默认参数计算折扣价",
+          "text": "默认参数计算折扣价：定义 final_price(price, discount=0.9)，返回折后价格；输出 100 元默认折扣后的价格。",
+          "description": "定义 final_price(price, discount=0.9)，返回折后价格；输出 100 元默认折扣后的价格。",
+          "hint": "不要在函数里写死 100，函数应该使用传入的 price。",
+          "answer": "def final_price(price, discount=0.9):\n    return price * discount\n\nprint(final_price(100))\n",
+          "starter": "def final_price(price, discount=0.9):\n    pass\n\nprint(final_price(100))\n",
+          "expectedOutput": "90.0",
+          "answerCode": "def final_price(price, discount=0.9):\n    return price * discount\n\nprint(final_price(100))\n",
+          "taskGoal": "定义 final_price(price, discount=0.9)，返回折后价格；输出 100 元默认折扣后的价格。",
+          "analysis": "默认参数让常见情况更简单。调用 final_price(100) 时 discount 自动使用 0.9；需要特殊折扣时再传第二个参数。",
+          "tags": [
+            "函数",
+            "默认参数",
+            "返回值"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "90.0"
+            }
+          ],
+          "tests": [
+            {
+              "name": "默认九折",
+              "expected": "90.0"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "理解局部变量和全局变量",
+          "text": "理解局部变量和全局变量：全局变量 bonus 为 10，函数 add_bonus(score) 返回 score + bonus，输出 95。不要在函数内修改 bonus。",
+          "description": "全局变量 bonus 为 10，函数 add_bonus(score) 返回 score + bonus，输出 95。不要在函数内修改 bonus。",
+          "hint": "score 是函数参数，bonus 是函数外已有变量。",
+          "answer": "bonus = 10\n\ndef add_bonus(score):\n    return score + bonus\n\nprint(add_bonus(85))\n",
+          "starter": "bonus = 10\n\ndef add_bonus(score):\n    # 返回加分后的成绩\n    pass\n\nprint(add_bonus(85))\n",
+          "expectedOutput": "95",
+          "answerCode": "bonus = 10\n\ndef add_bonus(score):\n    return score + bonus\n\nprint(add_bonus(85))\n",
+          "taskGoal": "全局变量 bonus 为 10，函数 add_bonus(score) 返回 score + bonus，输出 95。不要在函数内修改 bonus。",
+          "analysis": "函数可以读取全局变量，但初学阶段应尽量避免在函数内修改全局变量。这里 bonus 作为外部配置被读取，score 是局部参数。",
+          "tags": [
+            "函数",
+            "作用域",
+            "变量"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "95"
+            }
+          ],
+          "tests": [
+            {
+              "name": "读取全局加分配置",
+              "expected": "95"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -25343,6 +26040,106 @@
           "answerCode": "with open(\"data.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"苹果\\n\\n香蕉\\n\")\nwith open(\"data.txt\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        text = line.strip()\n        if text != \"\":\n            print(text)",
           "taskGoal": "读取文件时跳过空行。",
           "analysis": "示例先准备 data.txt，再逐行读取；strip() 可以去掉换行符，空字符串表示空行。"
+        },
+        {
+          "level": "基础",
+          "title": "写入每日学习日志",
+          "text": "写入每日学习日志：把两条学习记录写入 study_log.txt，每条记录独占一行，然后读取文件内容并输出。",
+          "description": "把两条学习记录写入 study_log.txt，每条记录独占一行，然后读取文件内容并输出。",
+          "hint": "写入时使用 encoding='utf-8'，避免中文乱码。",
+          "answer": "records = [\"Python 30分钟\", \"练习 2题\"]\nwith open(\"study_log.txt\", \"w\", encoding=\"utf-8\") as f:\n    for record in records:\n        f.write(record + \"\\n\")\n\nwith open(\"study_log.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f.read().strip())\n",
+          "starter": "records = [\"Python 30分钟\", \"练习 2题\"]\n# 写入并读取 study_log.txt\n",
+          "expectedOutput": "Python 30分钟\n练习 2题",
+          "answerCode": "records = [\"Python 30分钟\", \"练习 2题\"]\nwith open(\"study_log.txt\", \"w\", encoding=\"utf-8\") as f:\n    for record in records:\n        f.write(record + \"\\n\")\n\nwith open(\"study_log.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f.read().strip())\n",
+          "taskGoal": "把两条学习记录写入 study_log.txt，每条记录独占一行，然后读取文件内容并输出。",
+          "analysis": "with open 会在代码块结束后自动关闭文件。写入多行时要主动加换行符；读取后 strip() 可以去掉末尾多余换行，便于展示。",
+          "tags": [
+            "文件读写",
+            "write",
+            "with"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "Python 30分钟\n练习 2题"
+            }
+          ],
+          "tests": [
+            {
+              "name": "写入并读回两行",
+              "expected": "Python 30分钟\n练习 2题"
+            }
+          ],
+          "direction": "文件读写",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "读取文件并统计非空行",
+          "text": "读取文件并统计非空行：创建 notes.txt，内容包含空行；读取后统计非空行数量并输出。",
+          "description": "创建 notes.txt，内容包含空行；读取后统计非空行数量并输出。",
+          "hint": "只包含空格的行也应该算空行，所以要用 strip()。",
+          "answer": "content = \"第一行\\n\\n第二行\\n  \\n第三行\\n\"\nwith open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(content)\n\ncount = 0\nwith open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        if line.strip():\n            count += 1\nprint(\"非空行：\" + str(count))\n",
+          "starter": "content = \"第一行\\n\\n第二行\\n  \\n第三行\\n\"\n# 写入文件并统计非空行\n",
+          "expectedOutput": "非空行：3",
+          "answerCode": "content = \"第一行\\n\\n第二行\\n  \\n第三行\\n\"\nwith open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(content)\n\ncount = 0\nwith open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        if line.strip():\n            count += 1\nprint(\"非空行：\" + str(count))\n",
+          "taskGoal": "创建 notes.txt，内容包含空行；读取后统计非空行数量并输出。",
+          "analysis": "文件对象可以直接被 for 循环逐行读取。line.strip() 去掉空白后如果仍有内容，就说明这一行不是空行。",
+          "tags": [
+            "文件读写",
+            "strip",
+            "计数"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "非空行：3"
+            }
+          ],
+          "tests": [
+            {
+              "name": "统计非空行",
+              "expected": "非空行：3"
+            }
+          ],
+          "direction": "文件读写",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "把 CSV 文本转成字典列表",
+          "text": "把 CSV 文本转成字典列表：读取 scores.csv，第一行为表头 name,score，把后续行转换成字典列表并输出。",
+          "description": "读取 scores.csv，第一行为表头 name,score，把后续行转换成字典列表并输出。",
+          "hint": "每行末尾有换行，先 strip() 再 split(',')。",
+          "answer": "csv_text = \"name,score\\nAlice,90\\nBob,82\\n\"\nwith open(\"scores.csv\", \"w\", encoding=\"utf-8\") as f:\n    f.write(csv_text)\n\nstudents = []\nwith open(\"scores.csv\", \"r\", encoding=\"utf-8\") as f:\n    next(f)\n    for line in f:\n        name, score = line.strip().split(\",\")\n        students.append({\"name\": name, \"score\": int(score)})\nprint(students)\n",
+          "starter": "csv_text = \"name,score\\nAlice,90\\nBob,82\\n\"\n# 写入并解析 CSV\n",
+          "expectedOutput": "[{'name': 'Alice', 'score': 90}, {'name': 'Bob', 'score': 82}]",
+          "answerCode": "csv_text = \"name,score\\nAlice,90\\nBob,82\\n\"\nwith open(\"scores.csv\", \"w\", encoding=\"utf-8\") as f:\n    f.write(csv_text)\n\nstudents = []\nwith open(\"scores.csv\", \"r\", encoding=\"utf-8\") as f:\n    next(f)\n    for line in f:\n        name, score = line.strip().split(\",\")\n        students.append({\"name\": name, \"score\": int(score)})\nprint(students)\n",
+          "taskGoal": "读取 scores.csv，第一行为表头 name,score，把后续行转换成字典列表并输出。",
+          "analysis": "这是非常小的 CSV 解析练习。next(f) 跳过表头，split(',') 拆字段，int(score) 把文本分数变成数字。真实复杂 CSV 建议使用标准库 csv。",
+          "tags": [
+            "文件读写",
+            "CSV",
+            "字典",
+            "列表"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "[{'name': 'Alice', 'score': 90}, {'name': 'Bob', 'score': 82}]"
+            }
+          ],
+          "tests": [
+            {
+              "name": "解析两条学生记录",
+              "expected": "[{'name': 'Alice', 'score': 90}, {'name': 'Bob', 'score': 82}]"
+            }
+          ],
+          "direction": "文件读写",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -25499,6 +26296,109 @@
           "answerCode": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"除数不能为 0\"\nprint(safe_divide(10, 0))",
           "taskGoal": "安全除法函数。",
           "analysis": "返回错误提示。"
+        },
+        {
+          "level": "基础",
+          "title": "安全转换年龄",
+          "text": "安全转换年龄：把 age_text 转成整数；如果转换失败，输出“年龄格式错误”。当前 age_text 为 '18'，应输出 18。",
+          "description": "把 age_text 转成整数；如果转换失败，输出“年龄格式错误”。当前 age_text 为 '18'，应输出 18。",
+          "hint": "只捕获你预期的 ValueError，不要一开始就写空泛的 except。",
+          "answer": "age_text = \"18\"\ntry:\n    age = int(age_text)\n    print(age)\nexcept ValueError:\n    print(\"年龄格式错误\")\n",
+          "starter": "age_text = \"18\"\n# 安全转换年龄\n",
+          "expectedOutput": "18",
+          "answerCode": "age_text = \"18\"\ntry:\n    age = int(age_text)\n    print(age)\nexcept ValueError:\n    print(\"年龄格式错误\")\n",
+          "taskGoal": "把 age_text 转成整数；如果转换失败，输出“年龄格式错误”。当前 age_text 为 '18'，应输出 18。",
+          "analysis": "int() 遇到无法转换的文本会抛出 ValueError。try-except 让程序在输入不合法时给出友好提示，而不是直接崩溃。",
+          "tags": [
+            "异常处理",
+            "try-except",
+            "int"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "18"
+            }
+          ],
+          "tests": [
+            {
+              "name": "合法年龄转换",
+              "expected": "18"
+            },
+            {
+              "name": "非法输入应提示",
+              "expected": "年龄格式错误"
+            }
+          ],
+          "direction": "异常处理",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "批量转换分数字符串",
+          "text": "批量转换分数字符串：遍历 raw_scores，把能转成整数的内容加入 scores，跳过无效值，最后输出 [90, 76, 88]。",
+          "description": "遍历 raw_scores，把能转成整数的内容加入 scores，跳过无效值，最后输出 [90, 76, 88]。",
+          "hint": "continue 表示跳过当前这次循环，继续处理下一个 item。",
+          "answer": "raw_scores = [\"90\", \"oops\", \"76\", \"88\"]\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        continue\nprint(scores)\n",
+          "starter": "raw_scores = [\"90\", \"oops\", \"76\", \"88\"]\nscores = []\n# 转换有效成绩\n",
+          "expectedOutput": "[90, 76, 88]",
+          "answerCode": "raw_scores = [\"90\", \"oops\", \"76\", \"88\"]\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        continue\nprint(scores)\n",
+          "taskGoal": "遍历 raw_scores，把能转成整数的内容加入 scores，跳过无效值，最后输出 [90, 76, 88]。",
+          "analysis": "批量处理数据时，经常会遇到个别脏数据。把 try-except 放进循环，可以跳过坏数据并保留好数据。",
+          "tags": [
+            "异常处理",
+            "循环",
+            "列表"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "[90, 76, 88]"
+            }
+          ],
+          "tests": [
+            {
+              "name": "跳过无效分数",
+              "expected": "[90, 76, 88]"
+            }
+          ],
+          "direction": "异常处理",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "安全读取配置文件",
+          "text": "安全读取配置文件：尝试读取 config.txt；如果文件不存在，使用默认配置 'theme=light'，并输出配置内容。",
+          "description": "尝试读取 config.txt；如果文件不存在，使用默认配置 'theme=light'，并输出配置内容。",
+          "hint": "捕获 FileNotFoundError，并在 except 中给 config 赋默认值。",
+          "answer": "try:\n    with open(\"config.txt\", \"r\", encoding=\"utf-8\") as f:\n        config = f.read().strip()\nexcept FileNotFoundError:\n    config = \"theme=light\"\nprint(config)\n",
+          "starter": "# 不要提前创建 config.txt\n# 安全读取配置\n",
+          "expectedOutput": "theme=light",
+          "answerCode": "try:\n    with open(\"config.txt\", \"r\", encoding=\"utf-8\") as f:\n        config = f.read().strip()\nexcept FileNotFoundError:\n    config = \"theme=light\"\nprint(config)\n",
+          "taskGoal": "尝试读取 config.txt；如果文件不存在，使用默认配置 'theme=light'，并输出配置内容。",
+          "analysis": "程序读取外部文件时，文件可能不存在。给出默认配置可以让程序继续运行，这比直接报错更适合用户工具类脚本。",
+          "tags": [
+            "异常处理",
+            "文件读写",
+            "默认值"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "theme=light"
+            }
+          ],
+          "tests": [
+            {
+              "name": "文件不存在时使用默认配置",
+              "expected": "theme=light"
+            }
+          ],
+          "direction": "异常处理",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -25654,6 +26554,105 @@
           "answerCode": "class Product:\n    def __init__(self, price, count):\n        self.price = price\n        self.count = count\np = Product(12, 3)\nprint(p.price * p.count)",
           "taskGoal": "用类表示商品并输出总价。",
           "analysis": "属性 price,count。"
+        },
+        {
+          "level": "基础",
+          "title": "创建学习任务类",
+          "text": "创建学习任务类：定义 Task 类，__init__ 接收 title，并把 done 初始设置为 False；创建对象后输出标题和完成状态。",
+          "description": "定义 Task 类，__init__ 接收 title，并把 done 初始设置为 False；创建对象后输出标题和完成状态。",
+          "hint": "__init__ 的第一个参数必须是 self，创建对象时不用手动传 self。",
+          "answer": "class Task:\n    def __init__(self, title):\n        self.title = title\n        self.done = False\n\ntask = Task(\"完成字符串练习\")\nprint(task.title)\nprint(task.done)\n",
+          "starter": "class Task:\n    pass\n\ntask = Task(\"完成字符串练习\")\nprint(task.title)\nprint(task.done)\n",
+          "expectedOutput": "完成字符串练习\nFalse",
+          "answerCode": "class Task:\n    def __init__(self, title):\n        self.title = title\n        self.done = False\n\ntask = Task(\"完成字符串练习\")\nprint(task.title)\nprint(task.done)\n",
+          "taskGoal": "定义 Task 类，__init__ 接收 title，并把 done 初始设置为 False；创建对象后输出标题和完成状态。",
+          "analysis": "__init__ 用来初始化对象属性。self.title 属于这个具体任务对象，self.done 保存任务状态。",
+          "tags": [
+            "面向对象",
+            "类",
+            "__init__"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "完成字符串练习\nFalse"
+            }
+          ],
+          "tests": [
+            {
+              "name": "初始化任务对象",
+              "expected": "完成字符串练习\nFalse"
+            }
+          ],
+          "direction": "面向对象",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "给对象添加完成方法",
+          "text": "给对象添加完成方法：在 Task 类中添加 mark_done 方法，把 done 改为 True；调用后输出 True。",
+          "description": "在 Task 类中添加 mark_done 方法，把 done 改为 True；调用后输出 True。",
+          "hint": "方法定义在类里面，调用时用 task.mark_done()。",
+          "answer": "class Task:\n    def __init__(self, title):\n        self.title = title\n        self.done = False\n\n    def mark_done(self):\n        self.done = True\n\ntask = Task(\"练习函数\")\ntask.mark_done()\nprint(task.done)\n",
+          "starter": "class Task:\n    def __init__(self, title):\n        self.title = title\n        self.done = False\n    # 添加 mark_done\n\ntask = Task(\"练习函数\")\ntask.mark_done()\nprint(task.done)\n",
+          "expectedOutput": "True",
+          "answerCode": "class Task:\n    def __init__(self, title):\n        self.title = title\n        self.done = False\n\n    def mark_done(self):\n        self.done = True\n\ntask = Task(\"练习函数\")\ntask.mark_done()\nprint(task.done)\n",
+          "taskGoal": "在 Task 类中添加 mark_done 方法，把 done 改为 True；调用后输出 True。",
+          "analysis": "方法是对象能执行的动作。mark_done 修改的是当前对象的 done 属性，不会影响其他 Task 对象。",
+          "tags": [
+            "面向对象",
+            "方法",
+            "状态修改"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "True"
+            }
+          ],
+          "tests": [
+            {
+              "name": "调用方法后状态变为 True",
+              "expected": "True"
+            }
+          ],
+          "direction": "面向对象",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "课程进度对象",
+          "text": "课程进度对象：定义 CourseProgress 类，保存 total 和 done，并提供 percent 方法返回完成百分比整数。",
+          "description": "定义 CourseProgress 类，保存 total 和 done，并提供 percent 方法返回完成百分比整数。",
+          "hint": "percent 方法要 return 数字，最后再 print(progress.percent())。",
+          "answer": "class CourseProgress:\n    def __init__(self, total, done):\n        self.total = total\n        self.done = done\n\n    def percent(self):\n        return round(self.done * 100 / self.total)\n\nprogress = CourseProgress(20, 5)\nprint(progress.percent())\n",
+          "starter": "class CourseProgress:\n    pass\n\nprogress = CourseProgress(20, 5)\nprint(progress.percent())\n",
+          "expectedOutput": "25",
+          "answerCode": "class CourseProgress:\n    def __init__(self, total, done):\n        self.total = total\n        self.done = done\n\n    def percent(self):\n        return round(self.done * 100 / self.total)\n\nprogress = CourseProgress(20, 5)\nprint(progress.percent())\n",
+          "taskGoal": "定义 CourseProgress 类，保存 total 和 done，并提供 percent 方法返回完成百分比整数。",
+          "analysis": "把 total、done 和 percent 计算放进同一个类，可以让“课程进度”这个概念更集中。对象不仅保存数据，也能提供和这些数据相关的行为。",
+          "tags": [
+            "面向对象",
+            "方法",
+            "百分比"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "25"
+            }
+          ],
+          "tests": [
+            {
+              "name": "计算完成百分比",
+              "expected": "25"
+            }
+          ],
+          "direction": "面向对象",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -32907,6 +33906,106 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "找出列表最大值",
+          "text": "找出列表最大值：不使用 max，遍历 numbers 找出最大值并输出。",
+          "description": "不使用 max，遍历 numbers 找出最大值并输出。",
+          "hint": "先用 numbers[0] 初始化，避免随便写 0 导致全负数列表出错。",
+          "answer": "numbers = [3, 8, 2, 10, 5]\nbiggest = numbers[0]\nfor number in numbers:\n    if number > biggest:\n        biggest = number\nprint(biggest)\n",
+          "starter": "numbers = [3, 8, 2, 10, 5]\n# 遍历找最大值\n",
+          "expectedOutput": "10",
+          "answerCode": "numbers = [3, 8, 2, 10, 5]\nbiggest = numbers[0]\nfor number in numbers:\n    if number > biggest:\n        biggest = number\nprint(biggest)\n",
+          "taskGoal": "不使用 max，遍历 numbers 找出最大值并输出。",
+          "analysis": "寻找最大值的基本算法：先假设第一个元素最大，再逐个比较，遇到更大的就更新。理解这个过程比直接用 max 更能训练算法思维。",
+          "tags": [
+            "列表",
+            "循环",
+            "算法"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "10"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出最大值",
+              "expected": "10"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "反转列表但不修改原列表",
+          "text": "反转列表但不修改原列表：用切片生成 reversed_items，输出反转结果和原列表，确认原列表没有被修改。",
+          "description": "用切片生成 reversed_items，输出反转结果和原列表，确认原列表没有被修改。",
+          "hint": "[::-1] 是常见的反转切片写法。",
+          "answer": "items = [\"a\", \"b\", \"c\"]\nreversed_items = items[::-1]\nprint(reversed_items)\nprint(items)\n",
+          "starter": "items = [\"a\", \"b\", \"c\"]\n# 生成反转副本\n",
+          "expectedOutput": "['c', 'b', 'a']\n['a', 'b', 'c']",
+          "answerCode": "items = [\"a\", \"b\", \"c\"]\nreversed_items = items[::-1]\nprint(reversed_items)\nprint(items)\n",
+          "taskGoal": "用切片生成 reversed_items，输出反转结果和原列表，确认原列表没有被修改。",
+          "analysis": "items[::-1] 会创建一个新列表。和 reverse() 不同，它不会原地修改原列表。选择哪种方式取决于你是否希望保留原数据。",
+          "tags": [
+            "列表",
+            "切片",
+            "数据结构"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "['c', 'b', 'a']\n['a', 'b', 'c']"
+            }
+          ],
+          "tests": [
+            {
+              "name": "反转副本且保留原列表",
+              "expected": "['c', 'b', 'a']\n['a', 'b', 'c']"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "去重但保持原顺序",
+          "text": "去重但保持原顺序：遍历 items，去掉重复元素但保留第一次出现的顺序，输出 ['a', 'b', 'c']。",
+          "description": "遍历 items，去掉重复元素但保留第一次出现的顺序，输出 ['a', 'b', 'c']。",
+          "hint": "集合用于判断是否见过，列表用于保存有序结果。",
+          "answer": "items = [\"a\", \"b\", \"a\", \"c\", \"b\"]\nseen = set()\nresult = []\nfor item in items:\n    if item not in seen:\n        seen.add(item)\n        result.append(item)\nprint(result)\n",
+          "starter": "items = [\"a\", \"b\", \"a\", \"c\", \"b\"]\n# 去重并保持顺序\n",
+          "expectedOutput": "['a', 'b', 'c']",
+          "answerCode": "items = [\"a\", \"b\", \"a\", \"c\", \"b\"]\nseen = set()\nresult = []\nfor item in items:\n    if item not in seen:\n        seen.add(item)\n        result.append(item)\nprint(result)\n",
+          "taskGoal": "遍历 items，去掉重复元素但保留第一次出现的顺序，输出 ['a', 'b', 'c']。",
+          "analysis": "直接 set(items) 会去重但不保证按原始顺序展示。用 seen 负责快速判断是否出现过，用 result 保留第一次出现的顺序。",
+          "tags": [
+            "列表",
+            "集合",
+            "去重",
+            "算法"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "['a', 'b', 'c']"
+            }
+          ],
+          "tests": [
+            {
+              "name": "保持顺序去重",
+              "expected": "['a', 'b', 'c']"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -35279,6 +36378,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "嵌套字典读取城市",
+          "text": "嵌套字典读取城市：student 是嵌套字典，读取 profile 中的 city 并输出。",
+          "description": "student 是嵌套字典，读取 profile 中的 city 并输出。",
+          "hint": "先取 profile，再取 city。",
+          "answer": "student = {\"name\": \"小林\", \"profile\": {\"city\": \"杭州\"}}\nprint(student[\"profile\"][\"city\"])\n",
+          "starter": "student = {\"name\": \"小林\", \"profile\": {\"city\": \"杭州\"}}\n# 输出城市\n",
+          "expectedOutput": "杭州",
+          "answerCode": "student = {\"name\": \"小林\", \"profile\": {\"city\": \"杭州\"}}\nprint(student[\"profile\"][\"city\"])\n",
+          "taskGoal": "student 是嵌套字典，读取 profile 中的 city 并输出。",
+          "analysis": "嵌套字典要一层一层取值。student['profile'] 得到里面的字典，再用 ['city'] 取城市。",
+          "tags": [
+            "字典",
+            "嵌套数据",
+            "索引"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "杭州"
+            }
+          ],
+          "tests": [
+            {
+              "name": "读取嵌套城市",
+              "expected": "杭州"
+            }
+          ],
+          "direction": "字典",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "按分类汇总金额",
+          "text": "按分类汇总金额：orders 是订单列表，按 category 汇总 amount，输出汇总字典。",
+          "description": "orders 是订单列表，按 category 汇总 amount，输出汇总字典。",
+          "hint": "summary[category] 每次累加当前订单金额。",
+          "answer": "orders = [{\"category\": \"book\", \"amount\": 30}, {\"category\": \"food\", \"amount\": 18}, {\"category\": \"book\", \"amount\": 45}]\nsummary = {}\nfor order in orders:\n    category = order[\"category\"]\n    summary[category] = summary.get(category, 0) + order[\"amount\"]\nprint(summary)\n",
+          "starter": "orders = [{\"category\": \"book\", \"amount\": 30}, {\"category\": \"food\", \"amount\": 18}, {\"category\": \"book\", \"amount\": 45}]\nsummary = {}\n# 按分类汇总\n",
+          "expectedOutput": "{'book': 75, 'food': 18}",
+          "answerCode": "orders = [{\"category\": \"book\", \"amount\": 30}, {\"category\": \"food\", \"amount\": 18}, {\"category\": \"book\", \"amount\": 45}]\nsummary = {}\nfor order in orders:\n    category = order[\"category\"]\n    summary[category] = summary.get(category, 0) + order[\"amount\"]\nprint(summary)\n",
+          "taskGoal": "orders 是订单列表，按 category 汇总 amount，输出汇总字典。",
+          "analysis": "按分类汇总是数据处理中非常常见的任务。字典的 key 是分类，value 是累计金额。get 默认值可以处理第一次出现的分类。",
+          "tags": [
+            "字典",
+            "列表",
+            "分组汇总"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "{'book': 75, 'food': 18}"
+            }
+          ],
+          "tests": [
+            {
+              "name": "按分类汇总订单",
+              "expected": "{'book': 75, 'food': 18}"
+            }
+          ],
+          "direction": "字典",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "找出词频最高的单词",
+          "text": "找出词频最高的单词：统计 words 中每个单词出现次数，输出出现次数最高的单词和次数。",
+          "description": "统计 words 中每个单词出现次数，输出出现次数最高的单词和次数。",
+          "hint": "不要只统计次数，还要保存对应的单词。",
+          "answer": "words = [\"python\", \"data\", \"python\", \"code\", \"data\", \"python\"]\ncounts = {}\nfor word in words:\n    counts[word] = counts.get(word, 0) + 1\n\nbest_word = None\nbest_count = 0\nfor word, count in counts.items():\n    if count > best_count:\n        best_word = word\n        best_count = count\nprint(best_word, best_count)\n",
+          "starter": "words = [\"python\", \"data\", \"python\", \"code\", \"data\", \"python\"]\n# 找词频最高的单词\n",
+          "expectedOutput": "python 3",
+          "answerCode": "words = [\"python\", \"data\", \"python\", \"code\", \"data\", \"python\"]\ncounts = {}\nfor word in words:\n    counts[word] = counts.get(word, 0) + 1\n\nbest_word = None\nbest_count = 0\nfor word, count in counts.items():\n    if count > best_count:\n        best_word = word\n        best_count = count\nprint(best_word, best_count)\n",
+          "taskGoal": "统计 words 中每个单词出现次数，输出出现次数最高的单词和次数。",
+          "analysis": "这题把计数和寻找最大值组合起来。先得到词频字典，再遍历字典找 count 最大的键值对。",
+          "tags": [
+            "字典",
+            "计数",
+            "算法"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "python 3"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出最高词频",
+              "expected": "python 3"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -36960,6 +38158,105 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "拆分计算平均分函数",
+          "text": "拆分计算平均分函数：定义 average(scores) 返回平均分，调用并输出 [80, 90, 100] 的平均值。",
+          "description": "定义 average(scores) 返回平均分，调用并输出 [80, 90, 100] 的平均值。",
+          "hint": "平均值等于总和除以数量。",
+          "answer": "def average(scores):\n    return sum(scores) / len(scores)\n\nprint(average([80, 90, 100]))\n",
+          "starter": "def average(scores):\n    pass\n\nprint(average([80, 90, 100]))\n",
+          "expectedOutput": "90.0",
+          "answerCode": "def average(scores):\n    return sum(scores) / len(scores)\n\nprint(average([80, 90, 100]))\n",
+          "taskGoal": "定义 average(scores) 返回平均分，调用并输出 [80, 90, 100] 的平均值。",
+          "analysis": "把平均分计算封装成函数后，其他地方只需要传入成绩列表，不必重复写 sum(scores) / len(scores)。函数能减少重复并表达意图。",
+          "tags": [
+            "函数",
+            "列表",
+            "返回值"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "90.0"
+            }
+          ],
+          "tests": [
+            {
+              "name": "计算平均分",
+              "expected": "90.0"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "函数组合生成学习报告",
+          "text": "函数组合生成学习报告：定义 level(score) 返回 优秀/合格/继续努力，再定义 report(name, score) 返回完整报告字符串并输出。",
+          "description": "定义 level(score) 返回 优秀/合格/继续努力，再定义 report(name, score) 返回完整报告字符串并输出。",
+          "hint": "report 里调用 level(score)，不要复制一遍判断逻辑。",
+          "answer": "def level(score):\n    if score >= 85:\n        return \"优秀\"\n    if score >= 60:\n        return \"合格\"\n    return \"继续努力\"\n\ndef report(name, score):\n    return name + \"：\" + level(score)\n\nprint(report(\"小周\", 88))\n",
+          "starter": "def level(score):\n    pass\n\ndef report(name, score):\n    pass\n\nprint(report(\"小周\", 88))\n",
+          "expectedOutput": "小周：优秀",
+          "answerCode": "def level(score):\n    if score >= 85:\n        return \"优秀\"\n    if score >= 60:\n        return \"合格\"\n    return \"继续努力\"\n\ndef report(name, score):\n    return name + \"：\" + level(score)\n\nprint(report(\"小周\", 88))\n",
+          "taskGoal": "定义 level(score) 返回 优秀/合格/继续努力，再定义 report(name, score) 返回完整报告字符串并输出。",
+          "analysis": "一个函数可以调用另一个函数。level 专心判断等级，report 专心组织展示文本，这样拆分后每个函数职责更清晰。",
+          "tags": [
+            "函数",
+            "函数组合",
+            "条件判断"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "小周：优秀"
+            }
+          ],
+          "tests": [
+            {
+              "name": "生成学习报告",
+              "expected": "小周：优秀"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "用 main 组织小脚本",
+          "text": "用 main 组织小脚本：编写 load_scores、average、main 三个函数，在 main 中组织调用并输出平均分。",
+          "description": "编写 load_scores、average、main 三个函数，在 main 中组织调用并输出平均分。",
+          "hint": "每个函数只做一件事，main 负责组织流程。",
+          "answer": "def load_scores():\n    return [80, 85, 90]\n\ndef average(scores):\n    return sum(scores) / len(scores)\n\ndef main():\n    scores = load_scores()\n    print(\"平均分：\" + str(average(scores)))\n\nmain()\n",
+          "starter": "def load_scores():\n    pass\n\ndef average(scores):\n    pass\n\ndef main():\n    pass\n\nmain()\n",
+          "expectedOutput": "平均分：85.0",
+          "answerCode": "def load_scores():\n    return [80, 85, 90]\n\ndef average(scores):\n    return sum(scores) / len(scores)\n\ndef main():\n    scores = load_scores()\n    print(\"平均分：\" + str(average(scores)))\n\nmain()\n",
+          "taskGoal": "编写 load_scores、average、main 三个函数，在 main 中组织调用并输出平均分。",
+          "analysis": "main 函数像脚本入口，把读取数据、处理数据、输出结果串起来。随着程序变大，这种组织方式能让代码更容易维护。",
+          "tags": [
+            "函数",
+            "main",
+            "脚本结构"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "平均分：85.0"
+            }
+          ],
+          "tests": [
+            {
+              "name": "main 输出平均分",
+              "expected": "平均分：85.0"
+            }
+          ],
+          "direction": "函数和作用域",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -37429,6 +38726,105 @@
           "answerCode": "from datetime import datetime\nhour = datetime.now().hour\nif hour < 12:\n    print(\"上午适合学习新知识\")\nelif hour < 18:\n    print(\"下午适合做练习\")\nelse:\n    print(\"晚上适合复习总结\")",
           "taskGoal": "根据当前小时输出学习建议。",
           "analysis": "now.hour。"
+        },
+        {
+          "level": "基础",
+          "title": "使用 datetime 格式化日期",
+          "text": "使用 datetime 格式化日期：使用 datetime.date 创建 2026-05-12，并输出 2026/05/12 格式。",
+          "description": "使用 datetime.date 创建 2026-05-12，并输出 2026/05/12 格式。",
+          "hint": "使用 datetime.date(年, 月, 日) 创建日期对象。",
+          "answer": "import datetime\nday = datetime.date(2026, 5, 12)\nprint(day.strftime(\"%Y/%m/%d\"))\n",
+          "starter": "import datetime\n# 创建日期并格式化\n",
+          "expectedOutput": "2026/05/12",
+          "answerCode": "import datetime\nday = datetime.date(2026, 5, 12)\nprint(day.strftime(\"%Y/%m/%d\"))\n",
+          "taskGoal": "使用 datetime.date 创建 2026-05-12，并输出 2026/05/12 格式。",
+          "analysis": "datetime 是 Python 标准库，不需要额外安装。strftime 用格式字符串控制日期显示，%Y 是四位年份，%m 是月份，%d 是日期。",
+          "tags": [
+            "标准库",
+            "datetime",
+            "日期格式化"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "2026/05/12"
+            }
+          ],
+          "tests": [
+            {
+              "name": "格式化固定日期",
+              "expected": "2026/05/12"
+            }
+          ],
+          "direction": "常用标准库",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "用 pathlib 拼接路径",
+          "text": "用 pathlib 拼接路径：使用 pathlib.Path 拼接 logs/app.txt，并输出路径字符串。",
+          "description": "使用 pathlib.Path 拼接 logs/app.txt，并输出路径字符串。",
+          "hint": "Path('logs') / 'app.txt' 会得到一个路径对象。",
+          "answer": "from pathlib import Path\npath = Path(\"logs\") / \"app.txt\"\nprint(path.as_posix())\n",
+          "starter": "from pathlib import Path\n# 拼接 logs/app.txt\n",
+          "expectedOutput": "logs/app.txt",
+          "answerCode": "from pathlib import Path\npath = Path(\"logs\") / \"app.txt\"\nprint(path.as_posix())\n",
+          "taskGoal": "使用 pathlib.Path 拼接 logs/app.txt，并输出路径字符串。",
+          "analysis": "pathlib 用 / 运算符拼接路径，比手写字符串更清晰，也更容易适配不同操作系统。as_posix() 用 / 风格输出，方便本题稳定显示。",
+          "tags": [
+            "标准库",
+            "pathlib",
+            "路径处理"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "logs/app.txt"
+            }
+          ],
+          "tests": [
+            {
+              "name": "拼接路径",
+              "expected": "logs/app.txt"
+            }
+          ],
+          "direction": "常用标准库",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "用 random 固定种子抽取复习题",
+          "text": "用 random 固定种子抽取复习题：使用 random.seed(7) 后从 topics 中随机抽取 2 个主题并输出列表。",
+          "description": "使用 random.seed(7) 后从 topics 中随机抽取 2 个主题并输出列表。",
+          "hint": "先 seed，再 sample，否则结果每次可能不同。",
+          "answer": "import random\ntopics = [\"字符串\", \"列表\", \"字典\", \"函数\"]\nrandom.seed(7)\nreview = random.sample(topics, 2)\nprint(review)\n",
+          "starter": "import random\ntopics = [\"字符串\", \"列表\", \"字典\", \"函数\"]\n# 固定种子并抽取 2 个主题\n",
+          "expectedOutput": "['字典', '字符串']",
+          "answerCode": "import random\ntopics = [\"字符串\", \"列表\", \"字典\", \"函数\"]\nrandom.seed(7)\nreview = random.sample(topics, 2)\nprint(review)\n",
+          "taskGoal": "使用 random.seed(7) 后从 topics 中随机抽取 2 个主题并输出列表。",
+          "analysis": "random.seed 可以让随机结果可复现，适合教学、测试和调试。sample 会从列表中抽取不重复元素。",
+          "tags": [
+            "标准库",
+            "random",
+            "抽样"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "['字典', '字符串']"
+            }
+          ],
+          "tests": [
+            {
+              "name": "固定种子抽样",
+              "expected": "['字典', '字符串']"
+            }
+          ],
+          "direction": "常用标准库",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -37585,6 +38981,107 @@
           "answerCode": "records = [\"学习函数 30 分钟\", \"完成文件练习 20 分钟\"]\nwith open(\"study_records.txt\", \"w\", encoding=\"utf-8\") as file:\n    for record in records:\n        file.write(record + \"\\n\")\nprint(\"已保存 2 条学习记录\")",
           "taskGoal": "保存记录到文本文件的核心代码。",
           "analysis": "把记录列表逐行保存到文本文件，并打印保存结果。"
+        },
+        {
+          "level": "基础",
+          "title": "综合：统计学习总时长",
+          "text": "综合：统计学习总时长：records 是学习记录列表，计算总分钟数并输出“总时长：75 分钟”。",
+          "description": "records 是学习记录列表，计算总分钟数并输出“总时长：75 分钟”。",
+          "hint": "循环每条记录，累加 minutes 字段。",
+          "answer": "records = [{\"topic\": \"字符串\", \"minutes\": 30}, {\"topic\": \"函数\", \"minutes\": 45}]\ntotal = 0\nfor record in records:\n    total += record[\"minutes\"]\nprint(\"总时长：\" + str(total) + \" 分钟\")\n",
+          "starter": "records = [{\"topic\": \"字符串\", \"minutes\": 30}, {\"topic\": \"函数\", \"minutes\": 45}]\n# 统计总时长\n",
+          "expectedOutput": "总时长：75 分钟",
+          "answerCode": "records = [{\"topic\": \"字符串\", \"minutes\": 30}, {\"topic\": \"函数\", \"minutes\": 45}]\ntotal = 0\nfor record in records:\n    total += record[\"minutes\"]\nprint(\"总时长：\" + str(total) + \" 分钟\")\n",
+          "taskGoal": "records 是学习记录列表，计算总分钟数并输出“总时长：75 分钟”。",
+          "analysis": "综合题通常不是新语法，而是把列表、字典、循环组合起来解决一个小任务。这里每条记录是字典，多条记录放在列表中。",
+          "tags": [
+            "综合应用",
+            "列表",
+            "字典",
+            "循环"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "总时长：75 分钟"
+            }
+          ],
+          "tests": [
+            {
+              "name": "统计两条记录总时长",
+              "expected": "总时长：75 分钟"
+            }
+          ],
+          "direction": "综合应用",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "综合：按主题汇总学习时长",
+          "text": "综合：按主题汇总学习时长：把多条学习记录按 topic 汇总分钟数，输出汇总字典。",
+          "description": "把多条学习记录按 topic 汇总分钟数，输出汇总字典。",
+          "hint": "summary.get(topic, 0) 处理第一次出现的主题。",
+          "answer": "records = [{\"topic\": \"字符串\", \"minutes\": 20}, {\"topic\": \"函数\", \"minutes\": 30}, {\"topic\": \"字符串\", \"minutes\": 25}]\nsummary = {}\nfor record in records:\n    topic = record[\"topic\"]\n    summary[topic] = summary.get(topic, 0) + record[\"minutes\"]\nprint(summary)\n",
+          "starter": "records = [{\"topic\": \"字符串\", \"minutes\": 20}, {\"topic\": \"函数\", \"minutes\": 30}, {\"topic\": \"字符串\", \"minutes\": 25}]\nsummary = {}\n# 按主题汇总\n",
+          "expectedOutput": "{'字符串': 45, '函数': 30}",
+          "answerCode": "records = [{\"topic\": \"字符串\", \"minutes\": 20}, {\"topic\": \"函数\", \"minutes\": 30}, {\"topic\": \"字符串\", \"minutes\": 25}]\nsummary = {}\nfor record in records:\n    topic = record[\"topic\"]\n    summary[topic] = summary.get(topic, 0) + record[\"minutes\"]\nprint(summary)\n",
+          "taskGoal": "把多条学习记录按 topic 汇总分钟数，输出汇总字典。",
+          "analysis": "这题接近真实学习记录器的数据处理：同一个主题可能出现多次，需要按主题累计。字典非常适合做这种映射。",
+          "tags": [
+            "综合应用",
+            "字典",
+            "分组汇总"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "{'字符串': 45, '函数': 30}"
+            }
+          ],
+          "tests": [
+            {
+              "name": "按主题汇总分钟数",
+              "expected": "{'字符串': 45, '函数': 30}"
+            }
+          ],
+          "direction": "综合应用",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "综合：生成复习建议",
+          "text": "综合：生成复习建议：根据 quiz_scores 字典找出低于 80 分的主题，输出“建议复习：列表, 文件”。",
+          "description": "根据 quiz_scores 字典找出低于 80 分的主题，输出“建议复习：列表, 文件”。",
+          "hint": "遍历 items() 可以同时拿到主题和分数。",
+          "answer": "quiz_scores = {\"字符串\": 92, \"列表\": 70, \"函数\": 85, \"文件\": 60}\nreview = []\nfor topic, score in quiz_scores.items():\n    if score < 80:\n        review.append(topic)\nprint(\"建议复习：\" + \", \".join(review))\n",
+          "starter": "quiz_scores = {\"字符串\": 92, \"列表\": 70, \"函数\": 85, \"文件\": 60}\n# 生成复习建议\n",
+          "expectedOutput": "建议复习：列表, 文件",
+          "answerCode": "quiz_scores = {\"字符串\": 92, \"列表\": 70, \"函数\": 85, \"文件\": 60}\nreview = []\nfor topic, score in quiz_scores.items():\n    if score < 80:\n        review.append(topic)\nprint(\"建议复习：\" + \", \".join(review))\n",
+          "taskGoal": "根据 quiz_scores 字典找出低于 80 分的主题，输出“建议复习：列表, 文件”。",
+          "analysis": "这道题把字典遍历、条件筛选、列表收集和字符串 join 组合起来，形成一个真实可用的小功能：根据成绩生成复习建议。",
+          "tags": [
+            "综合应用",
+            "字典",
+            "列表",
+            "字符串"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "建议复习：列表, 文件"
+            }
+          ],
+          "tests": [
+            {
+              "name": "输出低分主题建议",
+              "expected": "建议复习：列表, 文件"
+            }
+          ],
+          "direction": "综合应用",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -40880,6 +42377,106 @@
           "futurecoderOriginalCode": "",
           "futurecoderRequirements": null,
           "futurecoderSolution": null
+        },
+        {
+          "level": "基础",
+          "title": "算法：线性查找任务",
+          "text": "算法：线性查找任务：在 tasks 列表中查找目标任务 target，找到输出索引，找不到输出 -1。当前目标应输出 1。",
+          "description": "在 tasks 列表中查找目标任务 target，找到输出索引，找不到输出 -1。当前目标应输出 1。",
+          "hint": "enumerate 可以同时得到索引和值。",
+          "answer": "tasks = [\"阅读\", \"练习\", \"复盘\"]\ntarget = \"练习\"\nindex = -1\nfor i, task in enumerate(tasks):\n    if task == target:\n        index = i\n        break\nprint(index)\n",
+          "starter": "tasks = [\"阅读\", \"练习\", \"复盘\"]\ntarget = \"练习\"\n# 查找 target 的索引\n",
+          "expectedOutput": "1",
+          "answerCode": "tasks = [\"阅读\", \"练习\", \"复盘\"]\ntarget = \"练习\"\nindex = -1\nfor i, task in enumerate(tasks):\n    if task == target:\n        index = i\n        break\nprint(index)\n",
+          "taskGoal": "在 tasks 列表中查找目标任务 target，找到输出索引，找不到输出 -1。当前目标应输出 1。",
+          "analysis": "线性查找从头到尾逐个比较，适合数据量小或没有排序的数据。找到后 break 可以提前结束。",
+          "tags": [
+            "算法",
+            "列表",
+            "查找"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "1"
+            }
+          ],
+          "tests": [
+            {
+              "name": "找到目标索引",
+              "expected": "1"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "进阶",
+          "title": "算法：冒泡排序一轮理解",
+          "text": "算法：冒泡排序一轮理解：对 numbers 执行完整冒泡排序，从小到大输出排序后的列表。",
+          "description": "对 numbers 执行完整冒泡排序，从小到大输出排序后的列表。",
+          "hint": "内层循环范围每轮可以少比较一个已经归位的尾部元素。",
+          "answer": "numbers = [4, 2, 5, 1]\nfor i in range(len(numbers)):\n    for j in range(0, len(numbers) - 1 - i):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)\n",
+          "starter": "numbers = [4, 2, 5, 1]\n# 冒泡排序\n",
+          "expectedOutput": "[1, 2, 4, 5]",
+          "answerCode": "numbers = [4, 2, 5, 1]\nfor i in range(len(numbers)):\n    for j in range(0, len(numbers) - 1 - i):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)\n",
+          "taskGoal": "对 numbers 执行完整冒泡排序，从小到大输出排序后的列表。",
+          "analysis": "冒泡排序通过相邻元素比较和交换，把较大的元素逐步推到右侧。虽然实际开发常用 sorted，但理解排序过程有助于建立算法基础。",
+          "tags": [
+            "算法",
+            "排序",
+            "列表"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "[1, 2, 4, 5]"
+            }
+          ],
+          "tests": [
+            {
+              "name": "冒泡排序升序输出",
+              "expected": "[1, 2, 4, 5]"
+            }
+          ],
+          "direction": "基础算法和数据结构",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
+        },
+        {
+          "level": "挑战",
+          "title": "综合：迷你待办清单过滤器",
+          "text": "综合：迷你待办清单过滤器：tasks 是待办字典列表，筛选未完成任务标题，并输出“待办：写代码、复盘”。",
+          "description": "tasks 是待办字典列表，筛选未完成任务标题，并输出“待办：写代码、复盘”。",
+          "hint": "not task['done'] 表示 done 为 False。",
+          "answer": "tasks = [{\"title\": \"写代码\", \"done\": False}, {\"title\": \"提交\", \"done\": True}, {\"title\": \"复盘\", \"done\": False}]\npending = []\nfor task in tasks:\n    if not task[\"done\"]:\n        pending.append(task[\"title\"])\nprint(\"待办：\" + \"、\".join(pending))\n",
+          "starter": "tasks = [{\"title\": \"写代码\", \"done\": False}, {\"title\": \"提交\", \"done\": True}, {\"title\": \"复盘\", \"done\": False}]\n# 输出未完成任务\n",
+          "expectedOutput": "待办：写代码、复盘",
+          "answerCode": "tasks = [{\"title\": \"写代码\", \"done\": False}, {\"title\": \"提交\", \"done\": True}, {\"title\": \"复盘\", \"done\": False}]\npending = []\nfor task in tasks:\n    if not task[\"done\"]:\n        pending.append(task[\"title\"])\nprint(\"待办：\" + \"、\".join(pending))\n",
+          "taskGoal": "tasks 是待办字典列表，筛选未完成任务标题，并输出“待办：写代码、复盘”。",
+          "analysis": "这是一个完整小功能：结构化数据输入、条件过滤、收集结果、格式化输出。很多命令行小工具都可以由这种模式扩展而来。",
+          "tags": [
+            "综合应用",
+            "列表",
+            "字典",
+            "过滤"
+          ],
+          "examples": [
+            {
+              "input": "固定数据",
+              "output": "待办：写代码、复盘"
+            }
+          ],
+          "tests": [
+            {
+              "name": "筛选未完成任务",
+              "expected": "待办：写代码、复盘"
+            }
+          ],
+          "direction": "综合应用",
+          "source": "pystart-quality-original-v1",
+          "qualityNotes": "原创分层练习：强调真实小任务、可运行参考答案、解析和可复核测试用例。"
         }
       ],
       "quiz": [
@@ -41329,6 +42926,34 @@
         "嵌套循环/嵌套列表",
         "函数/返回值/测试",
         "字典实践"
+      ]
+    },
+    "qualityQuestionBank": {
+      "source": "pystart-quality-original-v1",
+      "mode": "original curated exercises",
+      "licenseNote": "Exercises are original PyStart Academy content generated for this repository; not copied from copyrighted websites.",
+      "count": 48,
+      "coverage": [
+        "Python 基础语法",
+        "字符串、列表、字典、集合、元组",
+        "条件判断和循环",
+        "函数和作用域",
+        "文件读写",
+        "异常处理",
+        "面向对象",
+        "常用标准库",
+        "基础算法和数据结构",
+        "综合应用小练习"
+      ],
+      "fields": [
+        "title",
+        "description",
+        "level",
+        "tags",
+        "examples",
+        "tests",
+        "answerCode",
+        "analysis"
       ]
     }
   },
