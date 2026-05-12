@@ -92,7 +92,7 @@ def page_lesson(progress=None, lesson_id=None, data=None):
         for c in chapters
     )
     exercises = ''.join(
-        f'<button class="mini-exercise exercise-link" data-lesson="{esc(chapter.get("id"))}" data-exercise="{i}" type="button"><span class="badge">{esc(e.get("level"))}</span><strong> 练习 {i+1}</strong><p>{esc(e.get("text"))}</p><small>提示：{esc(e.get("hint"))}</small><em>进入练习 →</em></button>'
+        f'<button class="mini-exercise exercise-link" data-lesson="{esc(chapter.get("id"))}" data-exercise="{i}" type="button"><span class="badge">{esc(e.get("level"))}</span><strong> {esc(e.get("title") or f"练习 {i+1}")}</strong><p>{esc(e.get("taskGoal") or e.get("description") or e.get("text"))}</p><small>提示：{esc(e.get("hint"))}</small><em>进入练习 →</em></button>'
         for i, e in enumerate(chapter.get('exercises') or [])
     )
     status = summary['lessonStatusMap'].get(chapter.get('id'), 'todo')
@@ -120,7 +120,7 @@ def page_practice(index=0, data=None):
         if practice.get('futurecoderOriginalCode'):
             futurecoder += f'<h4>futurecoder 原题代码</h4>{inline_output(practice.get("futurecoderOriginalCode"))}'
         futurecoder += '</div>'
-    task = '' if not practice else f'<span class="badge">{esc(practice.get("level"))}</span><h3>{esc(practice.get("lessonTitle"))}：练习 {practice.get("index") + 1}</h3><p><strong>任务目标：</strong>{esc(practice.get("taskGoal"))}</p><p><strong>原练习：</strong>{esc(practice.get("text"))}</p>{futurecoder}<p><strong>预期运行结果：</strong></p>{inline_output(practice.get("expectedOutput"))}'
+    task = '' if not practice else f'<span class="badge">{esc(practice.get("level"))}</span><h3>{esc(practice.get("displayTitle") or practice.get("title") or practice.get("lessonTitle"))}</h3><p><strong>所属章节：</strong>{esc(practice.get("lessonTitle"))} · 练习 {practice.get("index") + 1}</p><p><strong>任务目标：</strong>{esc(practice.get("taskGoal"))}</p><p><strong>题目说明：</strong>{esc(practice.get("description") or practice.get("text"))}</p><p><strong>知识标签：</strong>{tags(practice.get("tags") or [])}</p>{futurecoder}<p><strong>预期运行结果：</strong></p>{inline_output(practice.get("expectedOutput"))}'
     return {'html': {'practicePicker': picker, 'practiceTask': task}, 'practice': practice, 'currentPracticeIndex': index, 'totalPractices': len(practices)}
 
 
