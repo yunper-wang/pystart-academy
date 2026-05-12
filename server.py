@@ -93,6 +93,14 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/app/bootstrap":
             self.send_json({**data_service.bootstrap(), **page_service.course_controls()})
             return
+        dist = ROOT / "dist"
+        if dist.exists():
+            if path == "/" or path == "/index.html":
+                self.path = "/dist/index.html"
+            elif (dist / path.lstrip("/")).exists():
+                self.path = "/dist" + path
+            elif "." not in Path(path).name:
+                self.path = "/dist/index.html"
         return super().do_GET()
 
 

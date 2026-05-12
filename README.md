@@ -8,11 +8,12 @@ Python 初学者在线学习平台 —— 从零基础到独立完成小项目�
 
 - **30 个核心章节**：从"Python 是什么"到"综合脚本开发流程"，覆盖 Python 基础到实际应用
 - **457 道练习题**：含基础巩固、综合应用和拓展挑战，部分题目导入自 [futurecoder](https://futurecoder.io/) 项目
-- **后端主导业务逻辑**：课程组织、练习选择、闯关步骤、测验判分、进度计算和 Python 运行都由后端接口负责
+- **React 学习工作台**：采用 Vite + React 重做前端，提供左侧导航、学习驾驶舱、课程工作台、练习题库、测验 Runner 和项目任务板
+- **后端主导业务逻辑**：课程组织、练习选择、测验判分、进度计算和 Python 运行都由后端接口负责
 - **交互式闯关学习模式**：按顺序解锁，完成当前章节才能进入下一章
 - **8 个项目实战**：BMI 计算器、简易计算器、猜数字游戏、学生成绩管理器、待办事项管理器、文本词频统计器、个人学习记录器、文本文件分析助手
 - **章节测验与学习进度跟踪**：测验判分和进度推导在后端完成，原始学习记录仍保存在浏览器 localStorage，下次打开继续学习
-- **代码块一键复制**：所有代码块右上角都有复制按钮
+- **统一代码运行器**：课程示例、练习和项目代码都可以直接运行，支持运行中、成功、失败等状态反馈
 - **知识点详解**：每个章节附带详细的知识点讲解、学习步骤和常见陷阱
 
 ## 快速开始
@@ -114,41 +115,35 @@ PORT=9000 python3 server.py
 
 ## 后端主导架构
 
-当前版本已经从“前端单页应用 + 运行接口”改造成“后端主导的轻量学习平台”。
+当前版本已经从“长页面教程站”升级为“React 学习工作台 + Python 后端 API”的应用结构。
 
 后端负责：
 
 - 读取并组织 `data.json` 课程数据
-- 生成首页、课程、章节、练习、闯关、测验、项目、进度页面所需的 HTML 片段
+- 提供课程数据、练习数据、进度摘要、测验判分和 Python 运行接口
 - 扁平化 457 道练习并返回当前练习的提示、答案和解析
-- 生成每章交互式闯关步骤
 - 计算章节/项目完成状态、阶段进度、学习成就和下一步推荐
 - 对章节测验进行判分并返回解析、得分和复习建议
 - 通过 `/api/run` 在后端真实 Python 环境运行代码，并返回友好错误提示
 
-前端 `app.js` 只负责：
+前端 `src/main.jsx` 负责：
 
-- 调用后端页面接口
-- 把后端返回的 HTML 放进页面容器
-- 绑定按钮点击、导航、代码编辑器等基础交互
+- React App Shell、左侧导航、顶部状态栏和响应式页面切换
+- 学习驾驶舱、课程三栏工作台、练习中心、测验 Runner、项目任务板和学习报告
+- 统一 Toast、Loading、Empty、Error 与代码运行器交互反馈
 - 使用 localStorage 保存原始学习记录
 
 主要接口：
 
 | 接口 | 作用 |
 |------|------|
-| `GET /api/app/bootstrap` | 获取启动数据、默认章节、筛选选项 |
-| `POST /api/page/home` | 首页统计和学习路线 |
-| `POST /api/page/courses` | 课程列表筛选结果 |
-| `POST /api/page/lesson` | 当前章节详情 |
-| `POST /api/page/practice` | 在线练习题目和练习列表 |
-| `POST /api/page/guided` | 交互式闯关步骤 |
-| `POST /api/page/quiz` | 章节测验题目 |
+| `GET /api/app/bootstrap` | 获取启动数据和默认章节 |
+| `GET /api/data` | 返回原始课程数据 |
+| `POST /api/progress/summary` | 学习进度、阶段统计和成就 |
 | `POST /api/quiz/submit` | 测验判分和解析 |
-| `POST /api/page/projects` | 项目列表和项目详情 |
-| `POST /api/page/progress` | 学习进度、阶段统计和成就 |
 | `POST /api/run` | 运行 Python 代码 |
-| `GET /api/data` | 兼容旧版，返回原始课程数据 |
+
+保留旧版 `/api/page/*` HTML 片段接口以兼容历史版本，但新版 React 前端主要使用数据接口。
 
 ## 使用指南
 
@@ -159,9 +154,9 @@ PORT=9000 python3 server.py
 3. 选择章节后可以：
    - 阅读知识点讲解
    - 在「知识点详解」中深入了解每个主题
-   - 点击「开始练习」进入交互式编程练习
+   - 点击「做本章练习」进入练习中心
 4. 编写代码后点击「运行」，结果会显示在下方
-5. 完成练习后自动进入下一题
+5. 也可以进入「测验中心」「项目实战」「学习报告」查看完整学习状态
 
 ### 学习进度
 
@@ -182,9 +177,13 @@ PORT=9000 python3 server.py
 
 ```
 pystart-academy/
-├── index.html              # 主页面（HTML 结构）
-├── style.css               # 样式文件（响应式布局）
-├── app.js                  # 前端交互逻辑（课程渲染、练习、测验、进度）
+├── index.html              # Vite 入口页面
+├── src/
+│   ├── main.jsx            # React 学习工作台主逻辑
+│   └── styles.css          # 新版 App Shell 与交互样式
+├── dist/                   # Vite 构建产物，server.py 默认托管此目录
+├── package.json            # 前端构建脚本和依赖
+├── vite.config.js          # Vite 配置
 ├── data.json               # 课程数据（30章、457题、项目、知识点）
 ├── server.py               # Python 后端（静态文件 + API 接口）
 ├── script.js               # 旧版前端（保留兼容）
@@ -198,7 +197,7 @@ pystart-academy/
 
 | 层级 | 技术 |
 |------|------|
-| 前端 | HTML5 + CSS3 + 原生 JavaScript（无框架依赖） |
+| 前端 | Vite + React + CSS |
 | 后端 | Python 标准库 `http.server`（多线程） |
 | 数据 | JSON 文件存储课程内容 |
 | 进度 | 浏览器 localStorage |
@@ -216,12 +215,17 @@ pystart-academy/
 如果你想修改或扩展这个项目：
 
 ```bash
-# 安装依赖：无，纯标准库
-# 启动开发服务器（修改文件后刷新浏览器即可看到变化）
+# 安装前端依赖
+npm install
+
+# 构建前端产物
+npm run build
+
+# 启动 Python 后端，自动托管 dist/ 产物
 python3 server.py
 
-# 如果修改了 data.json，刷新页面即可加载新数据
-# 如果修改了 app.js 或 style.css，同样刷新即可
+# 如果只调试前端，也可以使用 Vite 开发服务器
+npm run dev
 ```
 
 ### 导入 futurecoder 练习题
@@ -260,3 +264,4 @@ A: 不支持。本项目要求 Python 3.8+，课程内容也是基于 Python 3 �
 
 - 部分练习题内容参考自 [futurecoder](https://futurecoder.io/) 项目
 - 知识点讲解体系参考自 [廖雪峰 Python 教程](https://liaoxuefeng.com/books/python/introduction/index.html)
+

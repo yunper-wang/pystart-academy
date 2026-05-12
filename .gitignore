@@ -8,3 +8,4 @@ Thumbs.db
 
 # Local implementation plans
 docs/plans/
+node_modules/
