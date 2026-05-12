@@ -5,3 +5,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local implementation plans
+docs/plans/
