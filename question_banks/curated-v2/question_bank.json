@@ -319,6 +319,75 @@
           "direction": "Python 基础语法",
           "source": "pystart-curated-v2",
           "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+        },
+        {
+          "id": "c01-ext-4d8086",
+          "title": "E2E测试题1",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "e2e",
+            "测试"
+          ],
+          "description": "描述第1道题",
+          "text": "这是第1道测试题",
+          "taskGoal": "输出数字1",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "1",
+          "answer": "print(1)",
+          "answerCode": "print(1)",
+          "hint": "提示1",
+          "analysis": "",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from File:e2e_test.json",
+          "source": "File:e2e_test.json"
+        },
+        {
+          "id": "c01-ext-783cf9",
+          "title": "E2E测试题2",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "e2e",
+            "测试"
+          ],
+          "description": "描述第2道题",
+          "text": "这是第2道测试题",
+          "taskGoal": "输出数字2",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "2",
+          "answer": "print(2)",
+          "answerCode": "print(2)",
+          "hint": "提示2",
+          "analysis": "",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from File:e2e_test.json",
+          "source": "File:e2e_test.json"
+        },
+        {
+          "id": "c01-ext-22ae9d",
+          "title": "E2E测试题3",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "e2e",
+            "测试"
+          ],
+          "description": "描述第3道题",
+          "text": "这是第3道测试题",
+          "taskGoal": "输出数字3",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "3",
+          "answer": "print(3)",
+          "answerCode": "print(3)",
+          "hint": "提示3",
+          "analysis": "",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from File:e2e_test.json",
+          "source": "File:e2e_test.json"
         }
       ]
     },
@@ -8563,5 +8632,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-05-13T15:56:36"
+  "updatedAt": "2026-05-13T17:02:36"
 }
