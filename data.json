@@ -4408,37 +4408,36 @@
         {
           "id": "c12-medium-006",
           "level": "进阶",
-          "title": "封装字典和集合建议函数",
-          "text": "封装字典和集合建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "统计练习题标签热度",
+          "text": "统计练习题标签热度：给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+          "description": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "starter": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\n# 统计最高频标签\n",
+          "expectedOutput": "dict:3",
+          "answer": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
+          "answerCode": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
+          "taskGoal": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "字典",
             "集合",
-            "统计",
-            "函数"
+            "统计"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "dict:3"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "dict:3"
             }
           ],
-          "direction": "字典与集合",
+          "direction": "结构化数据",
           "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。 趋势信号：Cathaedulissnowbird524/kahoot-auto-answer-bot、c-akanksha/learniverse-backend、suryakantsamantray2005/MindQuiz"
         },
         {
           "id": "c12-hard-007",
@@ -8657,37 +8656,36 @@
         {
           "id": "c23-hard-008",
           "level": "挑战",
-          "title": "构建列表进阶与批量数据处理任务流水线",
-          "text": "构建列表进阶与批量数据处理任务流水线：把 raw 中的任务清洗、去空、去重后输出。",
-          "description": "把 raw 中的任务清洗、去空、去重后输出。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "starter": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\n# 清洗并保持顺序去重\n",
-          "expectedOutput": "['练习', '复习', '项目']",
-          "answerCode": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "taskGoal": "把 raw 中的任务清洗、去空、去重后输出。",
-          "analysis": "这是常见脚本流水线：清洗空白、过滤无效值、去重并保持顺序。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "整理算法练习完成记录",
+          "text": "整理算法练习完成记录：根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+          "description": "根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "starter": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\n# 输出已完成题目名称\n",
+          "expectedOutput": "['Valid Parentheses', 'Two Sum']",
+          "answer": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\nfinished = [item for item in records if item['done']]\nfinished.sort(key=lambda item: item['minutes'])\nprint([item['name'] for item in finished])\n",
+          "answerCode": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\nfinished = [item for item in records if item['done']]\nfinished.sort(key=lambda item: item['minutes'])\nprint([item['name'] for item in finished])\n",
+          "taskGoal": "根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "筛选",
-            "排序",
-            "推导式",
-            "数据清洗"
+            "Python",
+            "练习",
+            "问题解决"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "['练习', '复习', '项目']"
+              "output": "['Valid Parentheses', 'Two Sum']"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "['练习', '复习', '项目']"
+              "expected": "['Valid Parentheses', 'Two Sum']"
             }
           ],
           "direction": "列表进阶",
           "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。 趋势信号：Vishalbhardwj/python-playground、gnz-e/python-exercises、Sergeantidentifiable854/Leetcode-Orbit"
         }
       ],
       "quiz": [
@@ -10111,37 +10109,36 @@
         {
           "id": "c27-medium-006",
           "level": "进阶",
-          "title": "封装异常处理与健壮程序建议函数",
-          "text": "封装异常处理与健壮程序建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "安全解析练习分数",
+          "text": "安全解析练习分数：把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+          "description": "把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "starter": "raw_scores = ['90', 'bad', '75']\n# 安全转换并计算平均分\n",
+          "expectedOutput": "55",
+          "answer": "raw_scores = ['90', 'bad', '75']\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        scores.append(0)\nprint(sum(scores) // len(scores))\n",
+          "answerCode": "raw_scores = ['90', 'bad', '75']\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        scores.append(0)\nprint(sum(scores) // len(scores))\n",
+          "taskGoal": "把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "容错",
-            "默认值",
-            "边界",
-            "函数"
+            "异常处理",
+            "输入校验",
+            "健壮性"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "55"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "55"
             }
           ],
           "direction": "健壮程序",
           "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。 趋势信号：manojkc-dev/python-essentials"
         },
         {
           "id": "c27-hard-007",
@@ -10941,37 +10938,36 @@
         {
           "id": "c29-hard-008",
           "level": "挑战",
-          "title": "构建综合脚本项目：个人学习记录器任务流水线",
-          "text": "构建综合脚本项目：个人学习记录器任务流水线：把 raw 中的任务清洗、去空、去重后输出。",
-          "description": "把 raw 中的任务清洗、去空、去重后输出。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "starter": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\n# 清洗并保持顺序去重\n",
-          "expectedOutput": "['练习', '复习', '项目']",
-          "answerCode": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "taskGoal": "把 raw 中的任务清洗、去空、去重后输出。",
-          "analysis": "这是常见脚本流水线：清洗空白、过滤无效值、去重并保持顺序。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "汇总题库练习进度",
+          "text": "汇总题库练习进度：根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+          "description": "根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "starter": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\n# 输出汇总摘要\n",
+          "expectedOutput": "完成7题，用时97分钟",
+          "answer": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\ntotal_count = sum(item['count'] for item in daily)\ntotal_minutes = sum(item['minutes'] for item in daily)\nprint(f'完成{total_count}题，用时{total_minutes}分钟')\n",
+          "answerCode": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\ntotal_count = sum(item['count'] for item in daily)\ntotal_minutes = sum(item['minutes'] for item in daily)\nprint(f'完成{total_count}题，用时{total_minutes}分钟')\n",
+          "taskGoal": "根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "记录",
-            "汇总",
-            "报告",
-            "数据清洗"
+            "综合项目",
+            "数据汇总",
+            "报表"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "['练习', '复习', '项目']"
+              "output": "完成7题，用时97分钟"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "['练习', '复习', '项目']"
+              "expected": "完成7题，用时97分钟"
             }
           ],
           "direction": "学习记录项目",
           "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。 趋势信号：pallavipatil09/python-case-study"
         }
       ],
       "quiz": [

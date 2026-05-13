@@ -1,0 +1,450 @@
+{
+  "generatedAt": "2026-05-13T03:19:50.198797+00:00",
+  "sourcePolicy": "Use public web metadata as trend signals only; do not copy third-party question text.",
+  "signals": [
+    {
+      "full_name": "Vishalbhardwj/python-playground",
+      "url": "https://github.com/Vishalbhardwj/python-playground",
+      "updated_at": "2026-05-13T02:56:17Z",
+      "description": "A playground for practicing Python, exploring concepts, solving problems, and building coding consistency through hands-on learning.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "gnz-e/python-exercises",
+      "url": "https://github.com/gnz-e/python-exercises",
+      "updated_at": "2026-05-13T01:54:01Z",
+      "description": "Collection of Python exercises for practicing problem-solving and basic programming concepts.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "manojkc-dev/python-essentials",
+      "url": "https://github.com/manojkc-dev/python-essentials",
+      "updated_at": "2026-05-13T01:35:59Z",
+      "description": "A structured collection of Core and Advanced Python concepts covering fundamentals, data structures, functions, modules, exception handling, object-oriented programming, and practical problem-solving exercises. Built for learning, practice, and strengthening Python development foundations.",
+      "chapterId": "c27",
+      "direction": "健壮程序",
+      "tags": [
+        "异常处理",
+        "输入校验",
+        "健壮性"
+      ]
+    },
+    {
+      "full_name": "Sergeantidentifiable854/Leetcode-Orbit",
+      "url": "https://github.com/Sergeantidentifiable854/Leetcode-Orbit",
+      "updated_at": "2026-05-13T01:17:29Z",
+      "description": "Build an adaptive LeetCode practice system with AI review, weak-point tracking, spaced repetition, and CodeTop-based problem selection",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "列表",
+        "哈希表",
+        "算法思维"
+      ]
+    },
+    {
+      "full_name": "igautamsihag/DSA-practice",
+      "url": "https://github.com/igautamsihag/DSA-practice",
+      "updated_at": "2026-05-12T23:07:41Z",
+      "description": "DSA problem solving in Python.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "列表",
+        "排序",
+        "算法思维"
+      ]
+    },
+    {
+      "full_name": "noctxbt/python-practice",
+      "url": "https://github.com/noctxbt/python-practice",
+      "updated_at": "2026-05-12T22:18:12Z",
+      "description": "Solving problems in Python programming language during my studies.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "miruomoo/python-problems",
+      "url": "https://github.com/miruomoo/python-problems",
+      "updated_at": "2026-05-12T19:47:43Z",
+      "description": "Python Practice Problems",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "Bhumika7/Python",
+      "url": "https://github.com/Bhumika7/Python",
+      "updated_at": "2026-05-12T19:47:00Z",
+      "description": "Python practice problems and exercises",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "YvMohsin/devops-exercises",
+      "url": "https://github.com/YvMohsin/devops-exercises",
+      "updated_at": "2026-05-09T16:20:41Z",
+      "description": "Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "matheus-makiama/CS50P---python",
+      "url": "https://github.com/matheus-makiama/CS50P---python",
+      "updated_at": "2026-05-07T13:36:09Z",
+      "description": "My CS50P Python journey. I write the exercises myself, then use AI to improve readability, organize notes, create review questions, and help me check my understanding through recall practice.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "haytastan2023/DevOps_Exercises",
+      "url": "https://github.com/haytastan2023/DevOps_Exercises",
+      "updated_at": "2026-04-26T17:32:34Z",
+      "description": "Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "pallavipatil09/python-case-study",
+      "url": "https://github.com/pallavipatil09/python-case-study",
+      "updated_at": "2026-04-19T06:36:10Z",
+      "description": "Python practice file containing case study questions, logical programs, loops, strings, lists, dictionaries, number programs, and problem-solving exercises.",
+      "chapterId": "c29",
+      "direction": "学习记录项目",
+      "tags": [
+        "综合项目",
+        "数据汇总",
+        "报表"
+      ]
+    },
+    {
+      "full_name": "sai2408/pybot-rag-agent",
+      "url": "https://github.com/sai2408/pybot-rag-agent",
+      "updated_at": "2026-04-15T10:25:15Z",
+      "description": "A RAG-powered Python tutor agent built with Google ADK and Gemini. Ask Python questions, run code, debug errors, and get practice exercises — all grounded in your own document knowledge base.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "Tej1002/devops-exercises",
+      "url": "https://github.com/Tej1002/devops-exercises",
+      "updated_at": "2026-04-15T19:30:34Z",
+      "description": "Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ]
+    },
+    {
+      "full_name": "Cathaedulissnowbird524/kahoot-auto-answer-bot",
+      "url": "https://github.com/Cathaedulissnowbird524/kahoot-auto-answer-bot",
+      "updated_at": "2026-05-13T01:32:30Z",
+      "description": "Automate Kahoot quiz participation using a bot that intercepts game questions and sends correct answers via the program loader.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "c-akanksha/learniverse-backend",
+      "url": "https://github.com/c-akanksha/learniverse-backend",
+      "updated_at": "2026-05-12T16:16:29Z",
+      "description": "Learniverse Backend is the AI-driven engine powering an adaptive learning platform. It generates personalized courses, quiz questions, feedback analysis, and learner progress insights using intelligent APIs. Built with scalable architecture, it manages learners, course generation, evaluations, and AI-based recommendations.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "suryakantsamantray2005/MindQuiz",
+      "url": "https://github.com/suryakantsamantray2005/MindQuiz",
+      "updated_at": "2026-05-12T16:36:12Z",
+      "description": "A Python console-based quiz game with multiple difficulty levels, categories, random questions, and score tracking using OOP concepts.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "ritikagupta26/Quiz-Application-in-Python",
+      "url": "https://github.com/ritikagupta26/Quiz-Application-in-Python",
+      "updated_at": "2026-05-12T16:11:37Z",
+      "description": "This project is a simple command line quiz application built using Python. It displays multiple choice questions, takes user input, checks answers, and shows the final score.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "Habiba-306/Quiz-App",
+      "url": "https://github.com/Habiba-306/Quiz-App",
+      "updated_at": "2026-05-12T17:08:06Z",
+      "description": " Developed a GUI-based Quiz Application using Python and Tkinter, featuring dynamic question loading, real-time answer validation, and score tracking.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "gaiteaugusto2-web/JS-DoomQuiz",
+      "url": "https://github.com/gaiteaugusto2-web/JS-DoomQuiz",
+      "updated_at": "2026-05-12T13:54:08Z",
+      "description": "Attempt at doing a quiz game, using JS and Python, i did not make the graphic assets and i do not own them, api for the questions \"https://the-trivia-api.com/\" ",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "DAX1208/CodeAlpha_Phishing-Awareness-Training",
+      "url": "https://github.com/DAX1208/CodeAlpha_Phishing-Awareness-Training",
+      "updated_at": "2026-05-12T11:44:44Z",
+      "description": "Teaches phishing recognition and safe habits through a styled static site and a matching Python menu, with an interactive quiz that picks random questions and shuffles options each run.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    },
+    {
+      "full_name": "QuothTheRaven42/Python-Flashcards",
+      "url": "https://github.com/QuothTheRaven42/Python-Flashcards",
+      "updated_at": "2026-05-12T07:59:44Z",
+      "description": "CLI flashcard quiz system with CSV-backed persistence, category filtering, randomized question selection, and performance tracking via miss-count aggregation.",
+      "chapterId": "c12",
+      "direction": "结构化数据",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "latest-2026-05-13-01",
+      "chapterId": "c12",
+      "level": "进阶",
+      "title": "统计练习题标签热度",
+      "text": "统计练习题标签热度：给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+      "description": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+      "starter": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\n# 统计最高频标签\n",
+      "expectedOutput": "dict:3",
+      "answer": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
+      "answerCode": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
+      "taskGoal": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "examples": [
+        {
+          "input": "题目内置固定数据",
+          "output": "dict:3"
+        }
+      ],
+      "tests": [
+        {
+          "name": "参考答案输出校验",
+          "expected": "dict:3"
+        }
+      ],
+      "direction": "结构化数据",
+      "source": "pystart-web-trend-original-v1",
+      "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。",
+      "webSignals": [
+        "Cathaedulissnowbird524/kahoot-auto-answer-bot",
+        "c-akanksha/learniverse-backend",
+        "suryakantsamantray2005/MindQuiz"
+      ]
+    },
+    {
+      "id": "latest-2026-05-13-02",
+      "chapterId": "c23",
+      "level": "挑战",
+      "title": "整理算法练习完成记录",
+      "text": "整理算法练习完成记录：根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+      "description": "根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+      "starter": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\n# 输出已完成题目名称\n",
+      "expectedOutput": "['Valid Parentheses', 'Two Sum']",
+      "answer": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\nfinished = [item for item in records if item['done']]\nfinished.sort(key=lambda item: item['minutes'])\nprint([item['name'] for item in finished])\n",
+      "answerCode": "records = [{'name': 'Two Sum', 'done': True, 'minutes': 18}, {'name': 'Merge Lists', 'done': False, 'minutes': 25}, {'name': 'Valid Parentheses', 'done': True, 'minutes': 12}]\nfinished = [item for item in records if item['done']]\nfinished.sort(key=lambda item: item['minutes'])\nprint([item['name'] for item in finished])\n",
+      "taskGoal": "根据练习完成记录筛选已完成项目，按耗时从少到多排序，并输出题目名称列表。",
+      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
+      "tags": [
+        "Python",
+        "练习",
+        "问题解决"
+      ],
+      "examples": [
+        {
+          "input": "题目内置固定数据",
+          "output": "['Valid Parentheses', 'Two Sum']"
+        }
+      ],
+      "tests": [
+        {
+          "name": "参考答案输出校验",
+          "expected": "['Valid Parentheses', 'Two Sum']"
+        }
+      ],
+      "direction": "列表进阶",
+      "source": "pystart-web-trend-original-v1",
+      "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。",
+      "webSignals": [
+        "Vishalbhardwj/python-playground",
+        "gnz-e/python-exercises",
+        "Sergeantidentifiable854/Leetcode-Orbit"
+      ]
+    },
+    {
+      "id": "latest-2026-05-13-03",
+      "chapterId": "c27",
+      "level": "进阶",
+      "title": "安全解析练习分数",
+      "text": "安全解析练习分数：把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+      "description": "把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+      "starter": "raw_scores = ['90', 'bad', '75']\n# 安全转换并计算平均分\n",
+      "expectedOutput": "55",
+      "answer": "raw_scores = ['90', 'bad', '75']\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        scores.append(0)\nprint(sum(scores) // len(scores))\n",
+      "answerCode": "raw_scores = ['90', 'bad', '75']\nscores = []\nfor item in raw_scores:\n    try:\n        scores.append(int(item))\n    except ValueError:\n        scores.append(0)\nprint(sum(scores) // len(scores))\n",
+      "taskGoal": "把字符串分数转换为整数，遇到无法转换的数据时记为 0，最后输出平均分。",
+      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
+      "tags": [
+        "异常处理",
+        "输入校验",
+        "健壮性"
+      ],
+      "examples": [
+        {
+          "input": "题目内置固定数据",
+          "output": "55"
+        }
+      ],
+      "tests": [
+        {
+          "name": "参考答案输出校验",
+          "expected": "55"
+        }
+      ],
+      "direction": "健壮程序",
+      "source": "pystart-web-trend-original-v1",
+      "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。",
+      "webSignals": [
+        "manojkc-dev/python-essentials"
+      ]
+    },
+    {
+      "id": "latest-2026-05-13-04",
+      "chapterId": "c29",
+      "level": "挑战",
+      "title": "汇总题库练习进度",
+      "text": "汇总题库练习进度：根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+      "description": "根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+      "starter": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\n# 输出汇总摘要\n",
+      "expectedOutput": "完成7题，用时97分钟",
+      "answer": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\ntotal_count = sum(item['count'] for item in daily)\ntotal_minutes = sum(item['minutes'] for item in daily)\nprint(f'完成{total_count}题，用时{total_minutes}分钟')\n",
+      "answerCode": "daily = [{'date': '2026-05-11', 'count': 3, 'minutes': 42}, {'date': '2026-05-12', 'count': 4, 'minutes': 55}]\ntotal_count = sum(item['count'] for item in daily)\ntotal_minutes = sum(item['minutes'] for item in daily)\nprint(f'完成{total_count}题，用时{total_minutes}分钟')\n",
+      "taskGoal": "根据每日练习记录统计完成题数和总用时，输出适合作为学习记录器首页的摘要。",
+      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
+      "tags": [
+        "综合项目",
+        "数据汇总",
+        "报表"
+      ],
+      "examples": [
+        {
+          "input": "题目内置固定数据",
+          "output": "完成7题，用时97分钟"
+        }
+      ],
+      "tests": [
+        {
+          "name": "参考答案输出校验",
+          "expected": "完成7题，用时97分钟"
+        }
+      ],
+      "direction": "学习记录项目",
+      "source": "pystart-web-trend-original-v1",
+      "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。",
+      "webSignals": [
+        "pallavipatil09/python-case-study"
+      ]
+    }
+  ]
+}
