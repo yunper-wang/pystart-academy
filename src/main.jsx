@@ -280,7 +280,7 @@ function AdminPanel({ctx}) {
   const [loginPwd, setLoginPwd] = useState('');
   const [loginErr, setLoginErr] = useState('');
   const [loginBusy, setLoginBusy] = useState(false);
-  const tabs = [['dashboard','仪表盄','◈'],['exercises','题目列表','☰'],['editor','编辑器','✎'],['import','导入题库','↑'],['export','导出题库','↓'],['versions','版本管理','↻'],['system','系统状态','●']];
+  const tabs = [['dashboard','仪表盄','◈'],['exercises','题目列表','☰'],['editor','编辑器','✎'],['import','导入题库','↑'],['export','导出题库','↓'],['versions','版本管理','↻'],['datasources','自动导入','⟳'],['system','系统状态','●']];
   const doLogin = async () => {
     if (!loginPwd.trim()) return setLoginErr('请输入密码');
     setLoginBusy(true); setLoginErr('');
@@ -301,6 +301,7 @@ function AdminPanel({ctx}) {
     {tab==='import' && <ImportPanel ctx={ctx}/>}
     {tab==='export' && <ExportPanel ctx={ctx}/>}
     {tab==='versions' && <VersionPanel ctx={ctx}/>}
+    {tab==='datasources' && <DataSourcesPanel ctx={ctx}/>}
     {tab==='system' && <SystemPanel ctx={ctx}/>}
   </section>;
 }
@@ -661,6 +662,162 @@ function VersionPanel({ctx}) {
           {backups.map(b => <div className="version-row" key={b.filename}>
             <div className="version-info"><strong>{b.filename}</strong><small>{b.createdAt} · {formatBytes(b.size)}</small></div>
             <button className="btn secondary" disabled={busy} onClick={()=>doRollback(b.filename)}>回滚</button>
+          </div>)}
+        </div>
+      }
+    </section>
+  </>;
+}
+
+function DataSourcesPanel({ctx}) {
+  const [sources, setSources] = useState([]);
+  const [logs, setLogs] = useState([]);
+  const [scheduler, setScheduler] = useState({});
+  const [busy, setBusy] = useState(true);
+  const [feedback, setFeedback] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [form, setForm] = useState({name:'',source_type:'github_api',url:'',schedule:'',enabled:true,options:{}});
+  const [optsStr, setOptsStr] = useState('{}');
+  const load = async () => {
+    setBusy(true);
+    try {
+      const [sr, lr, st] = await Promise.all([
+        api('/api/data-sources'),
+        api('/api/data-sources/logs'),
+        api('/api/data-sources/status'),
+      ]);
+      setSources(sr.sources||[]);
+      setLogs(lr.logs||[]);
+      setScheduler(st.scheduler||{});
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  useEffect(()=>{ load(); }, []);
+  const initPresets = async () => {
+    setBusy(true);
+    try { await api('/api/data-sources/init-presets'); await load(); setFeedback({type:'success',message:'预设数据源已初始化。'}); }
+    catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doSave = async () => {
+    if (!form.name.trim()) return setFeedback({type:'error',message:'请输入名称'});
+    if (!form.url.trim()) return setFeedback({type:'error',message:'请输入 URL'});
+    let opts = {};
+    try { opts = JSON.parse(optsStr); } catch { return setFeedback({type:'error',message:'参数 JSON 格式错误'}); }
+    setBusy(true);
+    try {
+      if (editId) {
+        await api('/api/data-sources/update', {...form, id:editId, options:opts});
+        setFeedback({type:'success',message:'数据源已更新。'});
+      } else {
+        await api('/api/data-sources/create', {...form, options:opts});
+        setFeedback({type:'success',message:'数据源已创建。'});
+      }
+      setShowForm(false); setEditId(null); setForm({name:'',source_type:'github_api',url:'',schedule:'',enabled:true,options:{}});
+      setOptsStr('{}');
+      await load();
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doDelete = async (id, name) => {
+    if (!window.confirm(`确认删除数据源「${name}」？`)) return;
+    setBusy(true);
+    try { await api('/api/data-sources/delete', {id}); await load(); setFeedback({type:'success',message:'已删除。'}); }
+    catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doTrigger = async (id, name) => {
+    setBusy(true);
+    try { await api('/api/data-sources/trigger', {id}); setFeedback({type:'info',message:`「${name}」导入任务已启动，请稍候刷新查看结果。`}); }
+    catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doToggle = async (src) => {
+    try { await api('/api/data-sources/update', {id:src.id, enabled:!src.enabled}); await load(); }
+    catch(e) { setFeedback({type:'error',message:e.message}); }
+  };
+  const startEdit = (src) => {
+    setForm({name:src.name,source_type:src.source_type,url:src.url,schedule:src.schedule||'',enabled:src.enabled,options:src.options||{}});
+    setOptsStr(JSON.stringify(src.options||{}, null, 2));
+    setEditId(src.id); setShowForm(true);
+  };
+  const typeLabel = t => ({github_api:'GitHub API',rss:'RSS/Atom',web:'网页解析',file:'本地文件'}[t]||t);
+  const statusBadge = s => ({success:'badge-ok',partial:'badge-warn',error:'badge-err',running:'badge-run'}[s]||'');
+  return <>
+    <Feedback item={feedback}/>
+    <section className="panel wide admin-section">
+      <div className="section-head">
+        <div><span className="kicker">Auto Import</span><h2>数据源管理</h2><p>配置外部数据源，自动抓取并导入 Python 题目到题库。</p></div>
+        <div style={{display:'flex',gap:8}}>
+          <button className="btn secondary" onClick={load}>{busy?'刷新中...':'刷新'}</button>
+          <button className="btn secondary" onClick={initPresets}>加载预设</button>
+          <button className="btn primary" onClick={()=>{setShowForm(true);setEditId(null);setForm({name:'',source_type:'github_api',url:'',schedule:'',enabled:true,options:{}});setOptsStr('{}');}}>+ 新建数据源</button>
+        </div>
+      </div>
+      <div className="scheduler-bar">
+        <span className={`sched-dot ${scheduler.running?'on':'off'}`}/>
+        <span>调度器：{scheduler.running?'运行中':'未启动'}</span>
+      </div>
+      {busy && sources.length===0 ? <Loader text="加载数据源..."/> :
+        sources.length===0 ? <p className="muted">暂无数据源。点击「加载预设」初始化推荐数据源，或点击「新建数据源」手动添加。</p> :
+        <div className="source-list">
+          {sources.map(src => <div className={`source-card ${src.running?'running':''}`} key={src.id}>
+            <div className="source-head">
+              <strong>{src.name}</strong>
+              <span className="source-type">{typeLabel(src.source_type)}</span>
+              {src.running && <span className="source-running">导入中...</span>}
+            </div>
+            <div className="source-meta">
+              <span>状态: {src.enabled?'启用':'禁用'}</span>
+              {src.schedule && <span>定时: {src.schedule}</span>}
+              {src.last_sync && <span>上次同步: {src.last_sync}</span>}
+            </div>
+            <div className="source-actions">
+              <button className="btn-action" title="立即同步" disabled={busy||src.running} onClick={()=>doTrigger(src.id,src.name)}>⟳</button>
+              <button className="btn-action" title="编辑" onClick={()=>startEdit(src)}>✎</button>
+              <button className="btn-action" title={src.enabled?'禁用':'启用'} onClick={()=>doToggle(src)}>{src.enabled?'⏸':'▶'}</button>
+              <button className="btn-action delete" title="删除" onClick={()=>doDelete(src.id,src.name)}>✕</button>
+            </div>
+          </div>)}
+        </div>
+      }
+      {showForm && <div className="source-form-panel">
+        <h3>{editId?'编辑数据源':'新建数据源'}</h3>
+        <div className="form-grid">
+          <label>名称<input className="input" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="如：TheAlgorithms 排序"/></label>
+          <label>类型<select className="input" value={form.source_type} onChange={e=>setForm({...form,source_type:e.target.value})}>
+            <option value="github_api">GitHub API</option>
+            <option value="rss">RSS/Atom</option>
+            <option value="web">网页解析</option>
+            <option value="file">本地文件</option>
+          </select></label>
+          <label>URL<input className="input" value={form.url} onChange={e=>setForm({...form,url:e.target.value})} placeholder="https://github.com/..."/></label>
+          <label>定时（留空仅手动）<input className="input" value={form.schedule} onChange={e=>setForm({...form,schedule:e.target.value})} placeholder="@daily / @weekly / 0 2 * * *"/></label>
+        </div>
+        <label>参数（JSON）<textarea className="input editor-codearea" value={optsStr} onChange={e=>setOptsStr(e.target.value)} spellCheck="false"/></label>
+        <div className="editor-actions">
+          <button className="btn primary" disabled={busy} onClick={doSave}>{busy?'保存中...':'保存'}</button>
+          <button className="btn secondary" onClick={()=>{setShowForm(false);setEditId(null);}}>取消</button>
+        </div>
+      </div>}
+    </section>
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Logs</span><h2>导入日志</h2><p>最近 50 条导入记录。</p></div></div>
+      {logs.length===0 ? <p className="muted">暂无导入日志。</p> :
+        <div className="log-list">
+          {logs.map((l,i) => <div className={`log-row ${l.status}`} key={i}>
+            <div className="log-head">
+              <span className={`log-badge ${statusBadge(l.status)}`}>{({success:'成功',partial:'部分成功',error:'失败',running:'运行中'}[l.status]||l.status)}</span>
+              <strong>{l.source_name}</strong>
+              <span className="log-time">{l.started_at}</span>
+            </div>
+            <div className="log-stats">
+              <span>抓取: {l.fetched}</span>
+              <span>导入: {l.imported}</span>
+              <span>跳过: {l.skipped}</span>
+            </div>
+            {l.errors && l.errors.length > 0 && <div className="log-errors">{l.errors.map((e,j)=><p key={j}>{e}</p>)}</div>}
           </div>)}
         </div>
       }

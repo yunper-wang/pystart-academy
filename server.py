@@ -5,6 +5,7 @@ import json
 import os
 
 from backend import data_service, page_service, progress_service, quiz_service, run_service, question_bank_service
+from backend import data_sources
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data.json"
@@ -99,6 +100,39 @@ class Handler(SimpleHTTPRequestHandler):
                 data_service.clear_cache()
                 self.send_json(result)
                 return
+            # ── Data Source Management ──
+            if path == "/api/data-sources/create":
+                src = data_sources.add_source(
+                    payload.get("name", ""),
+                    payload.get("source_type", ""),
+                    payload.get("url", ""),
+                    schedule=payload.get("schedule", ""),
+                    enabled=payload.get("enabled", True),
+                    options=payload.get("options"),
+                )
+                self.send_json({"ok": True, "source": src.to_dict()})
+                return
+            if path == "/api/data-sources/update":
+                src = data_sources.update_source(payload.get("id", ""), payload)
+                self.send_json({"ok": True, "source": src.to_dict()})
+                return
+            if path == "/api/data-sources/delete":
+                data_sources.delete_source(payload.get("id", ""))
+                self.send_json({"ok": True})
+                return
+            if path == "/api/data-sources/trigger":
+                source_id = payload.get("id", "")
+                data_sources.trigger_import_async(source_id)
+                self.send_json({"ok": True, "message": f"导入任务已启动：{source_id}"})
+                return
+            if path == "/api/data-sources/init-presets":
+                existing = data_sources.list_sources()
+                if not existing:
+                    from backend.data_sources import PRESET_SOURCES
+                    for preset in PRESET_SOURCES:
+                        data_sources.add_source(**preset)
+                self.send_json({"ok": True, "sources": data_sources.list_sources()})
+                return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
                 return
@@ -171,6 +205,19 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/question-bank/versions":
             self.send_json({"ok": True, "backups": question_bank_service.list_backups()})
             return
+        if path == "/api/data-sources":
+            self.send_json({"ok": True, "sources": data_sources.list_sources()})
+            return
+        if path == "/api/data-sources/logs":
+            self.send_json({"ok": True, "logs": data_sources.get_logs()})
+            return
+        if path == "/api/data-sources/status":
+            self.send_json({"ok": True, "scheduler": data_sources.get_scheduler_status()})
+            return
+        if path == "/api/data-sources/presets":
+            from backend.data_sources import PRESET_SOURCES
+            self.send_json({"ok": True, "presets": PRESET_SOURCES})
+            return
         if path == "/api/question-bank/exercise":
             exercise_id = self.path.split("id=", 1)[1].split("&", 1)[0] if "id=" in self.path else ""
             found = question_bank_service.get_exercise(exercise_id)
@@ -205,6 +252,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8765"))
+    data_sources.start_scheduler()
     server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
     print(f"PyStart backend running: http://127.0.0.1:{port}/")
     print(f"API: http://127.0.0.1:{port}/api/app/bootstrap")
