@@ -40,9 +40,15 @@ class Handler(SimpleHTTPRequestHandler):
             if path == "/api/progress/summary":
                 self.send_json(progress_service.summarize(progress, data))
                 return
+            if path == "/api/question-bank/validate":
+                bank = payload.get("questionBank")
+                report = question_bank_service.validation_report(bank, data_service.load_course_data(), question_bank_service.load_question_bank(validate=False))
+                self.send_json({"ok": True, "validation": report})
+                return
             if path == "/api/question-bank/import":
                 bank = payload.get("questionBank")
-                stats = question_bank_service.import_question_bank(bank, data_service.load_course_data())
+                strategy = payload.get("strategy") or "replace"
+                stats = question_bank_service.import_question_bank(bank, data_service.load_course_data(), strategy)
                 data_service.clear_cache()
                 refreshed = data_service.load_data()
                 self.send_json({
@@ -58,6 +64,9 @@ class Handler(SimpleHTTPRequestHandler):
                         "practices": data_service.flatten_practices(refreshed),
                     },
                 })
+                return
+            if path == "/api/question-bank/export":
+                self.send_json(question_bank_service.export_question_bank(payload.get("scope") or {}))
                 return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
@@ -120,6 +129,10 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/question-bank/export":
             self.send_json(question_bank_service.load_question_bank())
             return
+        if path == "/api/system/status":
+            data = data_service.load_course_data()
+            self.send_json(question_bank_service.system_status(data))
+            return
         if path == "/api/app/bootstrap":
             data = data_service.load_data()
             self.send_json({
@@ -130,6 +143,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "projects": data_service.get_projects(data),
                 "practices": data_service.flatten_practices(data),
                 "questionBank": data.get("questionBank"),
+                "systemStatus": question_bank_service.system_status(data_service.load_course_data()),
             })
             return
         dist = ROOT / "dist"

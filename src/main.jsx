@@ -3,7 +3,6 @@ import {createRoot} from 'react-dom/client';
 import './styles.css';
 
 const STORE_KEY = 'pystart_academy_progress_v2';
-const PLAYGROUND_KEY = 'pystart_python_playground_code_v1';
 const DEFAULT_PROGRESS = {completedLessons: [], completedProjects: [], quizResults: {}, reviewItems: [], currentLessonId: null};
 const NAV = [
   ['dashboard', '首页', '⌂'],
@@ -36,40 +35,7 @@ const readJsonFile = (file) => new Promise((resolve, reject) => {
   reader.readAsText(file, 'utf-8');
 });
 
-function validateQuestionBankClient(bank) {
-  if (!bank || typeof bank !== 'object') throw new Error('导入失败：题库文件必须是 JSON 对象。');
-  if (bank.schemaVersion !== 'pystart-question-bank-v1') throw new Error('导入失败：schemaVersion 必须是 pystart-question-bank-v1。');
-  if (!bank.id || typeof bank.id !== 'string') throw new Error('导入失败：题库缺少字符串 id。');
-  if (!Array.isArray(bank.chapters) || !bank.chapters.length) throw new Error('导入失败：chapters 必须是非空数组。');
-  const required = ['id','title','level','direction','tags','description','text','taskGoal','starter','expectedOutput','answer','answerCode','hint','analysis','examples','tests','qualityNotes','source'];
-  const seen = new Set();
-  let total = 0;
-  bank.chapters.forEach((chapter, ci) => {
-    if (!chapter.chapterId) throw new Error(`导入失败：第 ${ci + 1} 个章节缺少 chapterId。`);
-    if (!Array.isArray(chapter.exercises) || !chapter.exercises.length) throw new Error(`导入失败：章节 ${chapter.chapterId} 的 exercises 必须是非空数组。`);
-    chapter.exercises.forEach((exercise, ei) => {
-      const missing = required.filter(field => !(field in exercise));
-      if (missing.length) throw new Error(`导入失败：${chapter.chapterId} 第 ${ei + 1} 题缺少字段：${missing.join(', ')}。`);
-      if (seen.has(exercise.id)) throw new Error(`导入失败：题目 id 重复：${exercise.id}。`);
-      seen.add(exercise.id);
-      if (!['基础','进阶','挑战'].includes(exercise.level)) throw new Error(`导入失败：${exercise.id} 的 level 必须是 基础/进阶/挑战。`);
-      if (!Array.isArray(exercise.tags) || !exercise.tags.length) throw new Error(`导入失败：${exercise.id} 的 tags 必须是非空数组。`);
-      if (!Array.isArray(exercise.examples) || !Array.isArray(exercise.tests)) throw new Error(`导入失败：${exercise.id} 的 examples/tests 必须是数组。`);
-      total += 1;
-    });
-  });
-  return {chapters: bank.chapters.length, exercises: total};
-}
 
-const PLAYGROUND_EXAMPLE = `# 自由练习：统计分数并给出建议
-scores = [88, 92, 76, 95]
-average = sum(scores) / len(scores)
-print("平均分：", average)
-
-if average >= 90:
-    print("表现优秀，继续保持！")
-else:
-    print("已经不错，再练几题会更稳。")`;
 
 function safeJson(raw, fallback) { try { return JSON.parse(raw) || fallback; } catch { return fallback; } }
 function normalizeProgress(raw) {
@@ -171,6 +137,7 @@ function App() {
     setBootstrap(boot); setData(courseData);
     await refreshSummary(progress);
     if (message) toast.push(message);
+    return boot;
   };
   const ctx = {data, bootstrap, summary, progress, setProgress: updateProgress, activeLessonId, setActiveLessonId: selectLesson, activeProjectId, setActiveProjectId, navigate, toast, reloadAppData};
   return <>
@@ -198,7 +165,8 @@ function Sidebar({route, navigate}) {
 }
 function Topbar({ctx}) {
   const lesson = ctx.data.chapters.find(c => c.id === ctx.activeLessonId) || ctx.data.chapters[0];
-  return <header className="topbar-app"><div><small>当前章节</small><strong>{lesson?.order}. {lesson?.title}</strong></div><div className="top-actions"><button className="admin-entry" onClick={() => ctx.navigate('admin')}>后台管理</button><button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button></div></header>;
+  const status = ctx.bootstrap.systemStatus?.overall || 'loading';
+  return <header className="topbar-app"><div><small>当前章节</small><strong>{lesson?.order}. {lesson?.title}</strong></div><div className="top-actions"><span className={`status-pill ${status}`}>系统{statusTextForState(status)}</span><button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button></div></header>;
 }
 
 function Dashboard({ctx}) {
@@ -278,46 +246,151 @@ function ProjectBoard({ctx}) {
 function Report({ctx}) { return <section className="report-page"><h1>学习报告</h1><div className="report-grid"><div className="metric-card"><small>总进度</small><strong>{ctx.summary.totalProgress}%</strong><ProgressBar value={ctx.summary.totalProgress}/></div><div className="metric-card"><small>章节</small><strong>{ctx.summary.completedLessonCount}/{ctx.summary.totalLessonCount}</strong></div><div className="metric-card"><small>项目</small><strong>{ctx.summary.completedProjectCount}/{ctx.summary.totalProjectCount}</strong></div></div><section className="panel"><h2>学习成就</h2><div className="achievement-grid">{ctx.summary.achievements.map(a=><span className={a.unlocked?'':'locked'} key={a.title}>{a.title}</span>)}</div></section><section className="panel"><h2>复习建议</h2><p>{ctx.summary.reviewTitles?.length ? ctx.summary.reviewTitles.join('、') : '暂无错题。完成测验后这里会显示需要复习的章节。'}</p></section></section>; }
 
 
+
+const STATE_LABELS = {ok: '正常', warning: '警告', error: '异常', loading: '检测中'};
+function statusTextForState(state) { return STATE_LABELS[state] || state || '未知'; }
+function formatBytes(bytes=0) {
+  if (!bytes) return '0 B';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let value = bytes, idx = 0;
+  while (value >= 1024 && idx < units.length - 1) { value /= 1024; idx += 1; }
+  return `${value.toFixed(value >= 10 || idx === 0 ? 0 : 1)} ${units[idx]}`;
+}
+function countQuestionBank(bank) {
+  const chapters = Array.isArray(bank?.chapters) ? bank.chapters : [];
+  const exercises = chapters.flatMap(ch => Array.isArray(ch.exercises) ? ch.exercises.map(ex => ({...ex, chapterId: ch.chapterId})) : []);
+  const levels = exercises.reduce((acc, ex) => ({...acc, [ex.level || '未标注']: (acc[ex.level || '未标注'] || 0) + 1}), {});
+  const directions = exercises.reduce((acc, ex) => ({...acc, [ex.direction || '未标注']: (acc[ex.direction || '未标注'] || 0) + 1}), {});
+  const tags = {};
+  exercises.forEach(ex => (Array.isArray(ex.tags) ? ex.tags : []).forEach(tag => { tags[tag] = (tags[tag] || 0) + 1; }));
+  return {chapters: chapters.length, exercises: exercises.length, levels, directions, tags, samples: exercises.slice(0, 6)};
+}
+function compactPairs(obj={}, limit=8) { return Object.entries(obj).slice(0, limit); }
+function Feedback({item}) { if (!item) return null; return <div className={`feedback ${item.type || 'info'}`}>{item.message}</div>; }
+function StatRow({label, value}) { return <div className="stat-row"><span>{label}</span><strong>{value}</strong></div>; }
+function StatusCard({check}) { return <article className={`status-card ${check.state}`}><span>{statusTextForState(check.state)}</span><strong>{check.label}</strong><p>{check.text}</p></article>; }
+function DetailList({items, empty='暂无明细', render}) {
+  const list = Array.isArray(items) ? items.slice(0, 8) : [];
+  return list.length ? <ul className="detail-list">{list.map((item, idx)=><li key={idx}>{render ? render(item) : JSON.stringify(item)}</li>)}</ul> : <p className="muted">{empty}</p>;
+}
+
 function AdminPanel({ctx}) {
   const [busy, setBusy] = useState(false);
-  const [log, setLog] = useState('后台管理模块已就绪，可在这里维护系统配置、数据管理和题库管理。');
+  const [system, setSystem] = useState(ctx.bootstrap.systemStatus);
+  const [feedback, setFeedback] = useState({type:'info', message:'后台管理已拆分为系统状态和题库管理：状态只负责健康检查，题库管理只负责导入、导出、校验与维护。'});
+  const [importFlow, setImportFlow] = useState({file:null, bank:null, parseError:'', validation:null, strategy:'replace', result:null});
+  const [exportScope, setExportScope] = useState({mode:'all', direction:'', tag:'', level:'', query:''});
   const bank = ctx.data.questionBank || ctx.bootstrap.questionBank || {};
-  const exportBank = async () => {
+  const directions = Object.keys(bank.typeDistribution || {});
+  const tags = Object.keys(bank.tagDistribution || {});
+  const currentSummary = {
+    exerciseCount: bank.exerciseCount || ctx.bootstrap.stats.practices,
+    chapterCount: bank.chapterCount || ctx.bootstrap.stats.chapters,
+    levels: bank.levelDistribution || {},
+    directions: bank.typeDistribution || {},
+    updatedAt: bank.updatedAt || '暂无记录',
+  };
+  const parsedSummary = importFlow.bank ? countQuestionBank(importFlow.bank) : null;
+  const validation = importFlow.validation;
+  const canImport = validation && (importFlow.strategy === 'validOnly' ? validation.validCount > 0 : validation.ok) && !(importFlow.strategy === 'append' && validation.duplicateExistingCount > 0);
+
+  const refreshStatus = async () => {
     setBusy(true);
     try {
-      const bankData = await api('/api/question-bank/export');
-      downloadJson(`${bankData.id || 'pystart'}-question-bank.json`, bankData);
-      setLog(`已导出题库：${bankData.title || bankData.id}。`);
-      ctx.toast.push('题库已导出');
+      const next = await api('/api/system/status');
+      setSystem(next);
+      setFeedback({type: next.overall === 'ok' ? 'success' : next.overall === 'warning' ? 'warning' : 'error', message: `系统状态已刷新：${statusTextForState(next.overall)}。`});
     } catch (err) {
-      setLog(err.message);
-      ctx.toast.push(err.message, 'error');
+      setFeedback({type:'error', message: err.message});
     } finally { setBusy(false); }
   };
-  const importBank = async (event) => {
+
+  const onSelectImportFile = async (event) => {
     const file = event.target.files?.[0];
     event.target.value = '';
     if (!file) return;
     setBusy(true);
+    setFeedback({type:'info', message:`正在解析 ${file.name}...`});
+    setImportFlow({file, bank:null, parseError:'', validation:null, strategy:'replace', result:null});
     try {
       const bankData = await readJsonFile(file);
-      const checked = validateQuestionBankClient(bankData);
-      const result = await api('/api/question-bank/import', {questionBank: bankData});
-      await ctx.reloadAppData(`题库导入成功：${result.stats?.exercises || checked.exercises} 道题`);
-      setLog(`导入成功：${result.stats?.title || bankData.title || bankData.id}，${result.stats?.chapters || checked.chapters} 章，${result.stats?.exercises || checked.exercises} 道题。`);
+      const validateRes = await api('/api/question-bank/validate', {questionBank: bankData});
+      setImportFlow({file, bank: bankData, parseError:'', validation: validateRes.validation, strategy:'replace', result:null});
+      const state = validateRes.validation.ok ? 'success' : 'warning';
+      setFeedback({type: state, message:`解析完成：${validateRes.validation.validCount} 道可导入，${validateRes.validation.invalidCount} 道需要处理。请确认策略后再导入。`});
     } catch (err) {
-      setLog(err.message);
+      setImportFlow({file, bank:null, parseError:err.message, validation:null, strategy:'replace', result:null});
+      setFeedback({type:'error', message:err.message});
+    } finally { setBusy(false); }
+  };
+
+  const confirmImport = async () => {
+    if (!importFlow.bank || !validation) return setFeedback({type:'error', message:'请先选择并校验题库文件。'});
+    if (!canImport) return setFeedback({type:'error', message:'当前校验结果不满足所选导入策略，请查看错误明细或改用“仅导入有效题目”。'});
+    const danger = importFlow.strategy === 'replace' ? '覆盖当前题库' : importFlow.strategy === 'append' ? '追加到当前题库' : '仅导入有效且不重复题目';
+    if (!window.confirm(`确认${danger}？此操作会更新当前启用题库。`)) return;
+    setBusy(true);
+    try {
+      const result = await api('/api/question-bank/import', {questionBank: importFlow.bank, strategy: importFlow.strategy});
+      setImportFlow(flow => ({...flow, result}));
+      const boot = await ctx.reloadAppData(`题库导入完成：${result.stats?.exercises || result.questionBank?.exerciseCount || validation.validCount} 道题`);
+      setSystem(boot.systemStatus);
+      setFeedback({type:'success', message:`导入完成：策略 ${danger}，当前题库 ${result.questionBank?.exerciseCount || result.stats?.exercises} 道题。`});
+    } catch (err) {
+      setFeedback({type:'error', message:err.message});
       ctx.toast.push(err.message, 'error');
     } finally { setBusy(false); }
   };
+
+  const exportBank = async () => {
+    setBusy(true);
+    const scope = {};
+    if (exportScope.mode === 'direction' && exportScope.direction) scope.directions = [exportScope.direction];
+    if (exportScope.mode === 'tag' && exportScope.tag) scope.tags = [exportScope.tag];
+    if (exportScope.mode === 'level' && exportScope.level) scope.levels = [exportScope.level];
+    if (exportScope.mode === 'filtered' && exportScope.query.trim()) scope.query = exportScope.query.trim();
+    try {
+      const result = await api('/api/question-bank/export', {scope});
+      downloadJson(result.filename || `${bank.id || 'pystart'}-question-bank.json`, result.questionBank);
+      setFeedback({type:'success', message:`导出完成：${result.summary.exerciseCount} 道题，文件 ${result.filename}。`});
+      ctx.toast.push('题库已导出');
+    } catch (err) {
+      setFeedback({type:'error', message:err.message});
+      ctx.toast.push(err.message, 'error');
+    } finally { setBusy(false); }
+  };
+
   return <section className="admin-page">
-    <div className="admin-hero"><span className="kicker">Admin console</span><h1>后台管理</h1><p>这里是后续承载系统配置、数据管理、题库管理等能力的管理入口。当前已开放题库导入导出与基础校验。</p></div>
-    <div className="admin-grid">
-      <article className="panel"><h2>系统状态</h2><p>后端 API：运行中</p><p>课程章节：{ctx.bootstrap.stats.chapters} 章</p><p>项目实战：{ctx.bootstrap.stats.projects} 个</p><p>当前题库：{bank.title || bank.id}</p></article>
-      <article className="panel"><h2>题库管理</h2><p>题库已从课程业务数据中解耦，独立存放在 <code>question_banks/</code> 目录。前端通过统一 API 加载当前启用题库。</p><div className="bank-stats"><span>{bank.schemaVersion}</span><span>{bank.exerciseCount || ctx.bootstrap.stats.practices} 道题</span><span>{bank.chapterCount || ctx.bootstrap.stats.chapters} 章</span></div><div className="admin-actions"><button className="btn secondary" disabled={busy} onClick={exportBank}>导出当前题库</button><label className={`btn primary file-btn ${busy?'disabled':''}`}>导入本地题库<input type="file" accept="application/json,.json" disabled={busy} onChange={importBank}/></label></div></article>
-      <article className="panel wide"><h2>题库数据结构</h2><pre className="schema-box">{`question_banks/manifest.json\nquestion_banks/curated-v2/question_bank.json\n\n{\n  "schemaVersion": "pystart-question-bank-v1",\n  "id": "curated-v2",\n  "title": "题库名称",\n  "chapters": [\n    {\n      "chapterId": "c01",\n      "chapterTitle": "Python 是什么",\n      "exercises": [ { "id": "...", "level": "基础", "starter": "...", "answerCode": "..." } ]\n    }\n  ]\n}`}</pre></article>
-      <article className="panel wide"><h2>操作反馈</h2><p>{log}</p></article>
-    </div>
+    <div className="admin-hero"><span className="kicker">Admin console</span><h1>后台管理</h1><p>管理能力集中在这里：系统状态用于健康检查，题库管理用于导入、导出、校验、预览和维护，避免与首页快捷入口重复。</p></div>
+    <Feedback item={feedback}/>
+
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">System status</span><h2>系统状态</h2><p>展示真实 API 与题库健康状态，不再使用静态“运行中”文案。</p></div><button className="btn secondary" disabled={busy} onClick={refreshStatus}>刷新状态</button></div>
+      <div className="status-grid">{(system?.checks || []).map(check => <StatusCard key={check.key} check={check}/>)}</div>
+      <div className="status-summary"><StatRow label="最近检测时间" value={system?.checkedAt || '未检测'}/><StatRow label="最近数据更新时间" value={bank.updatedAt || '暂无记录'}/><StatRow label="当前题库题目数" value={`${currentSummary.exerciseCount} 道`}/><StatRow label="整体状态" value={statusTextForState(system?.overall || 'loading')}/></div>
+    </section>
+
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Question bank</span><h2>题库管理</h2><p>负责题库导入、导出、校验、预览和维护。首页只保留学习概览与快捷入口。</p></div></div>
+      <div className="admin-grid two">
+        <article className="sub-panel"><h3>当前题库统计</h3><StatRow label="题库名称" value={bank.title || bank.id || '未加载'}/><StatRow label="题目总数" value={`${currentSummary.exerciseCount} 道`}/><StatRow label="章节覆盖" value={`${currentSummary.chapterCount} 章`}/><StatRow label="更新时间" value={currentSummary.updatedAt}/><div className="chip-group">{compactPairs(currentSummary.levels).map(([k,v])=><span key={k}>{k} {v}</span>)}</div></article>
+        <article className="sub-panel"><h3>题型/方向分布</h3><div className="chip-group">{compactPairs(currentSummary.directions, 12).map(([k,v])=><span key={k}>{k} {v}</span>)}</div></article>
+      </div>
+    </section>
+
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Export</span><h2>题库导出</h2><p>导出前先确认范围与统计，文件名会包含题库名称和日期。</p></div><button className="btn primary" disabled={busy} onClick={exportBank}>{busy?'处理中...':'确认导出'}</button></div>
+      <div className="form-grid"><label>导出范围<select className="input" value={exportScope.mode} onChange={e=>setExportScope({...exportScope, mode:e.target.value})}><option value="all">全部题目</option><option value="direction">按题型/方向导出</option><option value="level">按难度导出</option><option value="tag">按分类/标签导出</option><option value="filtered">仅导出当前筛选结果</option></select></label>{exportScope.mode==='direction' && <label>题型/方向<select className="input" value={exportScope.direction} onChange={e=>setExportScope({...exportScope,direction:e.target.value})}><option value="">请选择</option>{directions.map(d=><option key={d}>{d}</option>)}</select></label>}{exportScope.mode==='level' && <label>难度<select className="input" value={exportScope.level} onChange={e=>setExportScope({...exportScope,level:e.target.value})}><option value="">请选择</option><option>基础</option><option>进阶</option><option>挑战</option></select></label>}{exportScope.mode==='tag' && <label>标签<select className="input" value={exportScope.tag} onChange={e=>setExportScope({...exportScope,tag:e.target.value})}><option value="">请选择</option>{tags.map(t=><option key={t}>{t}</option>)}</select></label>}{exportScope.mode==='filtered' && <label>筛选关键词<input className="input" value={exportScope.query} onChange={e=>setExportScope({...exportScope,query:e.target.value})} placeholder="按标题/描述/目标搜索"/></label>}</div>
+    </section>
+
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Import workflow</span><h2>题库导入</h2><p>选择文件 → 解析 → 预览 → 校验 → 选择策略 → 二次确认 → 导入反馈。</p></div><label className={`btn secondary file-btn ${busy?'disabled':''}`}>选择题库 JSON<input type="file" accept="application/json,.json" disabled={busy} onChange={onSelectImportFile}/></label></div>
+      <div className="import-steps"><span className={importFlow.file?'done':''}>1 选择文件</span><span className={importFlow.bank||importFlow.parseError?'done':''}>2 解析文件</span><span className={validation?'done':''}>3 校验结果</span><span className={importFlow.result?'done':''}>4 导入完成</span></div>
+      {importFlow.file && <div className="file-card"><StatRow label="文件名" value={importFlow.file.name}/><StatRow label="文件大小" value={formatBytes(importFlow.file.size)}/><StatRow label="解析状态" value={importFlow.parseError ? '失败' : importFlow.bank ? '成功' : '等待解析'}/></div>}
+      {parsedSummary && <div className="preview-grid"><article className="sub-panel"><h3>导入预览</h3><StatRow label="题库" value={importFlow.bank.title || importFlow.bank.id}/><StatRow label="题目数量" value={`${parsedSummary.exercises} 道`}/><StatRow label="章节数量" value={`${parsedSummary.chapters} 章`}/><div className="chip-group">{compactPairs(parsedSummary.directions, 10).map(([k,v])=><span key={k}>{k} {v}</span>)}</div></article><article className="sub-panel"><h3>样例题目</h3><DetailList items={parsedSummary.samples} render={ex => <><strong>{ex.title || ex.id}</strong><small>{ex.chapterId} · {ex.level} · {ex.direction}</small></>}/></article></div>}
+      {validation && <div className={`validation-panel ${validation.ok?'ok':'warning'}`}><h3>校验结果：{validation.ok ? '全部可导入' : '存在需要处理的问题'}</h3><div className="validation-metrics"><StatRow label="可导入题目" value={`${validation.validCount} 道`}/><StatRow label="无效题目" value={`${validation.invalidCount} 道`}/><StatRow label="缺失字段" value={`${validation.missingFieldCount} 个`}/><StatRow label="重复题目" value={`${validation.duplicateCount + validation.duplicateExistingCount} 项`}/><StatRow label="不支持题型" value={`${validation.unsupportedTypeCount} 项`}/><StatRow label="格式错误" value={`${validation.formatErrorCount} 项`}/></div><div className="error-columns"><div><h4>缺失字段</h4><DetailList items={validation.missingFields} render={item => `${item.chapterId} 第 ${item.index} 题缺少：${item.fields.join(', ')}`}/></div><div><h4>重复题目</h4><DetailList items={[...(validation.duplicateItems||[]), ...(validation.duplicateExisting||[])]} render={item => `${item.id || item.chapterId}：${item.reason}`}/></div><div><h4>格式/题型错误</h4><DetailList items={[...(validation.unsupportedTypes||[]), ...(validation.formatErrors||[])]} render={item => `${item.id || item.path || item.chapterId || ''}：${item.reason}`}/></div></div><div className="confirm-row"><label>导入策略<select className="input" value={importFlow.strategy} onChange={e=>setImportFlow({...importFlow, strategy:e.target.value})}><option value="replace">覆盖当前题库</option><option value="append">追加到当前题库</option><option value="validOnly">仅导入有效题目</option></select></label><button className="btn primary" disabled={busy || !canImport} onClick={confirmImport}>{busy?'导入中...':'二次确认并导入'}</button></div>{!canImport && <p className="muted danger">当前策略不可导入：覆盖/追加需要无格式错误；追加不能与当前题库重复；如需跳过错误项请选择“仅导入有效题目”。</p>}</div>}
+      {importFlow.result && <div className="feedback success">导入结果摘要：当前题库 {importFlow.result.questionBank?.exerciseCount || importFlow.result.stats?.exercises} 道题，策略 {importFlow.result.stats?.strategy}，数据已刷新。</div>}
+    </section>
   </section>;
 }
 

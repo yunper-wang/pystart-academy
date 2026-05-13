@@ -12,3 +12,4 @@ node_modules/
 
 # Local question-bank backups
 data.backup-before-curated-v2.json
+question_banks/**/*.backup-*.json

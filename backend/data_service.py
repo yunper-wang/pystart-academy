@@ -24,15 +24,7 @@ def attach_question_bank(course_data, question_bank=None):
         chapter['exercises'] = exercises
         chapter['exerciseCount'] = len(exercises)
         chapter['questionBankId'] = bank.get('id')
-    data['questionBank'] = {
-        'schemaVersion': bank.get('schemaVersion'),
-        'id': bank.get('id'),
-        'title': bank.get('title'),
-        'description': bank.get('description', ''),
-        'source': bank.get('source', ''),
-        'chapterCount': len(bank.get('chapters', [])),
-        'exerciseCount': sum(len(c.get('exercises') or []) for c in bank.get('chapters', [])),
-    }
+    data['questionBank'] = question_bank_service.bank_summary(bank)
     return data
 
 
