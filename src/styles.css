@@ -453,6 +453,193 @@ code{border-radius:8px;background:#eef2ff;color:#4338ca;padding:2px 6px}
 /* ── Muted text ── */
 .muted{color:#64748b}
 
+
+
+/* ── Task head (practice exercise header) ── */
+.task-head{
+  margin-bottom:16px;
+  padding-bottom:16px;
+  border-bottom:1px solid #e5e7eb;
+}
+.task-head .kicker{
+  margin-bottom:8px;
+}
+.task-head h1{
+  margin:8px 0;
+  font-size:clamp(20px,3vw,28px);
+  line-height:1.2;
+}
+.task-head p{
+  margin:6px 0;
+  line-height:1.6;
+}
+.task-head .tag-row{
+  margin:12px 0;
+}
+
+/* ── Admin panel overrides (lighter, more compact) ── */
+.admin-page .panel,
+.admin-page .admin-section,
+.admin-section.panel{
+  border-radius:16px;
+  box-shadow:0 2px 12px rgba(45,55,95,.04);
+  padding:20px;
+}
+.admin-page .panel:hover,
+.admin-section.panel:hover{
+  box-shadow:0 4px 16px rgba(45,55,95,.06);
+}
+
+/* ── Admin detail two-col layout ── */
+.admin-grid.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.exercise-detail .admin-grid.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+/* ── Modal stacking fix ── */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(2px);
+}
+.modal-content{
+  background:#fff;
+  border-radius:16px;
+  max-width:600px;
+  width:100%;
+  max-height:85vh;
+  overflow-y:auto;
+  box-shadow:0 25px 60px rgba(0,0,0,0.2);
+  padding-bottom:16px;
+}
+.modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 24px 0;
+}
+.modal-header h3{font-size:18px;margin:0;font-weight:700}
+
+/* ── Admin form input polish ── */
+.admin-form-grid label,
+.editor-form label,
+.source-form-modal label{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:13px;
+  font-weight:500;
+  color:#6b7280;
+}
+.admin-form-grid .input,
+.editor-form .input{
+  font-size:13px;
+  padding:10px 12px;
+  border-radius:10px;
+}
+
+/* ── Status card transitions ── */
+.status-card{
+  border-radius:12px;
+  padding:14px;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  transition:border-color 0.15s,box-shadow 0.15s;
+}
+.status-card:hover{
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.status-card.ok{border-color:rgba(34,197,94,0.3)}
+.status-card.warning{border-color:rgba(245,158,11,0.3)}
+.status-card.error{border-color:rgba(239,68,68,0.3)}
+
+/* ── Exercise detail two-col fix ── */
+.exercise-detail h4{
+  font-size:11px;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+  margin:10px 0 3px;
+}
+.exercise-detail h4:first-child{margin-top:0}
+.exercise-detail p{font-size:13px;line-height:1.5;margin:0 0 6px}
+.exercise-detail pre{
+  background:#fff;
+  padding:10px;
+  border-radius:6px;
+  font-size:12px;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  word-break:break-all;
+  border:1px solid #e5e7eb;
+  margin:0 0 6px;
+}
+
+/* ── Source card action polish ── */
+.source-actions{
+  display:flex;
+  gap:6px;
+  margin-top:4px;
+  flex-wrap:wrap;
+}
+.source-actions .btn-action-text{
+  padding:5px 10px;
+  font-size:12px;
+}
+
+/* ── Admin hero responsive ── */
+@media(max-width:768px){
+  .admin-hero{
+    border-radius:20px;
+    padding:20px;
+  }
+  .admin-hero h1{font-size:24px}
+  .admin-hero p{font-size:14px}
+  .login-box{margin:20px auto;padding:24px}
+  .modal-content{max-width:100%;margin:0 10px}
+  .source-form-modal .form-grid{
+    grid-template-columns:1fr;
+  }
+  .log-row{padding:10px 12px}
+  .log-stats{flex-wrap:wrap;gap:8px}
+}
+
+/* ── Version list polish ── */
+.version-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 16px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  transition:border-color 0.15s;
+}
+.version-row:hover{border-color:#6366f1}
+.version-info{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.version-info strong{font-size:13px;font-family:monospace}
+.version-info small{font-size:12px;color:#6b7280}
+.version-actions{display:flex;gap:6px;flex-shrink:0}
+
+/* ── Admin tab content spacing ── */
+.admin-page > .panel + .panel,
+.admin-page > .admin-section + .admin-section{
+  margin-top:0;
+}
+
 /* ── Responsive (admin) ── */
 @media(max-width:900px){
   .admin-grid{grid-template-columns:1fr}
