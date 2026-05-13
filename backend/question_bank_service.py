@@ -500,3 +500,64 @@ def safe_id(value):
     if not raw:
         raise QuestionBankError('题库 id 不能为空。')
     return raw[:80]
+
+
+def dashboard_stats(course_data=None):
+    """Rich stats for the admin dashboard page."""
+    bank = load_question_bank()
+    manifest = load_manifest()
+    summary = bank_summary(bank, manifest)
+    course = course_data or {}
+    course_chapters = {c.get('id'): c for c in course.get('chapters', []) if c.get('id')}
+
+    levels = Counter()
+    directions = Counter()
+    tags = Counter()
+    chapter_map = {}
+
+    for chapter_id, chapter_title, _, exercise in iter_exercises(bank):
+        levels[exercise.get('level') or '未标注'] += 1
+        directions[exercise.get('direction') or '未标注'] += 1
+        if isinstance(exercise.get('tags'), list):
+            tags.update(str(t) for t in exercise.get('tags') if str(t).strip())
+        if chapter_id not in chapter_map:
+            chapter_map[chapter_id] = {'chapterId': chapter_id, 'chapterTitle': chapter_title, 'count': 0, 'expected': 8}
+        chapter_map[chapter_id]['count'] += 1
+
+    # Merge with course data to get expected counts and chapter ordering
+    chapter_stats = []
+    for c in course.get('chapters', []):
+        cid = c.get('id')
+        entry = chapter_map.get(cid, {'chapterId': cid, 'chapterTitle': c.get('title', ''), 'count': 0, 'expected': 8})
+        entry['order'] = c.get('order', 0)
+        entry['title'] = c.get('title', entry.get('chapterTitle', ''))
+        entry['complete'] = entry['count'] >= entry['expected']
+        chapter_stats.append(entry)
+
+    # Also include chapters in bank but not in course
+    for cid, entry in chapter_map.items():
+        if not any(s['chapterId'] == cid for s in chapter_stats):
+            entry['order'] = 999
+            entry['title'] = entry['chapterTitle']
+            entry['complete'] = entry['count'] >= entry['expected']
+            chapter_stats.append(entry)
+
+    chapter_stats.sort(key=lambda x: x.get('order', 0))
+
+    total = sum(levels.values())
+    complete_chapters = sum(1 for s in chapter_stats if s['complete'])
+    top_tags = tags.most_common(15)
+
+    return {
+        'ok': True,
+        'summary': summary,
+        'levelDistribution': dict(levels),
+        'directionDistribution': dict(directions),
+        'tagDistribution': dict(top_tags),
+        'chapterCompleteness': chapter_stats,
+        'totalExercises': total,
+        'totalChapters': len(chapter_stats),
+        'completeChapters': complete_chapters,
+        'allTags': [t for t, _ in tags.most_common()],
+        'allDirections': [d for d, _ in directions.most_common()],
+    }

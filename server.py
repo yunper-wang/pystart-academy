@@ -68,6 +68,9 @@ class Handler(SimpleHTTPRequestHandler):
             if path == "/api/question-bank/export":
                 self.send_json(question_bank_service.export_question_bank(payload.get("scope") or {}))
                 return
+            if path == "/api/question-bank/dashboard":
+                self.send_json(question_bank_service.dashboard_stats(data_service.load_course_data()))
+                return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
                 return
@@ -132,6 +135,10 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/system/status":
             data = data_service.load_course_data()
             self.send_json(question_bank_service.system_status(data))
+            return
+        if path == "/api/question-bank/dashboard":
+            data = data_service.load_course_data()
+            self.send_json(question_bank_service.dashboard_stats(data))
             return
         if path == "/api/app/bootstrap":
             data = data_service.load_data()
