@@ -696,7 +696,7 @@ function DataSourcesPanel({ctx}) {
   useEffect(()=>{ load(); }, []);
   const initPresets = async () => {
     setBusy(true);
-    try { await api('/api/data-sources/init-presets'); await load(); setFeedback({type:'success',message:'预设数据源已初始化。'}); }
+    try { await api('/api/data-sources/init-presets', {}); await load(); setFeedback({type:'success',message:'预设数据源已初始化。'}); }
     catch(e) { setFeedback({type:'error',message:e.message}); }
     finally { setBusy(false); }
   };

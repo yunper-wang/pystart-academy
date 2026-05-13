@@ -388,6 +388,446 @@
           "tests": [],
           "qualityNotes": "auto-imported from File:e2e_test.json",
           "source": "File:e2e_test.json"
+        },
+        {
+          "id": "c01-ext-977ba7",
+          "title": "Building Type-Safe LLM Agents With Pydantic AI",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Build type-safe LLM agents in Python with Pydantic AI using structured outputs, function calling, and dependency injection.",
+          "text": "Build type-safe LLM agents in Python with Pydantic AI using structured outputs, function calling, and dependency injection.",
+          "taskGoal": "阅读并理解：Building Type-Safe LLM Agents With Pydantic AI",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/courses/building-type-safe-llm-agents-with-pydantic-ai/",
+          "analysis": "Build type-safe LLM agents in Python with Pydantic AI using structured outputs, function calling, and dependency injection.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/courses/building-type-safe-llm-agents-with-pydantic-ai/"
+        },
+        {
+          "id": "c01-ext-157e03",
+          "title": "Quiz: Building Type-Safe LLM Agents With Pydantic AI",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test what you've learned about building type-safe LLM agents in Python with Pydantic AI: structured outputs, tools, and dependency injection.",
+          "text": "Test what you've learned about building type-safe LLM agents in Python with Pydantic AI: structured outputs, tools, and dependency injection.",
+          "taskGoal": "阅读并理解：Quiz: Building Type-Safe LLM Agents With Pydantic AI",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/pydantic-ai-video/",
+          "analysis": "Test what you've learned about building type-safe LLM agents in Python with Pydantic AI: structured outputs, tools, and dependency injection.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/pydantic-ai-video/"
+        },
+        {
+          "id": "c01-ext-1ec03f",
+          "title": "Quiz: The LEGB Rule & Understanding Python Scope",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your understanding of Python scope, the LEGB rule, and how Python resolves names across local, enclosing, global, and built-in scopes.",
+          "text": "Test your understanding of Python scope, the LEGB rule, and how Python resolves names across local, enclosing, global, and built-in scopes.",
+          "taskGoal": "阅读并理解：Quiz: The LEGB Rule & Understanding Python Scope",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/legb-rule-python-scope/",
+          "analysis": "Test your understanding of Python scope, the LEGB rule, and how Python resolves names across local, enclosing, global, and built-in scopes.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/legb-rule-python-scope/"
+        },
+        {
+          "id": "c01-ext-711818",
+          "title": "How to Flatten a List of Lists in Python",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Learn how to flatten a list of lists in Python using for loops, list comprehensions, itertools, functools, NumPy, and recursion.",
+          "text": "Learn how to flatten a list of lists in Python using for loops, list comprehensions, itertools, functools, NumPy, and recursion.",
+          "taskGoal": "阅读并理解：How to Flatten a List of Lists in Python",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/python-flatten-list/",
+          "analysis": "Learn how to flatten a list of lists in Python using for loops, list comprehensions, itertools, functools, NumPy, and recursion.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/python-flatten-list/"
+        },
+        {
+          "id": "c01-ext-01bc4a",
+          "title": "Quiz: How to Flatten a List of Lists in Python",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your understanding of how to flatten a list of lists in Python using for loops, list comprehensions, itertools, recursion, and NumPy.",
+          "text": "Test your understanding of how to flatten a list of lists in Python using for loops, list comprehensions, itertools, recursion, and NumPy.",
+          "taskGoal": "阅读并理解：Quiz: How to Flatten a List of Lists in Python",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/python-flatten-list/",
+          "analysis": "Test your understanding of how to flatten a list of lists in Python using for loops, list comprehensions, itertools, recursion, and NumPy.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/python-flatten-list/"
+        },
+        {
+          "id": "c01-ext-4cc521",
+          "title": "The Real Python Podcast – Episode #294: Declarative Charts in Python & Discerning Iterators vs Iterables",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "What if you could build charts in Python by describing what your data means, instead of scripting every visual detail? Christopher Trudeau is back on the show this week with another batch of PyCoder's Weekly articles and projects.",
+          "text": "What if you could build charts in Python by describing what your data means, instead of scripting every visual detail? Christopher Trudeau is back on the show this week with another batch of PyCoder's Weekly articles and projects.",
+          "taskGoal": "阅读并理解：The Real Python Podcast – Episode #294: Declarative Charts in Python & Discerning Iterators vs Iterables",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/podcasts/rpp/294/",
+          "analysis": "What if you could build charts in Python by describing what your data means, instead of scripting every visual detail? Christopher Trudeau is back on the show this week with another batch of PyCoder's Weekly articles and projects.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/podcasts/rpp/294/"
+        },
+        {
+          "id": "c01-ext-947ab1",
+          "title": "Quiz: Memory Management in Python",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your understanding of how CPython allocates, tracks, and frees memory for your Python objects behind the scenes.",
+          "text": "Test your understanding of how CPython allocates, tracks, and frees memory for your Python objects behind the scenes.",
+          "taskGoal": "阅读并理解：Quiz: Memory Management in Python",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/python-memory-management/",
+          "analysis": "Test your understanding of how CPython allocates, tracks, and frees memory for your Python objects behind the scenes.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/python-memory-management/"
+        },
+        {
+          "id": "c01-ext-e259aa",
+          "title": "Quiz: Qt Designer and Python: Build Your GUI Applications Faster",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your knowledge of Qt Designer for Python. Build PyQt GUIs visually with drag-and-drop, signals and slots, and .ui files.",
+          "text": "Test your knowledge of Qt Designer for Python. Build PyQt GUIs visually with drag-and-drop, signals and slots, and .ui files.",
+          "taskGoal": "阅读并理解：Quiz: Qt Designer and Python: Build Your GUI Applications Faster",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/qt-designer-python/",
+          "analysis": "Test your knowledge of Qt Designer for Python. Build PyQt GUIs visually with drag-and-drop, signals and slots, and .ui files.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/qt-designer-python/"
+        },
+        {
+          "id": "c01-ext-c0b561",
+          "title": "ChatterBot: Build a Chatbot With Python",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Build a Python chatbot with the ChatterBot library. Clean real conversation data, train on custom datasets, and add local AI with Ollama.",
+          "text": "Build a Python chatbot with the ChatterBot library. Clean real conversation data, train on custom datasets, and add local AI with Ollama.",
+          "taskGoal": "阅读并理解：ChatterBot: Build a Chatbot With Python",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/build-a-chatbot-python-chatterbot/",
+          "analysis": "Build a Python chatbot with the ChatterBot library. Clean real conversation data, train on custom datasets, and add local AI with Ollama.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/build-a-chatbot-python-chatterbot/"
+        },
+        {
+          "id": "c01-ext-0710df",
+          "title": "Quiz: How to Use OpenCode for AI-Assisted Python Coding",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Quiz yourself on OpenCode: install it, connect an AI provider, and use it to analyze and refactor Python from your terminal.",
+          "text": "Quiz yourself on OpenCode: install it, connect an AI provider, and use it to analyze and refactor Python from your terminal.",
+          "taskGoal": "阅读并理解：Quiz: How to Use OpenCode for AI-Assisted Python Coding",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/opencode-guide/",
+          "analysis": "Quiz yourself on OpenCode: install it, connect an AI provider, and use it to analyze and refactor Python from your terminal.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/opencode-guide/"
+        },
+        {
+          "id": "c01-ext-24fdfa",
+          "title": "Quiz: Python & APIs: A Winning Combo for Reading Public Data",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your understanding of working with web APIs in Python, from reading responses and handling status codes to authentication and rate limiting.",
+          "text": "Test your understanding of working with web APIs in Python, from reading responses and handling status codes to authentication and rate limiting.",
+          "taskGoal": "阅读并理解：Quiz: Python & APIs: A Winning Combo for Reading Public Data",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/python-api/",
+          "analysis": "Test your understanding of working with web APIs in Python, from reading responses and handling status codes to authentication and rate limiting.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/python-api/"
+        },
+        {
+          "id": "c01-ext-f9508e",
+          "title": "Use Codex CLI to Enhance Your Python Projects",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Learn how to use Codex CLI to add features to Python projects directly from your terminal, without needing a browser or IDE plugins.",
+          "text": "Learn how to use Codex CLI to add features to Python projects directly from your terminal, without needing a browser or IDE plugins.",
+          "taskGoal": "阅读并理解：Use Codex CLI to Enhance Your Python Projects",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/courses/use-codex-cli-enhance-your-python-projects/",
+          "analysis": "Learn how to use Codex CLI to add features to Python projects directly from your terminal, without needing a browser or IDE plugins.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/courses/use-codex-cli-enhance-your-python-projects/"
+        },
+        {
+          "id": "c01-ext-2afaa1",
+          "title": "Quiz: Python Application Layouts: A Reference",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your knowledge of Python project layouts for one-off scripts, installable packages, internal packages, and Django and Flask web applications.",
+          "text": "Test your knowledge of Python project layouts for one-off scripts, installable packages, internal packages, and Django and Flask web applications.",
+          "taskGoal": "阅读并理解：Quiz: Python Application Layouts: A Reference",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/python-application-layouts/",
+          "analysis": "Test your knowledge of Python project layouts for one-off scripts, installable packages, internal packages, and Django and Flask web applications.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/python-application-layouts/"
+        },
+        {
+          "id": "c01-ext-46bfd3",
+          "title": "A New Python Packaging Council and Other News for May 2026",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "A new Python Packaging Council, PEP 803 stabilizes the free-threaded ABI, the incremental GC gets reverted, and Astral changes hands.",
+          "text": "A new Python Packaging Council, PEP 803 stabilizes the free-threaded ABI, the incremental GC gets reverted, and Astral changes hands.",
+          "taskGoal": "阅读并理解：A New Python Packaging Council and Other News for May 2026",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/python-news-may-2026/",
+          "analysis": "A new Python Packaging Council, PEP 803 stabilizes the free-threaded ABI, the incremental GC gets reverted, and Astral changes hands.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/python-news-may-2026/"
+        },
+        {
+          "id": "c01-ext-e2d498",
+          "title": "Quiz: Data Management With Python, SQLite, and SQLAlchemy",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your knowledge of SQLite and SQLAlchemy in Python, from flat files and SQL to ORM models and many-to-many relationships.",
+          "text": "Test your knowledge of SQLite and SQLAlchemy in Python, from flat files and SQL to ORM models and many-to-many relationships.",
+          "taskGoal": "阅读并理解：Quiz: Data Management With Python, SQLite, and SQLAlchemy",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/python-sqlite-sqlalchemy/",
+          "analysis": "Test your knowledge of SQLite and SQLAlchemy in Python, from flat files and SQL to ORM models and many-to-many relationships.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/python-sqlite-sqlalchemy/"
+        },
+        {
+          "id": "c01-ext-fef23b",
+          "title": "Quiz: Revisit Python Fundamentals",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Test your understanding of Python fundamentals: variables, data types, operators, expressions, keywords, and exceptions in 15 questions.",
+          "text": "Test your understanding of Python fundamentals: variables, data types, operators, expressions, keywords, and exceptions in 15 questions.",
+          "taskGoal": "阅读并理解：Quiz: Revisit Python Fundamentals",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/quizzes/revisit-python-fundamentals/",
+          "analysis": "Test your understanding of Python fundamentals: variables, data types, operators, expressions, keywords, and exceptions in 15 questions.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/quizzes/revisit-python-fundamentals/"
+        },
+        {
+          "id": "c01-ext-30d069",
+          "title": "The Real Python Podcast – Episode #293: Agentic Data Science Pair Programming With marimo pair",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "How do you add agent skills to your data science workflow? How can a coding agent assist with data wrangling and research? This week on the show, Trevor Manz from marimo joins us to discuss marimo pair.",
+          "text": "How do you add agent skills to your data science workflow? How can a coding agent assist with data wrangling and research? This week on the show, Trevor Manz from marimo joins us to discuss marimo pair.",
+          "taskGoal": "阅读并理解：The Real Python Podcast – Episode #293: Agentic Data Science Pair Programming With marimo pair",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/podcasts/rpp/293/",
+          "analysis": "How do you add agent skills to your data science workflow? How can a coding agent assist with data wrangling and research? This week on the show, Trevor Manz from marimo joins us to discuss marimo pair.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/podcasts/rpp/293/"
+        },
+        {
+          "id": "c01-ext-24c17b",
+          "title": "AI Coding Agents Guide: A Map of the Four Workflow Types",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "AI coding agents come in four types: IDE, terminal, PR, and cloud. Learn how each workflow fits into modern Python development.",
+          "text": "AI coding agents come in four types: IDE, terminal, PR, and cloud. Learn how each workflow fits into modern Python development.",
+          "taskGoal": "阅读并理解：AI Coding Agents Guide: A Map of the Four Workflow Types",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/ai-coding-agents-guide/",
+          "analysis": "AI coding agents come in four types: IDE, terminal, PR, and cloud. Learn how each workflow fits into modern Python development.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/ai-coding-agents-guide/"
+        },
+        {
+          "id": "c01-ext-af6bca",
+          "title": "Testing Your Code With Python's unittest",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Learn how to use Python's unittest framework to write unit tests for your code, including test cases, fixtures, and test suites.",
+          "text": "Learn how to use Python's unittest framework to write unit tests for your code, including test cases, fixtures, and test suites.",
+          "taskGoal": "阅读并理解：Testing Your Code With Python's unittest",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/courses/testing-your-code-with-pythons-unittest/",
+          "analysis": "Learn how to use Python's unittest framework to write unit tests for your code, including test cases, fixtures, and test suites.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/courses/testing-your-code-with-pythons-unittest/"
+        },
+        {
+          "id": "c01-ext-007a33",
+          "title": "How to Conceptualize Python Fundamentals for Greater Mastery",
+          "level": "基础",
+          "direction": "填空题",
+          "tags": [
+            "Python"
+          ],
+          "description": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
+          "text": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
+          "taskGoal": "阅读并理解：How to Conceptualize Python Fundamentals for Greater Mastery",
+          "starter": "# 请在这里完成练习",
+          "expectedOutput": "运行程序查看输出",
+          "answer": "",
+          "answerCode": "# 参考答案待补充",
+          "hint": "参考链接：https://realpython.com/conceptualize-python-fundamentals/",
+          "analysis": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "auto-imported from Real Python (RSS)",
+          "source": "https://realpython.com/conceptualize-python-fundamentals/"
         }
       ]
     },
@@ -8632,5 +9072,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-05-13T17:02:36"
+  "updatedAt": "2026-05-13T17:08:17"
 }
