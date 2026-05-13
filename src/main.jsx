@@ -6,13 +6,61 @@ const STORE_KEY = 'pystart_academy_progress_v2';
 const PLAYGROUND_KEY = 'pystart_python_playground_code_v1';
 const DEFAULT_PROGRESS = {completedLessons: [], completedProjects: [], quizResults: {}, reviewItems: [], currentLessonId: null};
 const NAV = [
-  ['dashboard', '驾驶舱', '⌂'],
+  ['dashboard', '首页', '⌂'],
   ['learn', '学习路径', '◇'],
   ['practice', '练习中心', '✦'],
   ['quiz', '测验中心', '◉'],
   ['projects', '项目实战', '▣'],
   ['report', '学习报告', '✓'],
+  ['admin', '后台管理', '⚙'],
 ];
+const downloadJson = (filename, data) => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+};
+
+const readJsonFile = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try { resolve(JSON.parse(reader.result)); }
+    catch { reject(new Error('导入失败：文件不是有效的 JSON。')); }
+  };
+  reader.onerror = () => reject(new Error('导入失败：无法读取本地文件。'));
+  reader.readAsText(file, 'utf-8');
+});
+
+function validateQuestionBankClient(bank) {
+  if (!bank || typeof bank !== 'object') throw new Error('导入失败：题库文件必须是 JSON 对象。');
+  if (bank.schemaVersion !== 'pystart-question-bank-v1') throw new Error('导入失败：schemaVersion 必须是 pystart-question-bank-v1。');
+  if (!bank.id || typeof bank.id !== 'string') throw new Error('导入失败：题库缺少字符串 id。');
+  if (!Array.isArray(bank.chapters) || !bank.chapters.length) throw new Error('导入失败：chapters 必须是非空数组。');
+  const required = ['id','title','level','direction','tags','description','text','taskGoal','starter','expectedOutput','answer','answerCode','hint','analysis','examples','tests','qualityNotes','source'];
+  const seen = new Set();
+  let total = 0;
+  bank.chapters.forEach((chapter, ci) => {
+    if (!chapter.chapterId) throw new Error(`导入失败：第 ${ci + 1} 个章节缺少 chapterId。`);
+    if (!Array.isArray(chapter.exercises) || !chapter.exercises.length) throw new Error(`导入失败：章节 ${chapter.chapterId} 的 exercises 必须是非空数组。`);
+    chapter.exercises.forEach((exercise, ei) => {
+      const missing = required.filter(field => !(field in exercise));
+      if (missing.length) throw new Error(`导入失败：${chapter.chapterId} 第 ${ei + 1} 题缺少字段：${missing.join(', ')}。`);
+      if (seen.has(exercise.id)) throw new Error(`导入失败：题目 id 重复：${exercise.id}。`);
+      seen.add(exercise.id);
+      if (!['基础','进阶','挑战'].includes(exercise.level)) throw new Error(`导入失败：${exercise.id} 的 level 必须是 基础/进阶/挑战。`);
+      if (!Array.isArray(exercise.tags) || !exercise.tags.length) throw new Error(`导入失败：${exercise.id} 的 tags 必须是非空数组。`);
+      if (!Array.isArray(exercise.examples) || !Array.isArray(exercise.tests)) throw new Error(`导入失败：${exercise.id} 的 examples/tests 必须是数组。`);
+      total += 1;
+    });
+  });
+  return {chapters: bank.chapters.length, exercises: total};
+}
+
 const PLAYGROUND_EXAMPLE = `# 自由练习：统计分数并给出建议
 scores = [88, 92, 76, 95]
 average = sum(scores) / len(scores)
@@ -87,7 +135,8 @@ function App() {
   const load = async () => {
     setLoading(true); setError(null);
     try {
-      const [boot, courseData] = await Promise.all([api('/api/app/bootstrap'), api('/api/data')]);
+      const boot = await api('/api/app/bootstrap');
+      const courseData = {stages: boot.stages, chapters: boot.chapters, projects: boot.projects, questionBank: boot.questionBank};
       setBootstrap(boot); setData(courseData);
       const firstLesson = progress.currentLessonId || boot.defaultIds.lessonId;
       setActiveLessonId(firstLesson); setActiveProjectId(boot.defaultIds.projectId);
@@ -116,7 +165,14 @@ function App() {
   if (error) return <main className="fatal"><ErrorBox error={error} onRetry={load}/></main>;
   if (!data || !bootstrap || !summary) return null;
 
-  const ctx = {data, bootstrap, summary, progress, setProgress: updateProgress, activeLessonId, setActiveLessonId: selectLesson, activeProjectId, setActiveProjectId, navigate, toast};
+  const reloadAppData = async (message) => {
+    const boot = await api('/api/app/bootstrap');
+    const courseData = {stages: boot.stages, chapters: boot.chapters, projects: boot.projects, questionBank: boot.questionBank};
+    setBootstrap(boot); setData(courseData);
+    await refreshSummary(progress);
+    if (message) toast.push(message);
+  };
+  const ctx = {data, bootstrap, summary, progress, setProgress: updateProgress, activeLessonId, setActiveLessonId: selectLesson, activeProjectId, setActiveProjectId, navigate, toast, reloadAppData};
   return <>
     <div className="app-shell">
       <Sidebar route={route} navigate={navigate}/>
@@ -129,6 +185,7 @@ function App() {
           {route === 'quiz' && <QuizCenter ctx={ctx}/>} 
           {route === 'projects' && <ProjectBoard ctx={ctx}/>} 
           {route === 'report' && <Report ctx={ctx}/>} 
+          {route === 'admin' && <AdminPanel ctx={ctx}/>} 
         </main>
       </div>
     </div>
@@ -141,7 +198,7 @@ function Sidebar({route, navigate}) {
 }
 function Topbar({ctx}) {
   const lesson = ctx.data.chapters.find(c => c.id === ctx.activeLessonId) || ctx.data.chapters[0];
-  return <header className="topbar-app"><div><small>当前章节</small><strong>{lesson?.order}. {lesson?.title}</strong></div><div className="top-actions"><span className="service-ok">● 后端运行中</span><button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button></div></header>;
+  return <header className="topbar-app"><div><small>当前章节</small><strong>{lesson?.order}. {lesson?.title}</strong></div><div className="top-actions"><button className="admin-entry" onClick={() => ctx.navigate('admin')}>后台管理</button><button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button></div></header>;
 }
 
 function Dashboard({ctx}) {
@@ -150,7 +207,7 @@ function Dashboard({ctx}) {
   const recentQuiz = Object.entries(ctx.progress.quizResults || {}).slice(-1)[0];
   return <section className="page-grid">
     <div className="hero-panel">
-      <span className="kicker">Learning cockpit</span>
+      <span className="kicker">首页</span>
       <h1>欢迎回来，今天继续完成一个小目标。</h1>
       <p>你已经完成 {summary.completedLessonCount}/{summary.totalLessonCount} 个章节、{summary.completedProjectCount}/{summary.totalProjectCount} 个项目。系统建议你下一步学习：{next?.title}。</p>
       <div className="hero-buttons"><button className="btn primary large" onClick={() => {setActiveLessonId(next.id); navigate('learn');}}>继续学习</button><button className="btn secondary large" onClick={() => navigate('practice')}>做一道练习</button></div>
@@ -219,6 +276,50 @@ function ProjectBoard({ctx}) {
   return <section className="project-board"><aside className="project-list-new">{ctx.data.projects.map(p=><button key={p.id} className={p.id===current.id?'active':''} onClick={()=>ctx.setActiveProjectId(p.id)}><strong>{p.title}</strong><small>{p.difficulty} · {p.time}</small></button>)}</aside><main className="project-reader"><span className="kicker">Project lab</span><h1>{current.title}</h1><p className="lead">{current.goal}</p><div className="tag-row"><span>{current.difficulty}</span><span>{current.time}</span>{(current.tags||[]).map(t=><span key={t}>{t}</span>)}</div><h2>需求说明</h2><div className="info-grid">{(current.requirements||[]).map(r=><article key={r}>{r}</article>)}</div><h2>实现步骤</h2><ol className="steps">{(current.steps||[]).map(s=><li key={s}>{s}</li>)}</ol><CodeRunner initialCode={current.fullCode || current.keyCode || ''} title="项目代码" toast={ctx.toast}/><button className="btn primary" onClick={toggle}>{status==='done'?'取消完成项目':'标记完成项目'}</button></main></section>;
 }
 function Report({ctx}) { return <section className="report-page"><h1>学习报告</h1><div className="report-grid"><div className="metric-card"><small>总进度</small><strong>{ctx.summary.totalProgress}%</strong><ProgressBar value={ctx.summary.totalProgress}/></div><div className="metric-card"><small>章节</small><strong>{ctx.summary.completedLessonCount}/{ctx.summary.totalLessonCount}</strong></div><div className="metric-card"><small>项目</small><strong>{ctx.summary.completedProjectCount}/{ctx.summary.totalProjectCount}</strong></div></div><section className="panel"><h2>学习成就</h2><div className="achievement-grid">{ctx.summary.achievements.map(a=><span className={a.unlocked?'':'locked'} key={a.title}>{a.title}</span>)}</div></section><section className="panel"><h2>复习建议</h2><p>{ctx.summary.reviewTitles?.length ? ctx.summary.reviewTitles.join('、') : '暂无错题。完成测验后这里会显示需要复习的章节。'}</p></section></section>; }
+
+
+function AdminPanel({ctx}) {
+  const [busy, setBusy] = useState(false);
+  const [log, setLog] = useState('后台管理模块已就绪，可在这里维护系统配置、数据管理和题库管理。');
+  const bank = ctx.data.questionBank || ctx.bootstrap.questionBank || {};
+  const exportBank = async () => {
+    setBusy(true);
+    try {
+      const bankData = await api('/api/question-bank/export');
+      downloadJson(`${bankData.id || 'pystart'}-question-bank.json`, bankData);
+      setLog(`已导出题库：${bankData.title || bankData.id}。`);
+      ctx.toast.push('题库已导出');
+    } catch (err) {
+      setLog(err.message);
+      ctx.toast.push(err.message, 'error');
+    } finally { setBusy(false); }
+  };
+  const importBank = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    setBusy(true);
+    try {
+      const bankData = await readJsonFile(file);
+      const checked = validateQuestionBankClient(bankData);
+      const result = await api('/api/question-bank/import', {questionBank: bankData});
+      await ctx.reloadAppData(`题库导入成功：${result.stats?.exercises || checked.exercises} 道题`);
+      setLog(`导入成功：${result.stats?.title || bankData.title || bankData.id}，${result.stats?.chapters || checked.chapters} 章，${result.stats?.exercises || checked.exercises} 道题。`);
+    } catch (err) {
+      setLog(err.message);
+      ctx.toast.push(err.message, 'error');
+    } finally { setBusy(false); }
+  };
+  return <section className="admin-page">
+    <div className="admin-hero"><span className="kicker">Admin console</span><h1>后台管理</h1><p>这里是后续承载系统配置、数据管理、题库管理等能力的管理入口。当前已开放题库导入导出与基础校验。</p></div>
+    <div className="admin-grid">
+      <article className="panel"><h2>系统状态</h2><p>后端 API：运行中</p><p>课程章节：{ctx.bootstrap.stats.chapters} 章</p><p>项目实战：{ctx.bootstrap.stats.projects} 个</p><p>当前题库：{bank.title || bank.id}</p></article>
+      <article className="panel"><h2>题库管理</h2><p>题库已从课程业务数据中解耦，独立存放在 <code>question_banks/</code> 目录。前端通过统一 API 加载当前启用题库。</p><div className="bank-stats"><span>{bank.schemaVersion}</span><span>{bank.exerciseCount || ctx.bootstrap.stats.practices} 道题</span><span>{bank.chapterCount || ctx.bootstrap.stats.chapters} 章</span></div><div className="admin-actions"><button className="btn secondary" disabled={busy} onClick={exportBank}>导出当前题库</button><label className={`btn primary file-btn ${busy?'disabled':''}`}>导入本地题库<input type="file" accept="application/json,.json" disabled={busy} onChange={importBank}/></label></div></article>
+      <article className="panel wide"><h2>题库数据结构</h2><pre className="schema-box">{`question_banks/manifest.json\nquestion_banks/curated-v2/question_bank.json\n\n{\n  "schemaVersion": "pystart-question-bank-v1",\n  "id": "curated-v2",\n  "title": "题库名称",\n  "chapters": [\n    {\n      "chapterId": "c01",\n      "chapterTitle": "Python 是什么",\n      "exercises": [ { "id": "...", "level": "基础", "starter": "...", "answerCode": "..." } ]\n    }\n  ]\n}`}</pre></article>
+      <article className="panel wide"><h2>操作反馈</h2><p>{log}</p></article>
+    </div>
+  </section>;
+}
 
 function CodeRunner({initialCode='', answer='', title='代码运行器', toast}) {
   const [code, setCode] = useState(initialCode || '');

@@ -2,15 +2,46 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
+from . import question_bank_service
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / 'data.json'
 
 
 @lru_cache(maxsize=1)
-def load_data():
+def load_course_data():
     with DATA_FILE.open('r', encoding='utf-8') as f:
         return json.load(f)
+
+
+def attach_question_bank(course_data, question_bank=None):
+    data = json.loads(json.dumps(course_data, ensure_ascii=False))
+    bank = question_bank or question_bank_service.load_question_bank()
+    exercise_map = question_bank_service.exercises_by_chapter(bank)
+    for chapter in data.get('chapters', []):
+        exercises = exercise_map.get(chapter.get('id'), [])
+        chapter['exercises'] = exercises
+        chapter['exerciseCount'] = len(exercises)
+        chapter['questionBankId'] = bank.get('id')
+    data['questionBank'] = {
+        'schemaVersion': bank.get('schemaVersion'),
+        'id': bank.get('id'),
+        'title': bank.get('title'),
+        'description': bank.get('description', ''),
+        'source': bank.get('source', ''),
+        'chapterCount': len(bank.get('chapters', [])),
+        'exerciseCount': sum(len(c.get('exercises') or []) for c in bank.get('chapters', [])),
+    }
+    return data
+
+
+def load_data():
+    return attach_question_bank(load_course_data())
+
+
+def clear_cache():
+    load_course_data.cache_clear()
 
 
 def get_stages(data=None):

@@ -1,0 +1,13 @@
+{
+  "activeBank": "curated-v2",
+  "banks": [
+    {
+      "id": "curated-v2",
+      "title": "PyStart curated v2 原创题库",
+      "path": "curated-v2/question_bank.json",
+      "schemaVersion": "pystart-question-bank-v1",
+      "description": "30 章 × 8 题的原创 Python 初学者练习题库。",
+      "updatedAt": "2026-05-13T11:40:29"
+    }
+  ]
+}

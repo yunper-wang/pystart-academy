@@ -4,7 +4,7 @@ from pathlib import Path
 import json
 import os
 
-from backend import data_service, page_service, progress_service, quiz_service, run_service
+from backend import data_service, page_service, progress_service, quiz_service, run_service, question_bank_service
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data.json"
@@ -39,6 +39,25 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/progress/summary":
                 self.send_json(progress_service.summarize(progress, data))
+                return
+            if path == "/api/question-bank/import":
+                bank = payload.get("questionBank")
+                stats = question_bank_service.import_question_bank(bank, data_service.load_course_data())
+                data_service.clear_cache()
+                refreshed = data_service.load_data()
+                self.send_json({
+                    "ok": True,
+                    "message": "题库导入成功。",
+                    "stats": stats,
+                    "questionBank": refreshed.get("questionBank"),
+                    "bootstrap": {
+                        **data_service.bootstrap(refreshed),
+                        "stages": data_service.get_stages(refreshed),
+                        "chapters": data_service.get_chapters(refreshed),
+                        "projects": data_service.get_projects(refreshed),
+                        "practices": data_service.flatten_practices(refreshed),
+                    },
+                })
                 return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
@@ -92,9 +111,14 @@ class Handler(SimpleHTTPRequestHandler):
             try:
                 self.send_json(data_service.load_data())
             except FileNotFoundError:
-                self.send_json({"error": "data.json not found"}, 404)
+                self.send_json({"error": "data.json or question bank not found"}, 404)
             except json.JSONDecodeError as exc:
-                self.send_json({"error": "invalid data.json", "detail": str(exc)}, 500)
+                self.send_json({"error": "invalid json data", "detail": str(exc)}, 500)
+            except question_bank_service.QuestionBankError as exc:
+                self.send_json({"error": "invalid question bank", "detail": str(exc)}, 500)
+            return
+        if path == "/api/question-bank/export":
+            self.send_json(question_bank_service.load_question_bank())
             return
         if path == "/api/app/bootstrap":
             data = data_service.load_data()
@@ -105,6 +129,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "chapters": data_service.get_chapters(data),
                 "projects": data_service.get_projects(data),
                 "practices": data_service.flatten_practices(data),
+                "questionBank": data.get("questionBank"),
             })
             return
         dist = ROOT / "dist"
