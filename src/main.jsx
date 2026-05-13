@@ -816,16 +816,16 @@ function DataSourcesPanel({ctx}) {
     <section className="panel wide admin-section">
       <div className="section-head">
         <div><span className="kicker">Auto Import</span><h2>数据源管理</h2><p>配置外部数据源，自动抓取并导入 Python 题目到题库。</p></div>
-        <div style={{display:'flex',gap:8}}>
-          <button className="btn secondary" onClick={load}>{busy?'刷新中...':'刷新'}</button>
-          <button className="btn secondary" onClick={initPresets}>加载预设</button>
-          <button className="btn primary" onClick={openCreate}>+ 新建数据源</button>
+        <div className="head-actions">
+          <button className="btn btn-sm secondary" onClick={load}>{busy?'刷新中...':'刷新'}</button>
+          <button className="btn btn-sm secondary" onClick={initPresets}>加载预设</button>
+          <button className="btn btn-sm primary" onClick={openCreate}>+ 新建数据源</button>
         </div>
       </div>
       <div className="scheduler-bar">
         <span className={`sched-dot ${scheduler.running?'on':'off'}`}/>
         <span>调度器：{scheduler.running?'运行中':'未启动'}</span>
-        {pollingRef.current && <span className="source-running" style={{marginLeft:'auto'}}>⏳ 导入轮询中...</span>}
+        {pollingRef.current && <span className="source-running pulse" style={{marginLeft:'auto'}}>⏳ 导入轮询中...</span>}
       </div>
       {busy && sources.length===0 ? <Loader text="加载数据源..."/> :
         sources.length===0 ? <p className="muted">暂无数据源。点击「加载预设」初始化推荐数据源，或点击「新建数据源」手动添加。</p> :
@@ -839,16 +839,16 @@ function DataSourcesPanel({ctx}) {
                 {src.running && <span className="source-running pulse">● 导入中...</span>}
               </div>
               <div className="source-meta">
-                <span>{src.enabled?'启用':'禁用'}</span>
-                {src.schedule && <span>定时: {src.schedule}</span>}
-                {last && <span>上次导入: {last.status==='success'?'✓':'⚠'} {last.imported||0} 条{last.skipped>0?' / 跳过 '+last.skipped:''}</span>}
-                {src.last_sync && <span>{src.last_sync}</span>}
+                <span className={`source-status-dot ${src.enabled?'enabled':'disabled'}`}/>{src.enabled?'启用':'禁用'}
+                {src.schedule && <span className="meta-tag">定时: {src.schedule}</span>}
+                {last && <span className="meta-tag">上次导入: {last.status==='success'?'✓':'⚠'} {last.imported||0} 条{last.skipped>0?' / 跳过 '+last.skipped:''}</span>}
+                {src.last_sync && <span className="meta-tag">{src.last_sync}</span>}
               </div>
               <div className="source-actions">
-                <button className="btn-action" disabled={busy||src.running} onClick={()=>doTrigger(src)}>⟳ 同步</button>
-                <button className="btn-action" onClick={()=>openEdit(src)}>✎ 编辑</button>
-                <button className="btn-action" onClick={()=>doToggle(src)}>{src.enabled?'⏸ 禁用':'▶ 启用'}</button>
-                <button className="btn-action delete" onClick={()=>doDelete(src.id,src.name)}>✕ 删除</button>
+                <button className="btn-action-text" disabled={busy||src.running} onClick={()=>doTrigger(src)}>⟳ 同步</button>
+                <button className="btn-action-text" onClick={()=>openEdit(src)}>✎ 编辑</button>
+                <button className="btn-action-text" onClick={()=>doToggle(src)}>{src.enabled?'⏸ 禁用':'▶ 启用'}</button>
+                <button className="btn-action-text delete" onClick={()=>doDelete(src.id,src.name)}>✕ 删除</button>
               </div>
             </div>;
           })}
@@ -862,7 +862,7 @@ function DataSourcesPanel({ctx}) {
           <h3>{editId?'编辑数据源':'新建数据源'}</h3>
           <button className="btn-action" onClick={closeForm}>✕</button>
         </div>
-        <div className="form-grid">
+        <div className="form-grid admin-form-grid">
           <label>名称<input className="input" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="如：TheAlgorithms 排序算法"/></label>
           <label>类型<select className="input" value={form.source_type} onChange={e=>setForm({...form,source_type:e.target.value})}>
             {Object.entries(TYPE_META).map(([k,v])=><option key={k} value={k}>{v.label}</option>)}
@@ -917,8 +917,6 @@ function DataSourcesPanel({ctx}) {
     </section>
   </>;
 }
-
-
 function CodeRunner({initialCode='', answer='', title='代码运行器', toast}) {
   const [code, setCode] = useState(initialCode || '');
   const [output, setOutput] = useState('点击运行查看结果');
