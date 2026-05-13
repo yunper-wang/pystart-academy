@@ -21,13 +21,13 @@ button:disabled{cursor:not-allowed;opacity:.55}
 .sidebar nav button:hover,.sidebar nav button.active{background:rgba(255,255,255,.12);color:#fff}
 .sidebar nav b{width:24px;text-align:center}
 .side-note{margin-top:auto;color:#a5b4fc;font-size:13px}
-.workspace{min-width:0}
+.workspace{min-width:0;overflow-x:hidden;width:100%;max-width:100%}
 .topbar-app{position:sticky;top:0;z-index:10;height:72px;padding:0 30px;background:rgba(255,255,255,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.25);display:flex;align-items:center;justify-content:space-between}
 .topbar-app small{display:block;color:#64748b}
 .topbar-app strong{font-size:18px}
 .top-actions{display:flex;align-items:center;gap:12px}
 .service-ok{color:#059669;font-weight:800}
-.content-area{padding:28px;max-width:1600px}
+.content-area{padding:28px;max-width:100%;overflow-x:hidden;width:100%;box-sizing:border-box}
 .btn{border:0;border-radius:14px;padding:10px 15px;font-weight:900;transition:.18s transform,.18s box-shadow,.18s background}
 .btn:hover:not(:disabled){transform:translateY(-1px)}
 .btn.primary{background:linear-gradient(135deg,#4f46e5,#06b6d4);color:white;box-shadow:0 12px 28px rgba(79,70,229,.25)}
@@ -139,13 +139,13 @@ button:disabled{cursor:not-allowed;opacity:.55}
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Admin page ── */
-.admin-page{display:grid;gap:22px}
+.admin-page{display:grid;gap:22px;width:100%;max-width:100%;overflow:hidden;box-sizing:border-box}
 .admin-hero{border-radius:30px;padding:30px;background:linear-gradient(135deg,#111827,#312e81);color:#fff;box-shadow:0 18px 50px rgba(30,41,59,.18)}
 .admin-hero p{max-width:760px;color:#dbeafe}
 .admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .admin-grid .wide{grid-column:1/-1}
 .admin-grid.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.admin-section{display:grid;gap:18px}
+.admin-section{display:grid;gap:18px;min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box}
 .admin-entry{border:1px solid rgba(79,70,229,.2);border-radius:999px;background:#eef2ff;color:#4338ca;padding:10px 15px;font-weight:900}
 .admin-entry:hover{background:#e0e7ff}
 
@@ -477,13 +477,19 @@ code{border-radius:8px;background:#eef2ff;color:#4338ca;padding:2px 6px}
   margin:12px 0;
 }
 
-/* ── Admin panel overrides (lighter, more compact) ── */
+/* ── Admin panel overrides — kill student panel inheritance ── */
 .admin-page .panel,
 .admin-page .admin-section,
 .admin-section.panel{
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(45,55,95,.04);
-  padding:20px;
+  border-radius:14px!important;
+  box-shadow:0 1px 8px rgba(45,55,95,.06)!important;
+  padding:20px!important;
+  border:1px solid #e5e7eb!important;
+  background:#fff!important;
+  min-width:0;
+  max-width:100%;
+  overflow:hidden;
+  box-sizing:border-box;
 }
 .admin-page .panel:hover,
 .admin-section.panel:hover{
