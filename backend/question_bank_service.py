@@ -561,3 +561,198 @@ def dashboard_stats(course_data=None):
         'allTags': [t for t, _ in tags.most_common()],
         'allDirections': [d for d, _ in directions.most_common()],
     }
+
+
+# ─── CRUD: Create / Update / Delete exercises ───────────────────────────
+
+def get_exercise(exercise_id, bank=None):
+    """Find an exercise by ID. Returns dict with chapterId/index/exercise or None."""
+    bank = bank or load_question_bank(validate=False)
+    for chapter_id, chapter_title, index, exercise in iter_exercises(bank):
+        if exercise.get('id') == exercise_id:
+            return {
+                'chapterId': chapter_id,
+                'chapterTitle': chapter_title,
+                'index': index,
+                'exercise': exercise,
+            }
+    return None
+
+
+def create_exercise(chapter_id, exercise_data, bank=None):
+    """Add a new exercise to a chapter. Auto-generates ID if missing."""
+    bank = bank or load_question_bank(validate=False)
+    if not isinstance(exercise_data, dict):
+        raise QuestionBankError('题目数据必须是 JSON 对象。')
+
+    # Auto-generate ID if not provided
+    if not exercise_data.get('id'):
+        existing_ids = {ex.get('id') for _, _, _, ex in iter_exercises(bank)}
+        counter = 1
+        while True:
+            new_id = f'{chapter_id}-auto-{counter}'
+            if new_id not in existing_ids:
+                exercise_data['id'] = new_id
+                break
+            counter += 1
+
+    exercise_id = exercise_data['id']
+
+    # Check for duplicate
+    if get_exercise(exercise_id, bank):
+        raise QuestionBankError(f'题目 ID 已存在：{exercise_id}')
+
+    # Set defaults
+    exercise_data.setdefault('level', '基础')
+    exercise_data.setdefault('direction', '填空题')
+    exercise_data.setdefault('tags', [])
+    exercise_data.setdefault('examples', [])
+    exercise_data.setdefault('tests', [])
+    exercise_data.setdefault('source', 'manual')
+    exercise_data.setdefault('description', '')
+    exercise_data.setdefault('text', '')
+    exercise_data.setdefault('taskGoal', '')
+    exercise_data.setdefault('starter', '')
+    exercise_data.setdefault('expectedOutput', '')
+    exercise_data.setdefault('answer', '')
+    exercise_data.setdefault('answerCode', '')
+    exercise_data.setdefault('hint', '')
+    exercise_data.setdefault('analysis', '')
+    exercise_data.setdefault('qualityNotes', '')
+
+    # Find or create chapter
+    target_chapter = None
+    for chapter in bank.get('chapters', []):
+        if chapter.get('chapterId') == chapter_id:
+            target_chapter = chapter
+            break
+    if not target_chapter:
+        target_chapter = {'chapterId': chapter_id, 'chapterTitle': chapter_id, 'exercises': []}
+        bank.setdefault('chapters', []).append(target_chapter)
+
+    target_chapter.setdefault('exercises', []).append(exercise_data)
+    bank['updatedAt'] = datetime.now().isoformat(timespec='seconds')
+    stats = write_question_bank(bank)
+    return {'ok': True, 'exerciseId': exercise_id, 'chapterId': chapter_id, **stats}
+
+
+def update_exercise(exercise_id, updates, bank=None):
+    """Update fields of an existing exercise."""
+    bank = bank or load_question_bank(validate=False)
+    found = get_exercise(exercise_id, bank)
+    if not found:
+        raise QuestionBankError(f'找不到题目：{exercise_id}')
+
+    if not isinstance(updates, dict):
+        raise QuestionBankError('更新数据必须是 JSON 对象。')
+
+    # Don't allow changing id
+    updates.pop('id', None)
+
+    chapter_id = found['chapterId']
+    index = found['index']
+
+    for chapter in bank.get('chapters', []):
+        if chapter.get('chapterId') == chapter_id:
+            exercises = chapter.get('exercises', [])
+            if 0 <= index < len(exercises):
+                exercises[index].update(updates)
+            break
+
+    bank['updatedAt'] = datetime.now().isoformat(timespec='seconds')
+    stats = write_question_bank(bank)
+    return {'ok': True, 'exerciseId': exercise_id, **stats}
+
+
+def delete_exercise(exercise_id, bank=None):
+    """Remove an exercise by ID."""
+    bank = bank or load_question_bank(validate=False)
+    found = get_exercise(exercise_id, bank)
+    if not found:
+        raise QuestionBankError(f'找不到题目：{exercise_id}')
+
+    chapter_id = found['chapterId']
+    index = found['index']
+
+    for chapter in bank.get('chapters', []):
+        if chapter.get('chapterId') == chapter_id:
+            exercises = chapter.get('exercises', [])
+            if 0 <= index < len(exercises):
+                exercises.pop(index)
+            break
+
+    bank['updatedAt'] = datetime.now().isoformat(timespec='seconds')
+    stats = write_question_bank(bank)
+    return {'ok': True, 'deletedId': exercise_id, **stats}
+
+
+# ─── Version History & Rollback ─────────────────────────────────────────
+
+def list_backups():
+    """List all backup files with metadata."""
+    bank_meta = active_bank_meta()
+    bank_id = bank_meta.get('id', 'curated-v2')
+    bank_dir = BANK_ROOT / bank_id
+    if not bank_dir.exists():
+        return []
+    backups = []
+    for f in sorted(bank_dir.glob('question_bank.backup-*.json'), reverse=True):
+        try:
+            stat = f.stat()
+            backups.append({
+                'filename': f.name,
+                'path': str(f.relative_to(ROOT)),
+                'size': stat.st_size,
+                'createdAt': datetime.fromtimestamp(stat.st_mtime).isoformat(timespec='seconds'),
+            })
+        except Exception:
+            continue
+    return backups
+
+
+def rollback_to_backup(filename):
+    """Replace current bank with a backup file."""
+    bank_meta = active_bank_meta()
+    bank_id = bank_meta.get('id', 'curated-v2')
+    bank_dir = BANK_ROOT / bank_id
+    backup_path = (bank_dir / filename).resolve()
+
+    # Security: ensure backup is in the right directory
+    if bank_dir.resolve() not in backup_path.parents:
+        raise QuestionBankError('备份文件路径不合法。')
+    if not backup_path.exists():
+        raise QuestionBankError(f'备份文件不存在：{filename}')
+
+    with backup_path.open('r', encoding='utf-8') as f:
+        backup_bank = json.load(f)
+
+    if not isinstance(backup_bank, dict):
+        raise QuestionBankError('备份文件格式不正确。')
+
+    # Validate backup before restoring
+    validate_question_bank(backup_bank)
+    backup_bank['updatedAt'] = datetime.now().isoformat(timespec='seconds')
+    stats = write_question_bank(backup_bank)
+    return {'ok': True, 'restoredFrom': filename, **stats}
+
+
+# ─── Admin Auth ─────────────────────────────────────────────────────────
+
+ADMIN_PASSWORD_FILE = ROOT / '.admin_password'
+
+def get_admin_password():
+    """Read admin password from config file, or return default."""
+    if ADMIN_PASSWORD_FILE.exists():
+        return ADMIN_PASSWORD_FILE.read_text(encoding='utf-8').strip()
+    return 'pystart2026'
+
+def set_admin_password(new_password):
+    """Change admin password."""
+    if not new_password or len(new_password) < 4:
+        raise QuestionBankError('密码长度不能少于 4 位。')
+    ADMIN_PASSWORD_FILE.write_text(new_password, encoding='utf-8')
+    return {'ok': True, 'message': '密码已更新。'}
+
+def verify_admin(password):
+    """Verify admin password. Returns True/False."""
+    return password == get_admin_password()

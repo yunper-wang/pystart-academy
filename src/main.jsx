@@ -276,14 +276,31 @@ function DetailList({items, empty='暂无明细', render}) {
 
 function AdminPanel({ctx}) {
   const [tab, setTab] = useState('dashboard');
-  const tabs = [['dashboard','仪表盄','◈'],['exercises','题目列表','☰'],['import','导入题库','↑'],['export','导出题库','↓'],['system','系统状态','●']];
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem('pystart_admin_authed') === '1');
+  const [loginPwd, setLoginPwd] = useState('');
+  const [loginErr, setLoginErr] = useState('');
+  const [loginBusy, setLoginBusy] = useState(false);
+  const tabs = [['dashboard','仪表盄','◈'],['exercises','题目列表','☰'],['editor','编辑器','✎'],['import','导入题库','↑'],['export','导出题库','↓'],['versions','版本管理','↻'],['system','系统状态','●']];
+  const doLogin = async () => {
+    if (!loginPwd.trim()) return setLoginErr('请输入密码');
+    setLoginBusy(true); setLoginErr('');
+    try {
+      const r = await api('/api/admin/auth', {password: loginPwd});
+      if (r.ok) { sessionStorage.setItem('pystart_admin_authed', '1'); setAuthed(true); }
+      else setLoginErr('密码错误');
+    } catch(e) { setLoginErr(e.message); }
+    finally { setLoginBusy(false); }
+  };
+  if (!authed) return <section className="admin-page"><div className="admin-hero"><span className="kicker">Admin console</span><h1>后台管理</h1><p>题库运营中心：数据可视化、题目管理、导入导出和系统监控。</p></div><div className="login-box"><h2>管理员认证</h2><p>请输入管理员密码访问后台。</p><div className="login-form"><input className="input" type="password" placeholder="管理员密码" value={loginPwd} onChange={e=>setLoginPwd(e.target.value)} onKeyDown={e=>e.key==='Enter'&&doLogin()}/>{loginErr && <p className="login-error">{loginErr}</p>}<button className="btn primary" disabled={loginBusy} onClick={doLogin}>{loginBusy?'验证中...':'登录'}</button></div><p className="muted" style={{marginTop:12}}>默认密码：pystart2026</p></div></section>;
   return <section className="admin-page">
     <div className="admin-hero"><span className="kicker">Admin console</span><h1>后台管理</h1><p>题库运营中心：数据可视化、题目管理、导入导出和系统监控。</p></div>
     <nav className="admin-tabs">{tabs.map(([id,label,icon]) => <button key={id} className={tab===id?'active':''} onClick={()=>setTab(id)}><b>{icon}</b>{label}</button>)}</nav>
     {tab==='dashboard' && <DashboardPanel ctx={ctx}/>}
     {tab==='exercises' && <ExerciseListPanel ctx={ctx}/>}
+    {tab==='editor' && <ExerciseEditorPanel ctx={ctx}/>}
     {tab==='import' && <ImportPanel ctx={ctx}/>}
     {tab==='export' && <ExportPanel ctx={ctx}/>}
+    {tab==='versions' && <VersionPanel ctx={ctx}/>}
     {tab==='system' && <SystemPanel ctx={ctx}/>}
   </section>;
 }
@@ -331,6 +348,8 @@ function ExerciseListPanel({ctx}) {
   const [f, setF] = useState({q:'',level:'all',direction:'all',chapter:'all'});
   const [page, setPage] = useState(0);
   const [expanded, setExpanded] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const toast = ctx.toast;
   const PS = 20;
   const filtered = useMemo(()=>all.filter(ex=>{
     if(f.level!=='all'&&ex.level!==f.level) return false;
@@ -343,6 +362,16 @@ function ExerciseListPanel({ctx}) {
   const items = filtered.slice(page*PS,(page+1)*PS);
   useEffect(()=>setPage(0),[f.q,f.level,f.direction,f.chapter]);
   const toggle = id => setExpanded(p=>p===id?null:id);
+  const doQuickDelete = async (ex) => {
+    if (!window.confirm(`确认删除题目 ${ex.id}？`)) return;
+    setBusy(true);
+    try {
+      await api('/api/question-bank/exercise/delete', {exerciseId: ex.id});
+      await ctx.reloadAppData();
+      toast.push(`已删除 ${ex.id}`);
+    } catch(e) { toast.push(e.message, 'error'); }
+    finally { setBusy(false); }
+  };
   const pageBtns = useMemo(()=>{
     if(tp<=7) return Array.from({length:tp},(_,i)=>i);
     const s = Math.max(0,Math.min(page-3,tp-7));
@@ -358,10 +387,10 @@ function ExerciseListPanel({ctx}) {
     </div>
     <div style={{overflowX:'auto'}}>
       <table className="exercise-table">
-        <thead><tr><th>ID</th><th>标题</th><th>章节</th><th>难度</th><th>方向</th><th>标签</th></tr></thead>
+        <thead><tr><th>ID</th><th>标题</th><th>章节</th><th>难度</th><th>方向</th><th>标签</th><th>操作</th></tr></thead>
         <tbody>{items.map(ex=>{const eid=ex.id||`${ex.chapterId}-${ex.exerciseIndex}`;const exp=expanded===eid;return <React.Fragment key={eid}>
-          <tr className={exp?'expanded':''} onClick={()=>toggle(eid)}><td><code style={{fontSize:11}}>{ex.id||'-'}</code></td><td>{ex.title||ex.text||'-'}</td><td>{ex.chapterOrder}. {ex.chapterTitle}</td><td><span className={`level-badge ${ex.level||''}`}>{ex.level||'-'}</span></td><td>{ex.direction||'-'}</td><td><div className="tag-chips">{(ex.tags||[]).slice(0,3).map(t=><span className="tag-chip" key={t}>{t}</span>)}{(ex.tags||[]).length>3&&<span className="tag-chip">+{ex.tags.length-3}</span>}</div></td></tr>
-          {exp&&<tr className="exercise-detail-row"><td colSpan={6}><div className="exercise-detail"><div className="admin-grid two" style={{gap:16}}><div><h4>题目描述</h4><p>{ex.description||ex.text||'暂无'}</p><h4>任务目标</h4><p>{ex.taskGoal||'暂无'}</p><h4>提示</h4><p>{ex.hint||'暂无'}</p><h4>预期输出</h4><pre>{ex.expectedOutput||'暂无'}</pre></div><div><h4>起始代码</h4><pre>{ex.starter||'暂无'}</pre><h4>参考答案</h4><pre>{ex.answerCode||'暂无'}</pre><h4>解题分析</h4><p>{ex.analysis||'暂无'}</p></div></div></div></td></tr>}
+          <tr className={exp?'expanded':''} onClick={()=>toggle(eid)}><td><code style={{fontSize:11}}>{ex.id||'-'}</code></td><td>{ex.title||ex.text||'-'}</td><td>{ex.chapterOrder}. {ex.chapterTitle}</td><td><span className={`level-badge ${ex.level||''}`}>{ex.level||'-'}</span></td><td>{ex.direction||'-'}</td><td><div className="tag-chips">{(ex.tags||[]).slice(0,3).map(t=><span className="tag-chip" key={t}>{t}</span>)}{(ex.tags||[]).length>3&&<span className="tag-chip">+{ex.tags.length-3}</span>}</div></td><td className="row-actions" onClick={e=>e.stopPropagation()}><button className="btn-action delete" title="删除" disabled={busy} onClick={()=>doQuickDelete(ex)}>✕</button></td></tr>
+          {exp&&<tr className="exercise-detail-row"><td colSpan={7}><div className="exercise-detail"><div className="admin-grid two" style={{gap:16}}><div><h4>题目描述</h4><p>{ex.description||ex.text||'暂无'}</p><h4>任务目标</h4><p>{ex.taskGoal||'暂无'}</p><h4>提示</h4><p>{ex.hint||'暂无'}</p><h4>预期输出</h4><pre>{ex.expectedOutput||'暂无'}</pre></div><div><h4>起始代码</h4><pre>{ex.starter||'暂无'}</pre><h4>参考答案</h4><pre>{ex.answerCode||'暂无'}</pre><h4>解题分析</h4><p>{ex.analysis||'暂无'}</p></div></div></div></td></tr>}
         </React.Fragment>;})}</tbody>
       </table>
     </div>
@@ -463,7 +492,23 @@ function SystemPanel({ctx}) {
   const [busy, setBusy] = useState(false);
   const [system, setSystem] = useState(ctx.bootstrap.systemStatus);
   const [feedback, setFeedback] = useState(null);
+  const [pwdForm, setPwdForm] = useState({current:'',newPwd:'',confirm:''});
+  const [pwdBusy, setPwdBusy] = useState(false);
   const refresh = async () => { setBusy(true); try { const n=await api('/api/system/status'); setSystem(n); setFeedback({type:n.overall==='ok'?'success':'warning',message:`系统状态：${statusTextForState(n.overall)}。`}); } catch(e){setFeedback({type:'error',message:e.message});} finally{setBusy(false);} };
+  const changePwd = async () => {
+    if (!pwdForm.current) return setFeedback({type:'error',message:'请输入当前密码'});
+    if (pwdForm.newPwd.length < 4) return setFeedback({type:'error',message:'新密码长度不能少于 4 位'});
+    if (pwdForm.newPwd !== pwdForm.confirm) return setFeedback({type:'error',message:'两次输入的新密码不一致'});
+    setPwdBusy(true);
+    try {
+      const verify = await api('/api/admin/auth', {password: pwdForm.current});
+      if (!verify.ok) { setFeedback({type:'error',message:'当前密码错误'}); return; }
+      await api('/api/admin/change-password', {newPassword: pwdForm.newPwd});
+      setFeedback({type:'success',message:'密码已更新。下次登录请使用新密码。'});
+      setPwdForm({current:'',newPwd:'',confirm:''});
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setPwdBusy(false); }
+  };
   return <>
     <Feedback item={feedback}/>
     <section className="panel wide admin-section">
@@ -471,8 +516,158 @@ function SystemPanel({ctx}) {
       <div className="status-grid">{(system?.checks||[]).map(c=><StatusCard key={c.key} check={c}/>)}</div>
       <div className="status-summary"><StatRow label="检测时间" value={system?.checkedAt||'未检测'}/><StatRow label="整体状态" value={statusTextForState(system?.overall||'loading')}/></div>
     </section>
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Security</span><h2>修改密码</h2><p>更改后台管理登录密码。</p></div></div>
+      <div className="form-grid" style={{maxWidth:400}}>
+        <label>当前密码<input className="input" type="password" value={pwdForm.current} onChange={e=>setPwdForm({...pwdForm,current:e.target.value})}/></label>
+        <label>新密码<input className="input" type="password" value={pwdForm.newPwd} onChange={e=>setPwdForm({...pwdForm,newPwd:e.target.value})}/></label>
+        <label>确认新密码<input className="input" type="password" value={pwdForm.confirm} onChange={e=>setPwdForm({...pwdForm,confirm:e.target.value})}/></label>
+      </div>
+      <div style={{marginTop:12}}><button className="btn primary" disabled={pwdBusy} onClick={changePwd}>{pwdBusy?'修改中...':'修改密码'}</button></div>
+    </section>
   </>;
 }
+function ExerciseEditorPanel({ctx}) {
+  const [mode, setMode] = useState('create');
+  const [searchId, setSearchId] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+  const [form, setForm] = useState(emptyExercise());
+  const allChs = useMemo(()=>ctx.data.chapters.map(c=>({id:c.id,title:`${c.order}. ${c.title}`})),[ctx.data]);
+  const set = (key, val) => setForm(f=>({...f,[key]:val}));
+  const setTags = (val) => set('tags', val.split(',').map(s=>s.trim()).filter(Boolean));
+  const loadExercise = async () => {
+    if (!searchId.trim()) return setFeedback({type:'error',message:'请输入题目 ID'});
+    setBusy(true);
+    try {
+      const r = await api(`/api/question-bank/exercise?id=${encodeURIComponent(searchId.trim())}`);
+      if (r.ok && r.exercise) {
+        setForm({...emptyExercise(), ...r.exercise, chapterId: r.chapterId});
+        setMode('edit');
+        setFeedback({type:'success',message:`已加载题目：${r.exercise.title || r.exercise.id}`});
+      } else {
+        setFeedback({type:'error',message:r.error || '找不到该题目'});
+      }
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doCreate = async () => {
+    if (!form.chapterId) return setFeedback({type:'error',message:'请选择所属章节'});
+    if (!form.title?.trim()) return setFeedback({type:'error',message:'请输入题目标题'});
+    setBusy(true);
+    try {
+      const exercise = {...form};
+      delete exercise.chapterId;
+      const r = await api('/api/question-bank/exercise/create', {chapterId: form.chapterId, exercise});
+      await ctx.reloadAppData();
+      setFeedback({type:'success',message:`创建成功：${r.exerciseId}`});
+      setForm(emptyExercise());
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doUpdate = async () => {
+    if (!form.id) return setFeedback({type:'error',message:'题目 ID 为空，无法更新'});
+    setBusy(true);
+    try {
+      const updates = {...form};
+      delete updates.chapterId;
+      const r = await api('/api/question-bank/exercise/update', {exerciseId: form.id, updates});
+      await ctx.reloadAppData();
+      setFeedback({type:'success',message:`更新成功：${r.exerciseId}`});
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  const doDelete = async () => {
+    if (!form.id) return;
+    if (!window.confirm(`确认删除题目 ${form.id}？此操作不可恢复。`)) return;
+    setBusy(true);
+    try {
+      await api('/api/question-bank/exercise/delete', {exerciseId: form.id});
+      await ctx.reloadAppData();
+      setFeedback({type:'success',message:`已删除：${form.id}`});
+      setForm(emptyExercise());
+      setMode('create');
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  return <>
+    <Feedback item={feedback}/>
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Exercise editor</span><h2>题目编辑器</h2><p>新建、编辑或删除题库中的练习题目。</p></div><div style={{display:'flex',gap:8,alignItems:'center'}}><button className={mode==='create'?'btn primary':'btn secondary'} onClick={()=>{setMode('create');setForm(emptyExercise());}}>新建模式</button><span className="muted">|</span><input className="input" style={{width:160}} placeholder="输入题目 ID" value={searchId} onChange={e=>setSearchId(e.target.value)} onKeyDown={e=>e.key==='Enter'&&loadExercise()}/><button className="btn secondary" disabled={busy} onClick={loadExercise}>查找</button></div></div>
+      <div className="editor-form">
+        <div className="form-grid">
+          <label>所属章节<select className="input" value={form.chapterId||''} onChange={e=>set('chapterId',e.target.value)} disabled={mode==='edit'}><option value="">请选择</option>{allChs.map(c=><option key={c.id} value={c.id}>{c.title}</option>)}</select></label>
+          <label>题目 ID<input className="input" value={form.id||''} onChange={e=>set('id',e.target.value)} disabled={mode==='edit'} placeholder="留空自动生成"/></label>
+          <label>题目标题<input className="input" value={form.title||''} onChange={e=>set('title',e.target.value)} placeholder="简明扼要的标题"/></label>
+          <label>难度<select className="input" value={form.level||'基础'} onChange={e=>set('level',e.target.value)}><option>基础</option><option>进阶</option><option>挑战</option></select></label>
+          <label>方向/题型<input className="input" value={form.direction||''} onChange={e=>set('direction',e.target.value)} placeholder="如：填空题、编程题"/></label>
+          <label>标签（逗号分隔）<input className="input" value={(form.tags||[]).join(', ')} onChange={e=>setTags(e.target.value)} placeholder="变量, 基础, 字符串"/></label>
+        </div>
+        <label>题目描述<textarea className="input editor-textarea" value={form.description||''} onChange={e=>set('description',e.target.value)} placeholder="题目背景描述"/></label>
+        <label>题目正文<textarea className="input editor-textarea" value={form.text||''} onChange={e=>set('text',e.target.value)} placeholder="具体题目要求"/></label>
+        <label>任务目标<textarea className="input editor-textarea" value={form.taskGoal||''} onChange={e=>set('taskGoal',e.target.value)} placeholder="完成这个题目需要做什么"/></label>
+        <div className="editor-two-col">
+          <label>起始代码<textarea className="input editor-codearea" value={form.starter||''} onChange={e=>set('starter',e.target.value)} placeholder="# 起始代码\n" spellCheck="false"/></label>
+          <label>参考答案<textarea className="input editor-codearea" value={form.answerCode||''} onChange={e=>set('answerCode',e.target.value)} placeholder="# 参考答案\n" spellCheck="false"/></label>
+        </div>
+        <label>预期输出<textarea className="input editor-textarea" value={form.expectedOutput||''} onChange={e=>set('expectedOutput',e.target.value)} placeholder="程序运行后应输出的内容"/></label>
+        <label>文字答案<input className="input" value={form.answer||''} onChange={e=>set('answer',e.target.value)} placeholder="非代码题的文字答案"/></label>
+        <label>提示<textarea className="input editor-textarea" value={form.hint||''} onChange={e=>set('hint',e.target.value)} placeholder="给学习者的提示"/></label>
+        <label>解题分析<textarea className="input editor-textarea" value={form.analysis||''} onChange={e=>set('analysis',e.target.value)} placeholder="解题思路和关键知识点"/></label>
+        <div className="editor-actions">
+          {mode==='create' ? <button className="btn primary" disabled={busy} onClick={doCreate}>{busy?'创建中...':'创建题目'}</button> : <>
+            <button className="btn primary" disabled={busy} onClick={doUpdate}>{busy?'保存中...':'保存修改'}</button>
+            <button className="btn danger" disabled={busy} onClick={doDelete}>{busy?'删除中...':'删除题目'}</button>
+            <button className="btn secondary" onClick={()=>{setMode('create');setForm(emptyExercise());}}>取消编辑</button>
+          </>}
+        </div>
+      </div>
+    </section>
+  </>;
+}
+function emptyExercise() {
+  return {id:'',title:'',level:'基础',direction:'',tags:[],description:'',text:'',taskGoal:'',starter:'',expectedOutput:'',answer:'',answerCode:'',hint:'',analysis:'',examples:[],tests:[],qualityNotes:'',source:'manual'};
+}
+
+function VersionPanel({ctx}) {
+  const [backups, setBackups] = useState([]);
+  const [busy, setBusy] = useState(true);
+  const [feedback, setFeedback] = useState(null);
+  const load = async () => {
+    setBusy(true);
+    try { const r = await api('/api/question-bank/versions'); setBackups(r.backups||[]); }
+    catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  useEffect(()=>{ load(); }, []);
+  const doRollback = async (filename) => {
+    if (!window.confirm(`确认回滚到备份 ${filename}？当前题库将被替换。`)) return;
+    setBusy(true);
+    try {
+      await api('/api/question-bank/rollback', {filename});
+      await ctx.reloadAppData();
+      setFeedback({type:'success',message:`已回滚到 ${filename}`});
+      await load();
+    } catch(e) { setFeedback({type:'error',message:e.message}); }
+    finally { setBusy(false); }
+  };
+  return <>
+    <Feedback item={feedback}/>
+    <section className="panel wide admin-section">
+      <div className="section-head"><div><span className="kicker">Version control</span><h2>版本管理</h2><p>每次导入或编辑题库时自动创建备份。可随时回滚到历史版本。</p></div><button className="btn secondary" disabled={busy} onClick={load}>{busy?'加载中...':'刷新列表'}</button></div>
+      {busy && backups.length===0 ? <Loader text="加载版本历史..."/> :
+        backups.length===0 ? <p className="muted">暂无备份。每次导入或编辑题库时会自动创建备份。</p> :
+        <div className="version-list">
+          {backups.map(b => <div className="version-row" key={b.filename}>
+            <div className="version-info"><strong>{b.filename}</strong><small>{b.createdAt} · {formatBytes(b.size)}</small></div>
+            <button className="btn secondary" disabled={busy} onClick={()=>doRollback(b.filename)}>回滚</button>
+          </div>)}
+        </div>
+      }
+    </section>
+  </>;
+}
+
 function CodeRunner({initialCode='', answer='', title='代码运行器', toast}) {
   const [code, setCode] = useState(initialCode || '');
   const [output, setOutput] = useState('点击运行查看结果');

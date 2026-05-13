@@ -34,6 +34,14 @@ class Handler(SimpleHTTPRequestHandler):
             payload = self.read_json_body()
             data = data_service.load_data()
             progress = payload.get("progress") or {}
+            if path == "/api/admin/auth":
+                ok = question_bank_service.verify_admin(payload.get("password", ""))
+                self.send_json({"ok": ok})
+                return
+            if path == "/api/admin/change-password":
+                result = question_bank_service.set_admin_password(payload.get("newPassword", ""))
+                self.send_json(result)
+                return
             if path == "/api/run":
                 self.send_json(run_service.run_python(payload.get("code", "")))
                 return
@@ -70,6 +78,26 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/question-bank/dashboard":
                 self.send_json(question_bank_service.dashboard_stats(data_service.load_course_data()))
+                return
+            if path == "/api/question-bank/exercise/create":
+                bank = question_bank_service.create_exercise(payload.get("chapterId"), payload.get("exercise", {}))
+                data_service.clear_cache()
+                self.send_json(bank)
+                return
+            if path == "/api/question-bank/exercise/update":
+                result = question_bank_service.update_exercise(payload.get("exerciseId"), payload.get("updates", {}))
+                data_service.clear_cache()
+                self.send_json(result)
+                return
+            if path == "/api/question-bank/exercise/delete":
+                result = question_bank_service.delete_exercise(payload.get("exerciseId"))
+                data_service.clear_cache()
+                self.send_json(result)
+                return
+            if path == "/api/question-bank/rollback":
+                result = question_bank_service.rollback_to_backup(payload.get("filename"))
+                data_service.clear_cache()
+                self.send_json(result)
                 return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
@@ -139,6 +167,17 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/question-bank/dashboard":
             data = data_service.load_course_data()
             self.send_json(question_bank_service.dashboard_stats(data))
+            return
+        if path == "/api/question-bank/versions":
+            self.send_json({"ok": True, "backups": question_bank_service.list_backups()})
+            return
+        if path == "/api/question-bank/exercise":
+            exercise_id = self.path.split("id=", 1)[1].split("&", 1)[0] if "id=" in self.path else ""
+            found = question_bank_service.get_exercise(exercise_id)
+            if found:
+                self.send_json({"ok": True, **found})
+            else:
+                self.send_json({"ok": False, "error": f"找不到题目：{exercise_id}"}, 404)
             return
         if path == "/api/app/bootstrap":
             data = data_service.load_data()
