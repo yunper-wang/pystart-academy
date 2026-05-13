@@ -303,9 +303,10 @@ function DashboardPanel({ctx}) {
   const levels = dash.levelDistribution || {};
   const dirs = dash.directionDistribution || {};
   const chs = dash.chapterCompleteness || [];
-  const tg = dash.tagDistribution || [];
+  const tgObj = dash.tagDistribution || {}; const tg = Object.entries(tgObj);
   const maxL = Math.max(...Object.values(levels), 1);
   const maxD = Math.max(...Object.values(dirs), 1);
+  const dirEntries = Object.entries(dirs);
   const barClr = n => n==='基础'?'#22c55e':n==='进阶'?'#f59e0b':n==='挑战'?'#ef4444':'var(--accent)';
   return <>
     <div className="metric-row">
@@ -316,7 +317,7 @@ function DashboardPanel({ctx}) {
     </div>
     <div className="admin-grid two">
       <section className="panel"><h2>难度分布</h2><div className="bar-chart">{Object.entries(levels).map(([n,c])=><div className="bar-row" key={n}><span className="bar-label">{n}</span><div className="bar-track"><div className="bar-fill" style={{width:`${c/maxL*100}%`,background:barClr(n)}}/></div><span className="bar-value">{c}</span></div>)}</div></section>
-      <section className="panel"><h2>方向/题型分布</h2><div className="bar-chart">{Object.entries(dirs).map(([n,c])=><div className="bar-row" key={n}><span className="bar-label">{n}</span><div className="bar-track"><div className="bar-fill" style={{width:`${c/maxD*100}%`,background:'var(--accent)'}}/></div><span className="bar-value">{c}</span></div>)}</div></section>
+      <section className="panel"><h2>方向/题型分布</h2><div className="bar-chart">{dirEntries.map(([n,c])=><div className="bar-row" key={n}><span className="bar-label">{n}</span><div className="bar-track"><div className="bar-fill" style={{width:`${c/maxD*100}%`,background:'var(--accent)'}}/></div><span className="bar-value">{c}</span></div>)}</div></section>
     </div>
     <section className="panel wide"><h2>章节完整度 <small className="muted">每章 8 题为标准</small></h2><div className="chapter-grid">{chs.map(ch=><div className={`chapter-box ${ch.count>=ch.expected?'complete':ch.count>0?'partial':'empty'}`} key={ch.chapterId} title={`${ch.title}: ${ch.count}/${ch.expected}`}><strong>{ch.count}</strong><small>{ch.order}. {ch.title?.slice(0,6)}</small></div>)}</div></section>
     <section className="panel wide"><h2>热门标签</h2><div className="chip-group">{tg.map(([n,c])=><span key={n}>{n} ({c})</span>)}</div></section>
