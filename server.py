@@ -63,7 +63,13 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/quiz/submit":
                 result = quiz_service.submit(payload.get("lessonId"), payload.get("answers") or [], data)
-                result["html"] = page_service.quiz_result_html(result) if result.get("ok") else {}
+                if result.get("ok"):
+                    html_parts = page_service.quiz_result_html(result)
+                    result["html"] = "".join(html_parts.values())
+                    result["htmlParts"] = html_parts
+                else:
+                    result["html"] = ""
+                    result["htmlParts"] = {}
                 self.send_json(result, 200 if result.get("ok") else 400)
                 return
             if path == "/api/page/projects":
@@ -91,7 +97,15 @@ class Handler(SimpleHTTPRequestHandler):
                 self.send_json({"error": "invalid data.json", "detail": str(exc)}, 500)
             return
         if path == "/api/app/bootstrap":
-            self.send_json({**data_service.bootstrap(), **page_service.course_controls()})
+            data = data_service.load_data()
+            self.send_json({
+                **data_service.bootstrap(data),
+                **page_service.course_controls(data),
+                "stages": data_service.get_stages(data),
+                "chapters": data_service.get_chapters(data),
+                "projects": data_service.get_projects(data),
+                "practices": data_service.flatten_practices(data),
+            })
             return
         dist = ROOT / "dist"
         if dist.exists():
