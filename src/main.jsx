@@ -139,7 +139,7 @@ function App() {
     if (message) toast.push(message);
     return boot;
   };
-  const ctx = {data, bootstrap, summary, progress, setProgress: updateProgress, activeLessonId, setActiveLessonId: selectLesson, activeProjectId, setActiveProjectId, navigate, toast, reloadAppData};
+  const ctx = {data, bootstrap, summary, progress, setProgress: updateProgress, route, navigate, activeLessonId, setActiveLessonId: selectLesson, activeProjectId, setActiveProjectId, navigate, toast, reloadAppData};
   return <>
     <div className="app-shell">
       <Sidebar route={route} navigate={navigate}/>
@@ -166,7 +166,11 @@ function Sidebar({route, navigate}) {
 function Topbar({ctx}) {
   const lesson = ctx.data.chapters.find(c => c.id === ctx.activeLessonId) || ctx.data.chapters[0];
   const status = ctx.bootstrap.systemStatus?.overall || 'loading';
-  return <header className="topbar-app"><div><small>当前章节</small><strong>{lesson?.order}. {lesson?.title}</strong></div><div className="top-actions"><span className={`status-pill ${status}`}>系统{statusTextForState(status)}</span><button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button></div></header>;
+  const pageInfo = {dashboard:['⌂','首页'],learn:['◇','学习路径'],practice:['✦','练习中心'],quiz:['◉','测验中心'],projects:['▣','项目实战'],report:['✓','学习报告'],admin:['⚙','后台管理']}[ctx.route] || ['⌂','首页'];
+  return <header className="topbar-app">
+    <div className="topbar-title"><span className="page-icon">{pageInfo[0]}</span><div><span className="page-name">{pageInfo[1]}</span>{ctx.route==='learn'&&lesson&&<small className="breadcrumb">{lesson.order}. {lesson.title}</small>}</div></div>
+    <div className="top-actions"><span className={`status-pill ${status}`}>系统{statusTextForState(status)}</span>{ctx.route!=='learn'&&<button className="btn primary" onClick={() => ctx.navigate('learn')}>继续学习</button>}</div>
+  </header>;
 }
 
 function Dashboard({ctx}) {
@@ -928,7 +932,7 @@ function CodeRunner({initialCode='', answer='', title='代码运行器', toast})
     try { const data = await api('/api/run', {code}); setState(data.ok ? 'success' : 'error'); setOutput(data.ok ? (data.output || '程序运行完成，但没有 print() 输出。') : (data.friendlyMessage || data.error || data.output || '运行失败')); if (data.ok) toast.push('代码运行成功'); }
     catch(err){ setState('error'); setOutput(`运行服务连接失败：${err.message}`); }
   };
-  return <div className="code-runner"><div className="runner-head"><strong>{title}</strong><div><button className="btn secondary" onClick={()=>navigator.clipboard?.writeText(code).then(()=>toast.push('代码已复制'))}>复制代码</button>{answer && <button className="btn secondary" onClick={()=>{setCode(answer);toast.push('已填入参考答案')}}>填入答案</button>}<button className="btn primary" disabled={state==='running'} onClick={run}>{state==='running'?'运行中...':'运行代码'}</button></div></div><textarea value={code} onChange={e=>setCode(e.target.value)} onKeyDown={e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')run();}} spellCheck="false"/><pre className={`runner-output ${state}`}>{output}</pre></div>;
+  return <div className={`code-runner${state==='running'?' runner-running':''}`}><div className="runner-head"><strong>{title}</strong><div><button className="btn secondary" onClick={()=>navigator.clipboard?.writeText(code).then(()=>toast.push('代码已复制'))}>复制代码</button>{answer && <button className="btn secondary" onClick={()=>{setCode(answer);toast.push('已填入参考答案')}}>填入答案</button>}<button className="btn primary" disabled={state==='running'} onClick={run}>{state==='running'?'运行中...':'运行代码'}</button></div></div><textarea value={code} onChange={e=>setCode(e.target.value)} onKeyDown={e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')run();}} spellCheck="false"/><pre className={`runner-output ${state}`}>{output}</pre></div>;
 }
 
 createRoot(document.getElementById('root')).render(<App />);
