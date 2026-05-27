@@ -1,0 +1,13 @@
+{
+  "active": "curated-v2",
+  "banks": [
+    {
+      "id": "curated-v2",
+      "title": "PyStart Academy 练习题库（curated-v2）",
+      "path": "curated-v2/question_bank.json",
+      "chapters": 30,
+      "exercisesPerChapter": 8,
+      "totalExercises": 240
+    }
+  ]
+}

@@ -18,11 +18,24 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "latest_python_questions.json"
 UA = "pystart-academy-question-updater/1.0"
 
-SEARCHES = [
-    "python practice problems created:>2026-04-01",
-    "python exercises questions created:>2026-04-01 language:Python",
-    "python quiz questions created:>2026-04-01",
-]
+def _date_filter(days_back: int = 30) -> str:
+    """Dynamic date filter — always recent."""
+    return (dt.date.today() - dt.timedelta(days=days_back)).isoformat()
+
+
+def _build_searches() -> list[str]:
+    d = _date_filter()
+    return [
+        f"python practice problems created:>{d}",
+        f"python exercises questions created:>{d} language:Python",
+        f"python quiz questions created:>{d}",
+        f"python tutorial beginner created:>{d}",
+        f"leetcode python solutions created:>{d}",
+        f"python coding challenges created:>{d}",
+    ]
+
+
+SEARCHES = _build_searches()
 
 TOPIC_RULES = [
     ("quiz", "字典和集合", "c12", ["字典", "集合", "统计"]),
