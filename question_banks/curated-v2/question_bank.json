@@ -809,25 +809,37 @@
         },
         {
           "id": "c01-ext-007a33",
-          "title": "How to Conceptualize Python Fundamentals for Greater Mastery",
           "level": "基础",
-          "direction": "填空题",
+          "title": "Python 版本特性速查",
+          "text": "Python 版本特性速查：根据当前 Python 版本号，输出主版本号和次版本号，并判断是否为 Python 3。",
+          "description": "根据当前 Python 版本号，输出主版本号和次版本号，并判断是否为 Python 3。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "import sys\nversion = sys.version_info\nprint(f'主版本：{version.major}')\nprint(f'次版本：{version.minor}')\nprint(f'Python 3：{version.major == 3}')\n",
+          "starter": "import sys\nversion = sys.version_info\n# 输出版本信息\n",
+          "expectedOutput": "主版本：3\n次版本：12\nPython 3：True",
+          "answerCode": "import sys\nversion = sys.version_info\nprint(f'主版本：{version.major}')\nprint(f'次版本：{version.minor}')\nprint(f'Python 3：{version.major == 3}')\n",
+          "taskGoal": "根据当前 Python 版本号，输出主版本号和次版本号，并判断是否为 Python 3。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
+            "入门",
+            "基础",
             "Python"
           ],
-          "description": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
-          "text": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
-          "taskGoal": "阅读并理解：How to Conceptualize Python Fundamentals for Greater Mastery",
-          "starter": "# 请在这里完成练习",
-          "expectedOutput": "运行程序查看输出",
-          "answer": "",
-          "answerCode": "# 参考答案待补充",
-          "hint": "参考链接：https://realpython.com/conceptualize-python-fundamentals/",
-          "analysis": "Master Python fundamentals by learning how to conceptualize core concepts like variables, loops, and functions for better understanding and retention.",
-          "examples": [],
-          "tests": [],
-          "qualityNotes": "auto-imported from Real Python (RSS)",
-          "source": "https://realpython.com/conceptualize-python-fundamentals/"
+          "examples": [
+            {
+              "input": "题目内置固定数据",
+              "output": "主版本：3\n次版本：12\nPython 3：True"
+            }
+          ],
+          "tests": [
+            {
+              "name": "参考答案输出校验",
+              "expected": "主版本：3\n次版本：12\nPython 3：True"
+            }
+          ],
+          "direction": "Python 基础",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         },
         {
           "id": "c01-ext-458937",
@@ -2162,37 +2174,36 @@
         {
           "id": "c06-easy-003",
           "level": "基础",
-          "title": "整理运算符关键词",
-          "text": "整理运算符关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "温度转换计算器",
+          "text": "温度转换计算器：将摄氏温度转换为华氏温度和开尔文温度，输出三种温度的对照表。",
+          "description": "将摄氏温度转换为华氏温度和开尔文温度，输出三种温度的对照表。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "celsius = 25\nfahrenheit = celsius * 9 / 5 + 32\nkelvin = celsius + 273.15\nprint(f'摄氏：{celsius}°C')\nprint(f'华氏：{fahrenheit}°F')\nprint(f'开尔文：{kelvin}K')\n",
+          "starter": "celsius = 25\n# 转换为华氏和开尔文\n",
+          "expectedOutput": "摄氏：25°C\n华氏：77.0°F\n开尔文：298.15K",
+          "answerCode": "celsius = 25\nfahrenheit = celsius * 9 / 5 + 32\nkelvin = celsius + 273.15\nprint(f'摄氏：{celsius}°C')\nprint(f'华氏：{fahrenheit}°F')\nprint(f'开尔文：{kelvin}K')\n",
+          "taskGoal": "将摄氏温度转换为华氏温度和开尔文温度，输出三种温度的对照表。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "算术运算",
-            "比较运算",
-            "逻辑运算",
-            "列表"
+            "运算符",
+            "算术",
+            "比较"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "摄氏：25°C\n华氏：77.0°F\n开尔文：298.15K"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "摄氏：25°C\n华氏：77.0°F\n开尔文：298.15K"
             }
           ],
-          "direction": "运算符",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "direction": "运算符应用",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         },
         {
           "id": "c06-medium-004",
@@ -4240,37 +4251,36 @@
         {
           "id": "c13-medium-006",
           "level": "进阶",
-          "title": "封装函数定义和参数建议函数",
-          "text": "封装函数定义和参数建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "自定义排序函数",
+          "text": "自定义排序函数：编写一个函数，支持按自定义规则对列表排序（如按字符串长度）。",
+          "description": "编写一个函数，支持按自定义规则对列表排序（如按字符串长度）。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "def sort_by_length(words):\n    return sorted(words, key=len)\n\nwords = ['python', 'is', 'awesome', 'hi', 'code']\nresult = sort_by_length(words)\nprint(result)\n",
+          "starter": "words = ['python', 'is', 'awesome', 'hi', 'code']\n# 按长度排序\n",
+          "expectedOutput": "['hi', 'is', 'code', 'python', 'awesome']",
+          "answerCode": "def sort_by_length(words):\n    return sorted(words, key=len)\n\nwords = ['python', 'is', 'awesome', 'hi', 'code']\nresult = sort_by_length(words)\nprint(result)\n",
+          "taskGoal": "编写一个函数，支持按自定义规则对列表排序（如按字符串长度）。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
+            "函数",
             "参数",
-            "默认值",
-            "职责拆分",
-            "函数"
+            "返回值"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "['hi', 'is', 'code', 'python', 'awesome']"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "['hi', 'is', 'code', 'python', 'awesome']"
             }
           ],
-          "direction": "函数",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "direction": "函数应用",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         },
         {
           "id": "c13-hard-007",
@@ -4810,37 +4820,36 @@
         {
           "id": "c15-medium-006",
           "level": "进阶",
-          "title": "封装模块导入建议函数",
-          "text": "封装模块导入建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "标准库实用工具",
+          "text": "标准库实用工具：使用 collections.Counter 统计字符出现频率，输出前3高频字符。",
+          "description": "使用 collections.Counter 统计字符出现频率，输出前3高频字符。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "from collections import Counter\ntext = 'abracadabra'\nfreq = Counter(text)\ntop3 = freq.most_common(3)\nfor char, count in top3:\n    print(f'{char}: {count}次')\n",
+          "starter": "from collections import Counter\ntext = 'abracadabra'\n# 统计字符频率\n",
+          "expectedOutput": "a: 5次\nb: 2次\nr: 2次",
+          "answerCode": "from collections import Counter\ntext = 'abracadabra'\nfreq = Counter(text)\ntop3 = freq.most_common(3)\nfor char, count in top3:\n    print(f'{char}: {count}次')\n",
+          "taskGoal": "使用 collections.Counter 统计字符出现频率，输出前3高频字符。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
+            "模块",
             "import",
-            "math",
-            "random",
-            "函数"
+            "标准库"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "a: 5次\nb: 2次\nr: 2次"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "a: 5次\nb: 2次\nr: 2次"
             }
           ],
-          "direction": "模块",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "direction": "模块应用",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         },
         {
           "id": "c15-hard-007",
@@ -6020,37 +6029,36 @@
         {
           "id": "c19-hard-008",
           "level": "挑战",
-          "title": "构建类和对象任务流水线",
-          "text": "构建类和对象任务流水线：把 raw 中的任务清洗、去空、去重后输出。",
-          "description": "把 raw 中的任务清洗、去空、去重后输出。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "starter": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\n# 清洗并保持顺序去重\n",
-          "expectedOutput": "['练习', '复习', '项目']",
-          "answerCode": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "taskGoal": "把 raw 中的任务清洗、去空、去重后输出。",
-          "analysis": "这是常见脚本流水线：清洗空白、过滤无效值、去重并保持顺序。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "继承与多态示例",
+          "text": "继承与多态示例：实现一个简单的形状类继承体系，展示多态特性。",
+          "description": "实现一个简单的形状类继承体系，展示多态特性。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "import math\nclass Shape:\n    def area(self):\n        return 0\nclass Circle(Shape):\n    def __init__(self, r):\n        self.r = r\n    def area(self):\n        return math.pi * self.r ** 2\nclass Rectangle(Shape):\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n    def area(self):\n        return self.w * self.h\nshapes = [Circle(5), Rectangle(4, 6)]\nfor s in shapes:\n    print(f'{type(s).__name__}: {s.area():.1f}')\n",
+          "starter": "# 实现 Shape 基类和 Circle、Rectangle 子类\n",
+          "expectedOutput": "Circle: 78.5\nRectangle: 24.0",
+          "answerCode": "import math\nclass Shape:\n    def area(self):\n        return 0\nclass Circle(Shape):\n    def __init__(self, r):\n        self.r = r\n    def area(self):\n        return math.pi * self.r ** 2\nclass Rectangle(Shape):\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n    def area(self):\n        return self.w * self.h\nshapes = [Circle(5), Rectangle(4, 6)]\nfor s in shapes:\n    print(f'{type(s).__name__}: {s.area():.1f}')\n",
+          "taskGoal": "实现一个简单的形状类继承体系，展示多态特性。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "__init__",
-            "实例",
-            "对象列表",
-            "数据清洗"
+            "面向对象",
+            "类",
+            "继承"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "['练习', '复习', '项目']"
+              "output": "Circle: 78.5\nRectangle: 24.0"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "['练习', '复习', '项目']"
+              "expected": "Circle: 78.5\nRectangle: 24.0"
             }
           ],
-          "direction": "类与对象",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "direction": "类与继承",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         }
       ]
     },
@@ -7927,37 +7935,36 @@
         {
           "id": "c24-hard-008",
           "level": "挑战",
-          "title": "构建字典进阶与结构化数据任务流水线",
-          "text": "构建字典进阶与结构化数据任务流水线：把 raw 中的任务清洗、去空、去重后输出。",
-          "description": "把 raw 中的任务清洗、去空、去重后输出。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "starter": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\n# 清洗并保持顺序去重\n",
-          "expectedOutput": "['练习', '复习', '项目']",
-          "answerCode": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "taskGoal": "把 raw 中的任务清洗、去空、去重后输出。",
-          "analysis": "这是常见脚本流水线：清洗空白、过滤无效值、去重并保持顺序。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "嵌套字典数据提取",
+          "text": "嵌套字典数据提取：从嵌套字典中提取特定信息，处理可能缺失的键。",
+          "description": "从嵌套字典中提取特定信息，处理可能缺失的键。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "users = {\n    'u001': {'name': 'Alice', 'scores': [90, 85, 92]},\n    'u002': {'name': 'Bob'},\n    'u003': {'name': 'Charlie', 'scores': [78, 88]}\n}\nfor uid, info in users.items():\n    name = info.get('name', '未知')\n    scores = info.get('scores', [])\n    if scores:\n        avg = sum(scores) / len(scores)\n        print(f'{name}: 平均分 {avg:.1f}（{len(scores)}科）')\n    else:\n        print(f'{name}: 暂无成绩')\n",
+          "starter": "users = {\n    'u001': {'name': 'Alice', 'scores': [90, 85, 92]},\n    'u002': {'name': 'Bob'},\n    'u003': {'name': 'Charlie', 'scores': [78, 88]}\n}\n# 安全提取每个人的成绩信息\n",
+          "expectedOutput": "Alice: 平均分 89.0（3科）\nBob: 暂无成绩\nCharlie: 平均分 83.0（2科）",
+          "answerCode": "users = {\n    'u001': {'name': 'Alice', 'scores': [90, 85, 92]},\n    'u002': {'name': 'Bob'},\n    'u003': {'name': 'Charlie', 'scores': [78, 88]}\n}\nfor uid, info in users.items():\n    name = info.get('name', '未知')\n    scores = info.get('scores', [])\n    if scores:\n        avg = sum(scores) / len(scores)\n        print(f'{name}: 平均分 {avg:.1f}（{len(scores)}科）')\n    else:\n        print(f'{name}: 暂无成绩')\n",
+          "taskGoal": "从嵌套字典中提取特定信息，处理可能缺失的键。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "嵌套字典",
-            "汇总",
-            "查询",
-            "数据清洗"
+            "数据",
+            "字典",
+            "结构化"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "['练习', '复习', '项目']"
+              "output": "Alice: 平均分 89.0（3科）\nBob: 暂无成绩\nCharlie: 平均分 83.0（2科）"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "['练习', '复习', '项目']"
+              "expected": "Alice: 平均分 89.0（3科）\nBob: 暂无成绩\nCharlie: 平均分 83.0（2科）"
             }
           ],
-          "direction": "结构化数据",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "direction": "字典进阶",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         }
       ]
     },
@@ -8427,37 +8434,36 @@
         {
           "id": "c26-medium-006",
           "level": "进阶",
-          "title": "封装文本文件小脚本实践建议函数",
-          "text": "封装文本文件小脚本实践建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "生成练习日志摘要",
+          "text": "生成练习日志摘要：模拟读取多行练习日志，忽略空行后统计有效记录数，并输出摘要文本。",
+          "description": "模拟读取多行练习日志，忽略空行后统计有效记录数，并输出摘要文本。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "log_text = 'print 基础\\n\\n列表 进阶\\n字典 进阶'\nlines = [line.strip() for line in log_text.splitlines() if line.strip()]\nprint(f'有效记录：{len(lines)}')\n",
+          "starter": "log_text = 'print 基础\\n\\n列表 进阶\\n字典 进阶'\n# 统计有效行\n",
+          "expectedOutput": "有效记录：3",
+          "answerCode": "log_text = 'print 基础\\n\\n列表 进阶\\n字典 进阶'\nlines = [line.strip() for line in log_text.splitlines() if line.strip()]\nprint(f'有效记录：{len(lines)}')\n",
+          "taskGoal": "模拟读取多行练习日志，忽略空行后统计有效记录数，并输出摘要文本。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
-            "文本分析",
             "文件",
-            "报告",
-            "函数"
+            "文本分析",
+            "报告"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "有效记录：3"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "有效记录：3"
             }
           ],
           "direction": "文本脚本",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据和 RSS 订阅趋势生成；未复制第三方题目正文或答案。"
         },
         {
           "id": "c26-hard-007",
@@ -9762,5 +9768,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-05-13T17:24:59"
+  "updatedAt": "2026-05-27T01:24:26.356965+00:00"
 }

@@ -535,12 +535,12 @@ def main() -> dict:
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ Wrote {OUT.relative_to(ROOT)} with {len(exercises)} exercise drafts")
 
-    # 7. Import into question bank
+    # 7. Import into curated-v2 question bank
     import subprocess
     imported_count = 0
     if exercises:
         try:
-            import_script = ROOT / "scripts" / "import_latest_python_questions.py"
+            import_script = ROOT / "scripts" / "import_to_curated_bank.py"
             result = subprocess.run(
                 [sys.executable, str(import_script)],
                 capture_output=True, text=True, timeout=60,
