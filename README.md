@@ -8,8 +8,8 @@ Python 初学者在线学习平台 —— 从零基础到独立完成小项目�
 
 - **30 个核心章节**：从"Python 是什么"到"综合脚本开发流程"，覆盖 Python 基础到实际应用
 - **240 道原创优质练习题**：旧 legacy/futurecoder 混合题库已清理，重建为 30 章 × 8 题的 curated v2 题库，每章固定 3 基础、3 进阶、2 挑战
-- **React 学习工作台**：采用 Vite + React 重做前端，提供左侧导航、学习驾驶舱、课程工作台、练习题库、测验 Runner 和项目任务板
-- **后端主导业务逻辑**：课程组织、练习选择、测验判分、进度计算和 Python 运行都由后端接口负责
+- **React 学习工作台**：采用 Vite + React 重做前端，提供左侧导航、首页、课程工作台、练习题库、测验 Runner、项目任务板和后台管理入口
+- **后端主导业务逻辑**：课程组织、练习选择、测验判分、进度计算、题库导入导出和 Python 运行都由后端接口负责
 - **交互式闯关学习模式**：按顺序解锁，完成当前章节才能进入下一章
 - **8 个项目实战**：BMI 计算器、简易计算器、猜数字游戏、学生成绩管理器、待办事项管理器、文本词频统计器、个人学习记录器、文本文件分析助手
 - **章节测验与学习进度跟踪**：测验判分和进度推导在后端完成，原始学习记录仍保存在浏览器 localStorage，下次打开继续学习
@@ -152,9 +152,9 @@ python3 scripts/validate_curated_question_bank.py
 
 后端负责：
 
-- 读取并组织 `data.json` 课程数据
-- 提供课程数据、练习数据、进度摘要、测验判分和 Python 运行接口
-- 扁平化 240 道 curated v2 练习并返回当前练习的提示、答案和解析
+- 读取并组织 `data.json` 课程数据，以及 `question_banks/` 下的独立题库数据
+- 提供课程数据、练习数据、进度摘要、测验判分、题库导入导出和 Python 运行接口
+- 从当前启用题库扁平化 240 道 curated v2 练习并返回当前练习的提示、答案和解析
 - 计算章节/项目完成状态、阶段进度、学习成就和下一步推荐
 - 对章节测验进行判分并返回解析、得分和复习建议
 - 通过 `/api/run` 在后端真实 Python 环境运行代码，并返回友好错误提示
@@ -162,7 +162,7 @@ python3 scripts/validate_curated_question_bank.py
 前端 `src/main.jsx` 负责：
 
 - React App Shell、左侧导航、顶部状态栏和响应式页面切换
-- 学习驾驶舱、课程三栏工作台、练习中心、测验 Runner、项目任务板和学习报告
+- 首页、课程三栏工作台、练习中心、测验 Runner、项目任务板、学习报告和后台管理页面
 - 统一 Toast、Loading、Empty、Error 与代码运行器交互反馈
 - 使用 localStorage 保存原始学习记录
 
@@ -178,18 +178,72 @@ python3 scripts/validate_curated_question_bank.py
 
 保留旧版 `/api/page/*` HTML 片段接口以兼容历史版本，但新版 React 前端主要使用数据接口。
 
+## 题库数据结构与导入导出
+
+题库已从课程业务数据中解耦：
+
+- `data.json`：只保存课程章节、项目、知识点、测验等主体内容
+- `question_banks/manifest.json`：记录当前启用题库和可用题库列表
+- `question_banks/<bank-id>/question_bank.json`：保存具体练习题
+
+题库文件格式：
+
+```json
+{
+  "schemaVersion": "pystart-question-bank-v1",
+  "id": "curated-v2",
+  "title": "PyStart curated v2 原创题库",
+  "chapters": [
+    {
+      "chapterId": "c01",
+      "chapterTitle": "Python 是什么",
+      "exercises": [
+        {
+          "id": "c01-basic-1",
+          "title": "题目标题",
+          "level": "基础",
+          "direction": "练习方向",
+          "tags": ["print", "变量"],
+          "description": "题目说明",
+          "text": "题干",
+          "taskGoal": "任务目标",
+          "starter": "起始代码",
+          "expectedOutput": "预期输出",
+          "answer": "参考答案",
+          "answerCode": "可运行参考代码",
+          "hint": "提示",
+          "analysis": "解析",
+          "examples": [],
+          "tests": [],
+          "qualityNotes": "质量说明",
+          "source": "pystart-curated-v2"
+        }
+      ]
+    }
+  ]
+}
+```
+
+在页面右上角点击「后台管理」可进入管理页：
+
+- 点击「导出当前题库」下载当前启用题库 JSON
+- 点击「导入本地题库」选择本地 JSON 文件
+- 导入时会校验 schemaVersion、章节结构、题目必填字段、难度值、标签、示例和测试字段
+- 导入成功后后端会切换当前启用题库，前端自动刷新课程和练习数据
+- 导入失败会显示明确错误原因
+
 ## 使用指南
 
 ### 浏览器中学习
 
 1. 打开 http://127.0.0.1:8765/ 进入首页
-2. 点击「课程学习」查看所有章节
+2. 点击「学习路径」查看所有章节，或在「首页」继续当前学习
 3. 选择章节后可以：
    - 阅读知识点讲解
    - 在「知识点详解」中深入了解每个主题
    - 点击「做本章练习」进入练习中心
 4. 编写代码后点击「运行」，结果会显示在下方
-5. 也可以进入「测验中心」「项目实战」「学习报告」查看完整学习状态
+5. 也可以进入「测验中心」「项目实战」「学习报告」查看完整学习状态；右上角「后台管理」可导入/导出题库
 
 ### 学习进度
 
@@ -217,7 +271,11 @@ pystart-academy/
 ├── dist/                   # Vite 构建产物，server.py 默认托管此目录
 ├── package.json            # 前端构建脚本和依赖
 ├── vite.config.js          # Vite 配置
-├── data.json               # 课程数据（30章、240道 curated v2 题、项目、知识点）
+├── data.json               # 课程主体数据（章节、项目、知识点，不再内嵌题库）
+├── question_banks/          # 独立题库目录
+│   ├── manifest.json        # 当前启用题库和题库列表
+│   └── curated-v2/
+│       └── question_bank.json # 240 道 curated v2 练习题
 ├── server.py               # Python 后端（静态文件 + API 接口）
 ├── script.js               # 旧版前端（保留兼容）
 ├── data.js                 # 旧版数据（保留兼容）

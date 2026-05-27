@@ -4,7 +4,8 @@ from pathlib import Path
 import json
 import os
 
-from backend import data_service, page_service, progress_service, quiz_service, run_service
+from backend import data_service, page_service, progress_service, quiz_service, run_service, question_bank_service
+from backend import data_sources
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data.json"
@@ -34,11 +35,103 @@ class Handler(SimpleHTTPRequestHandler):
             payload = self.read_json_body()
             data = data_service.load_data()
             progress = payload.get("progress") or {}
+            if path == "/api/admin/auth":
+                ok = question_bank_service.verify_admin(payload.get("password", ""))
+                self.send_json({"ok": ok})
+                return
+            if path == "/api/admin/change-password":
+                result = question_bank_service.set_admin_password(payload.get("newPassword", ""))
+                self.send_json(result)
+                return
             if path == "/api/run":
                 self.send_json(run_service.run_python(payload.get("code", "")))
                 return
             if path == "/api/progress/summary":
                 self.send_json(progress_service.summarize(progress, data))
+                return
+            if path == "/api/question-bank/validate":
+                bank = payload.get("questionBank")
+                report = question_bank_service.validation_report(bank, data_service.load_course_data(), question_bank_service.load_question_bank(validate=False))
+                self.send_json({"ok": True, "validation": report})
+                return
+            if path == "/api/question-bank/import":
+                bank = payload.get("questionBank")
+                strategy = payload.get("strategy") or "replace"
+                stats = question_bank_service.import_question_bank(bank, data_service.load_course_data(), strategy)
+                data_service.clear_cache()
+                refreshed = data_service.load_data()
+                self.send_json({
+                    "ok": True,
+                    "message": "题库导入成功。",
+                    "stats": stats,
+                    "questionBank": refreshed.get("questionBank"),
+                    "bootstrap": {
+                        **data_service.bootstrap(refreshed),
+                        "stages": data_service.get_stages(refreshed),
+                        "chapters": data_service.get_chapters(refreshed),
+                        "projects": data_service.get_projects(refreshed),
+                        "practices": data_service.flatten_practices(refreshed),
+                    },
+                })
+                return
+            if path == "/api/question-bank/export":
+                self.send_json(question_bank_service.export_question_bank(payload.get("scope") or {}))
+                return
+            if path == "/api/question-bank/dashboard":
+                self.send_json(question_bank_service.dashboard_stats(data_service.load_course_data()))
+                return
+            if path == "/api/question-bank/exercise/create":
+                bank = question_bank_service.create_exercise(payload.get("chapterId"), payload.get("exercise", {}))
+                data_service.clear_cache()
+                self.send_json(bank)
+                return
+            if path == "/api/question-bank/exercise/update":
+                result = question_bank_service.update_exercise(payload.get("exerciseId"), payload.get("updates", {}))
+                data_service.clear_cache()
+                self.send_json(result)
+                return
+            if path == "/api/question-bank/exercise/delete":
+                result = question_bank_service.delete_exercise(payload.get("exerciseId"))
+                data_service.clear_cache()
+                self.send_json(result)
+                return
+            if path == "/api/question-bank/rollback":
+                result = question_bank_service.rollback_to_backup(payload.get("filename"))
+                data_service.clear_cache()
+                self.send_json(result)
+                return
+            # ── Data Source Management ──
+            if path == "/api/data-sources/create":
+                src = data_sources.add_source(
+                    payload.get("name", ""),
+                    payload.get("source_type", ""),
+                    payload.get("url", ""),
+                    schedule=payload.get("schedule", ""),
+                    enabled=payload.get("enabled", True),
+                    options=payload.get("options"),
+                )
+                self.send_json({"ok": True, "source": src.to_dict()})
+                return
+            if path == "/api/data-sources/update":
+                src = data_sources.update_source(payload.get("id", ""), payload)
+                self.send_json({"ok": True, "source": src.to_dict()})
+                return
+            if path == "/api/data-sources/delete":
+                data_sources.delete_source(payload.get("id", ""))
+                self.send_json({"ok": True})
+                return
+            if path == "/api/data-sources/trigger":
+                source_id = payload.get("id", "")
+                data_sources.trigger_import_async(source_id)
+                self.send_json({"ok": True, "message": f"导入任务已启动：{source_id}"})
+                return
+            if path == "/api/data-sources/init-presets":
+                existing = data_sources.list_sources()
+                if not existing:
+                    from backend.data_sources import PRESET_SOURCES
+                    for preset in PRESET_SOURCES:
+                        data_sources.add_source(**preset)
+                self.send_json({"ok": True, "sources": data_sources.list_sources()})
                 return
             if path == "/api/page/home":
                 self.send_json(page_service.page_home(progress, data))
@@ -63,7 +156,13 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/quiz/submit":
                 result = quiz_service.submit(payload.get("lessonId"), payload.get("answers") or [], data)
-                result["html"] = page_service.quiz_result_html(result) if result.get("ok") else {}
+                if result.get("ok"):
+                    html_parts = page_service.quiz_result_html(result)
+                    result["html"] = "".join(html_parts.values())
+                    result["htmlParts"] = html_parts
+                else:
+                    result["html"] = ""
+                    result["htmlParts"] = {}
                 self.send_json(result, 200 if result.get("ok") else 400)
                 return
             if path == "/api/page/projects":
@@ -86,12 +185,59 @@ class Handler(SimpleHTTPRequestHandler):
             try:
                 self.send_json(data_service.load_data())
             except FileNotFoundError:
-                self.send_json({"error": "data.json not found"}, 404)
+                self.send_json({"error": "data.json or question bank not found"}, 404)
             except json.JSONDecodeError as exc:
-                self.send_json({"error": "invalid data.json", "detail": str(exc)}, 500)
+                self.send_json({"error": "invalid json data", "detail": str(exc)}, 500)
+            except question_bank_service.QuestionBankError as exc:
+                self.send_json({"error": "invalid question bank", "detail": str(exc)}, 500)
+            return
+        if path == "/api/question-bank/export":
+            self.send_json(question_bank_service.load_question_bank())
+            return
+        if path == "/api/system/status":
+            data = data_service.load_course_data()
+            self.send_json(question_bank_service.system_status(data))
+            return
+        if path == "/api/question-bank/dashboard":
+            data = data_service.load_course_data()
+            self.send_json(question_bank_service.dashboard_stats(data))
+            return
+        if path == "/api/question-bank/versions":
+            self.send_json({"ok": True, "backups": question_bank_service.list_backups()})
+            return
+        if path == "/api/data-sources":
+            self.send_json({"ok": True, "sources": data_sources.list_sources()})
+            return
+        if path == "/api/data-sources/logs":
+            self.send_json({"ok": True, "logs": data_sources.get_logs()})
+            return
+        if path == "/api/data-sources/status":
+            self.send_json({"ok": True, "scheduler": data_sources.get_scheduler_status()})
+            return
+        if path == "/api/data-sources/presets":
+            from backend.data_sources import PRESET_SOURCES
+            self.send_json({"ok": True, "presets": PRESET_SOURCES})
+            return
+        if path == "/api/question-bank/exercise":
+            exercise_id = self.path.split("id=", 1)[1].split("&", 1)[0] if "id=" in self.path else ""
+            found = question_bank_service.get_exercise(exercise_id)
+            if found:
+                self.send_json({"ok": True, **found})
+            else:
+                self.send_json({"ok": False, "error": f"找不到题目：{exercise_id}"}, 404)
             return
         if path == "/api/app/bootstrap":
-            self.send_json({**data_service.bootstrap(), **page_service.course_controls()})
+            data = data_service.load_data()
+            self.send_json({
+                **data_service.bootstrap(data),
+                **page_service.course_controls(data),
+                "stages": data_service.get_stages(data),
+                "chapters": data_service.get_chapters(data),
+                "projects": data_service.get_projects(data),
+                "practices": data_service.flatten_practices(data),
+                "questionBank": data.get("questionBank"),
+                "systemStatus": question_bank_service.system_status(data_service.load_course_data()),
+            })
             return
         dist = ROOT / "dist"
         if dist.exists():
@@ -106,6 +252,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8765"))
+    data_sources.start_scheduler()
     server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
     print(f"PyStart backend running: http://127.0.0.1:{port}/")
     print(f"API: http://127.0.0.1:{port}/api/app/bootstrap")

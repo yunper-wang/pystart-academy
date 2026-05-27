@@ -10,7 +10,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA_FILE = ROOT / "data.json"
+DATA_FILE = ROOT / "question_banks" / "curated-v2" / "question_bank.json"
 SOURCE = "pystart-curated-v2"
 REQUIRED = [
     "id", "title", "level", "direction", "tags", "description", "text",
@@ -40,8 +40,8 @@ def run_code(code: str) -> tuple[bool, str]:
 
 
 def main() -> None:
-    data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
-    chapters = data.get("chapters", [])
+    bank = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    chapters = [{"id": c.get("chapterId"), "exercises": c.get("exercises", [])} for c in bank.get("chapters", [])]
     errors: list[str] = []
     total = 0
     all_sources = Counter()
