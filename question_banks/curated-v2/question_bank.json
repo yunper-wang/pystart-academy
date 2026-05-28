@@ -80,37 +80,36 @@
         {
           "id": "c01-easy-003",
           "level": "基础",
-          "title": "整理Python 是什么关键词",
-          "text": "整理Python 是什么关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "用 print 输出学习目标",
+          "text": "用 print 输出学习目标：用 print 输出'掌握 Python 基础'，体验最简脚本。",
+          "description": "用 print 输出'掌握 Python 基础'，体验最简脚本。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "print(\"掌握 Python 基础\")",
+          "starter": "# 输出学习目标",
+          "expectedOutput": "掌握 Python 基础",
+          "answerCode": "print(\"掌握 Python 基础\")",
+          "taskGoal": "用 print 输出'掌握 Python 基础'，体验最简脚本。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "print",
             "脚本结构",
-            "注释",
-            "列表"
+            "注释"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "掌握 Python 基础"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "掌握 Python 基础"
             }
           ],
           "direction": "Python 基础语法",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Quiz: I/O Operations and String Formatting, PyCharm: Build a Live Object Detection App for the Reachy Mini With TensorFlow and PyCharm, Real Python: Sending Emails With Python"
         },
         {
           "id": "c01-medium-004",
@@ -755,37 +754,36 @@
         {
           "id": "c03-medium-006",
           "level": "进阶",
-          "title": "封装变量与命名规则建议函数",
-          "text": "封装变量与命名规则建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "变量命名规范检查",
+          "text": "变量命名规范检查：给定一组变量名，判断哪些是合法的 Python 变量名。",
+          "description": "给定一组变量名，判断哪些是合法的 Python 变量名。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "names = ['my_var', '2nd', '_private', 'my-var', 'class']\nimport keyword\nvalid = [n for n in names if n.isidentifier() and not keyword.iskeyword(n)]\nprint(valid)",
+          "starter": "names = ['my_var', '2nd', '_private', 'my-var', 'class']\n# 输出合法的变量名",
+          "expectedOutput": "['my_var', '_private']",
+          "answerCode": "names = ['my_var', '2nd', '_private', 'my-var', 'class']\nimport keyword\nvalid = [n for n in names if n.isidentifier() and not keyword.iskeyword(n)]\nprint(valid)",
+          "taskGoal": "给定一组变量名，判断哪些是合法的 Python 变量名。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "变量",
             "命名",
-            "赋值",
-            "函数"
+            "赋值"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "['my_var', '_private']"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "['my_var', '_private']"
             }
           ],
           "direction": "变量与命名",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：VijayNathMishra/Python-Practice-Questions-Variables-to-Dictionary-, Bibekydv64/Python-Logic-Mastery, tomsmithchef/python-tutorial-library"
         },
         {
           "id": "c03-hard-007",
@@ -935,37 +933,36 @@
         {
           "id": "c04-easy-003",
           "level": "基础",
-          "title": "整理数字、字符串、布尔值关键词",
-          "text": "整理数字、字符串、布尔值关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "类型转换练习",
+          "text": "类型转换练习：把字符串 '42' 转为整数，与 8 相加后输出。",
+          "description": "把字符串 '42' 转为整数，与 8 相加后输出。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "value = '42'\nresult = int(value) + 8\nprint(result)",
+          "starter": "value = '42'\n# 转换并求和",
+          "expectedOutput": "50",
+          "answerCode": "value = '42'\nresult = int(value) + 8\nprint(result)",
+          "taskGoal": "把字符串 '42' 转为整数，与 8 相加后输出。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "数字",
             "字符串",
-            "布尔值",
-            "列表"
+            "布尔值"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "50"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "50"
             }
           ],
           "direction": "基础数据类型",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Quiz: Python Data Structures, Python GUIs: Fixing Missing Icons in PyInstaller-Packaged PyQt6 Applications on Windows — Why your app icon disappears after packaging and how to fix it, Real Python: Quiz: Python Data Structures"
         },
         {
           "id": "c04-medium-004",
@@ -1325,37 +1322,36 @@
         {
           "id": "c05-medium-006",
           "level": "进阶",
-          "title": "封装输入和输出建议函数",
-          "text": "封装输入和输出建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "格式化输出名片",
+          "text": "格式化输出名片：用 f-string 输出姓名和年龄。",
+          "description": "用 f-string 输出姓名和年龄。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "name = '小明'\nage = 20\nprint(f\"{name}，{age}岁\")",
+          "starter": "name = '小明'\nage = 20\n# 输出：小明，20岁",
+          "expectedOutput": "小明，20岁",
+          "answerCode": "name = '小明'\nage = 20\nprint(f\"{name}，{age}岁\")",
+          "taskGoal": "用 f-string 输出姓名和年龄。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "输出",
             "字符串格式化",
-            "交互思维",
-            "函数"
+            "交互思维"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "小明，20岁"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "小明，20岁"
             }
           ],
           "direction": "输入输出",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：mansi-tomar-sudo/calculator-project-, PyCoder’s Weekly: Issue #736: Polars Sort-Merge Joins, Zen, Resolving Lazy Imports, and More (2026-05-26)"
         },
         {
           "id": "c05-hard-007",
@@ -1610,37 +1606,36 @@
         {
           "id": "c06-medium-006",
           "level": "进阶",
-          "title": "封装运算符建议函数",
-          "text": "封装运算符建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "逻辑运算组合",
+          "text": "逻辑运算组合：判断 age 在 18-60 之间且 employed 为 True。",
+          "description": "判断 age 在 18-60 之间且 employed 为 True。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "age = 25\nemployed = True\nif 18 <= age <= 60 and employed:\n    print(\"在职工作年龄\")\nelse:\n    print(\"其他\")",
+          "starter": "age = 25\nemployed = True\n# 判断是否为在职工作年龄",
+          "expectedOutput": "在职工作年龄",
+          "answerCode": "age = 25\nemployed = True\nif 18 <= age <= 60 and employed:\n    print(\"在职工作年龄\")\nelse:\n    print(\"其他\")",
+          "taskGoal": "判断 age 在 18-60 之间且 employed 为 True。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "算术运算",
             "比较运算",
-            "逻辑运算",
-            "函数"
+            "逻辑运算"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "在职工作年龄"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "在职工作年龄"
             }
           ],
           "direction": "运算符",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Real Python: Quiz: Object-Oriented Programming (OOP) in Python"
         },
         {
           "id": "c06-hard-007",
@@ -2067,16 +2062,16 @@
         {
           "id": "c08-easy-003",
           "level": "基础",
-          "title": "while 倒计时",
-          "text": "while 倒计时：从 3 倒数到 1，每行输出一个数字。",
-          "description": "从 3 倒数到 1，每行输出一个数字。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1\n",
-          "starter": "n = 3\n# while 倒计时\n",
-          "expectedOutput": "3\n2\n1",
-          "answerCode": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1\n",
-          "taskGoal": "从 3 倒数到 1，每行输出一个数字。",
-          "analysis": "while 需要手动更新条件变量，否则容易死循环。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "循环求和 1 到 100",
+          "text": "循环求和 1 到 100：用 for 循环计算 1+2+...+100。",
+          "description": "用 for 循环计算 1+2+...+100。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "total = 0\nfor i in range(1, 101):\n    total += i\nprint(total)",
+          "starter": "# 计算 1 到 100 的和",
+          "expectedOutput": "5050",
+          "answerCode": "total = 0\nfor i in range(1, 101):\n    total += i\nprint(total)",
+          "taskGoal": "用 for 循环计算 1+2+...+100。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "for",
             "while",
@@ -2085,18 +2080,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "3\n2\n1"
+              "output": "5050"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "3\n2\n1"
+              "expected": "5050"
             }
           ],
           "direction": "循环",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：iaryaguptaa/quiz-application-python"
         },
         {
           "id": "c08-medium-004",
@@ -2451,37 +2446,36 @@
         {
           "id": "c09-medium-006",
           "level": "进阶",
-          "title": "封装break 和 continue建议函数",
-          "text": "封装break 和 continue建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "查找第一个偶数",
+          "text": "查找第一个偶数：在列表中找到第一个偶数并停止。",
+          "description": "在列表中找到第一个偶数并停止。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "starter": "nums = [1, 3, 4, 6, 8]\n# 找到第一个偶数",
+          "expectedOutput": "找到：4",
+          "answerCode": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "taskGoal": "在列表中找到第一个偶数并停止。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "break",
             "continue",
-            "搜索",
-            "函数"
+            "搜索"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "找到：4"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "找到：4"
             }
           ],
           "direction": "循环控制",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：PyPy: PyPy v7.3.23 release"
         },
         {
           "id": "c09-hard-007",
@@ -3014,37 +3008,36 @@
         {
           "id": "c11-medium-006",
           "level": "进阶",
-          "title": "封装列表和元组建议函数",
-          "text": "封装列表和元组建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "元组解包",
+          "text": "元组解包：解包元组并输出各字段。",
+          "description": "解包元组并输出各字段。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "record = ('小明', 20, 85)\nname, age, score = record\nprint(f\"姓名：{name}，年龄：{age}，分数：{score}\")",
+          "starter": "record = ('小明', 20, 85)\n# 解包并输出",
+          "expectedOutput": "姓名：小明，年龄：20，分数：85",
+          "answerCode": "record = ('小明', 20, 85)\nname, age, score = record\nprint(f\"姓名：{name}，年龄：{age}，分数：{score}\")",
+          "taskGoal": "解包元组并输出各字段。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "列表",
             "切片",
-            "元组",
-            "函数"
+            "元组"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "姓名：小明，年龄：20，分数：85"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "姓名：小明，年龄：20，分数：85"
             }
           ],
           "direction": "列表与元组",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：parakhpratyush/Python-DSA, Sending Emails With Python"
         },
         {
           "id": "c11-hard-007",
@@ -8529,5 +8522,6 @@
         }
       ]
     }
-  ]
+  ],
+  "updatedAt": "2026-05-28T18:00:32.526577+00:00"
 }
