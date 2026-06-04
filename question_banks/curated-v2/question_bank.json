@@ -2726,16 +2726,16 @@
         {
           "id": "c10-medium-006",
           "level": "进阶",
-          "title": "统计关键词次数",
-          "text": "统计关键词次数：不区分大小写统计 Python 出现次数。",
-          "description": "不区分大小写统计 Python 出现次数。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "text = \"Python is fun. I use python to learn PYTHON.\"\ncount = text.lower().count(\"python\")\nprint(\"出现次数：\" + str(count))\n",
-          "starter": "text = \"Python is fun. I use python to learn PYTHON.\"\n# 统计次数\n",
-          "expectedOutput": "出现次数：3",
-          "answerCode": "text = \"Python is fun. I use python to learn PYTHON.\"\ncount = text.lower().count(\"python\")\nprint(\"出现次数：\" + str(count))\n",
-          "taskGoal": "不区分大小写统计 Python 出现次数。",
-          "analysis": "先统一大小写，再统计关键词，是文本分析的基础流程。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "解析 CSV 行",
+          "text": "解析 CSV 行：把 CSV 行拆成字段列表。",
+          "description": "把 CSV 行拆成字段列表。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "line = 'Python,85,进阶'\nfields = line.split(',')\nprint(fields)",
+          "starter": "line = 'Python,85,进阶'\n# 解析为列表",
+          "expectedOutput": "['Python', '85', '进阶']",
+          "answerCode": "line = 'Python,85,进阶'\nfields = line.split(',')\nprint(fields)",
+          "taskGoal": "把 CSV 行拆成字段列表。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "strip",
             "split",
@@ -2744,18 +2744,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "出现次数：3"
+              "output": "['Python', '85', '进阶']"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "出现次数：3"
+              "expected": "['Python', '85', '进阶']"
             }
           ],
           "direction": "字符串",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Django Weblog: Django security releases issued: 6.0.6 and 5.2.15"
         },
         {
           "id": "c10-hard-007",
@@ -2903,37 +2903,36 @@
         {
           "id": "c11-easy-003",
           "level": "基础",
-          "title": "整理列表和元组关键词",
-          "text": "整理列表和元组关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "列表切片练习",
+          "text": "列表切片练习：取列表的前3个元素。",
+          "description": "取列表的前3个元素。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "nums = [10, 20, 30, 40, 50]\nprint(nums[:3])",
+          "starter": "nums = [10, 20, 30, 40, 50]\n# 取前3个",
+          "expectedOutput": "[10, 20, 30]",
+          "answerCode": "nums = [10, 20, 30, 40, 50]\nprint(nums[:3])",
+          "taskGoal": "取列表的前3个元素。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "列表",
             "切片",
-            "元组",
-            "列表"
+            "元组"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "[10, 20, 30]"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "[10, 20, 30]"
             }
           ],
           "direction": "列表与元组",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Sending Emails With Python"
         },
         {
           "id": "c11-medium-004",
@@ -8523,5 +8522,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-05-28T18:00:32.526577+00:00"
+  "updatedAt": "2026-06-04T18:00:30.383540+00:00"
 }
