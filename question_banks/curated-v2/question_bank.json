@@ -80,15 +80,15 @@
         {
           "id": "c01-easy-003",
           "level": "基础",
-          "title": "用 print 输出学习目标",
-          "text": "用 print 输出学习目标：用 print 输出'掌握 Python 基础'，体验最简脚本。",
-          "description": "用 print 输出'掌握 Python 基础'，体验最简脚本。",
+          "title": "输出课程欢迎信息",
+          "text": "输出课程欢迎信息：用 print 输出'欢迎来到 PyStart Academy'。",
+          "description": "用 print 输出'欢迎来到 PyStart Academy'。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "print(\"掌握 Python 基础\")",
-          "starter": "# 输出学习目标",
-          "expectedOutput": "掌握 Python 基础",
-          "answerCode": "print(\"掌握 Python 基础\")",
-          "taskGoal": "用 print 输出'掌握 Python 基础'，体验最简脚本。",
+          "answer": "print(\"欢迎来到 PyStart Academy\")",
+          "starter": "# 输出欢迎信息",
+          "expectedOutput": "欢迎来到 PyStart Academy",
+          "answerCode": "print(\"欢迎来到 PyStart Academy\")",
+          "taskGoal": "用 print 输出'欢迎来到 PyStart Academy'。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "print",
@@ -98,18 +98,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "掌握 Python 基础"
+              "output": "欢迎来到 PyStart Academy"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "掌握 Python 基础"
+              "expected": "欢迎来到 PyStart Academy"
             }
           ],
           "direction": "Python 基础语法",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Quiz: I/O Operations and String Formatting, PyCharm: Build a Live Object Detection App for the Reachy Mini With TensorFlow and PyCharm, Real Python: Sending Emails With Python"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：EuroPython Society: EuroPython Society at PyCon US 2026, Adrarsh Divakaran: Building AI Agents in Python"
         },
         {
           "id": "c01-medium-004",
@@ -649,37 +649,36 @@
         {
           "id": "c03-easy-003",
           "level": "基础",
-          "title": "整理变量与命名规则关键词",
-          "text": "整理变量与命名规则关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "变量交换练习",
+          "text": "变量交换练习：交换 a 和 b 的值并输出。",
+          "description": "交换 a 和 b 的值并输出。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "a = 10\nb = 20\na, b = b, a\nprint(f\"a={a}, b={b}\")",
+          "starter": "a = 10\nb = 20\n# 交换 a 和 b",
+          "expectedOutput": "a=20, b=10",
+          "answerCode": "a = 10\nb = 20\na, b = b, a\nprint(f\"a={a}, b={b}\")",
+          "taskGoal": "交换 a 和 b 的值并输出。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "变量",
             "命名",
-            "赋值",
-            "列表"
+            "赋值"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "a=20, b=10"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "a=20, b=10"
             }
           ],
           "direction": "变量与命名",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：VijayNathMishra/Python-Practice-Questions-Variables-to-Dictionary-, Bibekydv64/Python-Logic-Mastery, mohakoffical67/Minecraft-Quiz"
         },
         {
           "id": "c03-medium-004",
@@ -1037,37 +1036,36 @@
         {
           "id": "c04-medium-006",
           "level": "进阶",
-          "title": "封装数字、字符串、布尔值建议函数",
-          "text": "封装数字、字符串、布尔值建议函数：定义函数 suggest，根据 score 返回复习建议。",
-          "description": "定义函数 suggest，根据 score 返回复习建议。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "starter": "def suggest(score):\n    pass\n\nprint(suggest(85))\n",
-          "expectedOutput": "继续挑战",
-          "answerCode": "def suggest(score):\n    if score >= 80:\n        return \"继续挑战\"\n    return \"先复习基础\"\n\nprint(suggest(85))\n",
-          "taskGoal": "定义函数 suggest，根据 score 返回复习建议。",
-          "analysis": "函数把判断逻辑封装起来，调用者只需要传入分数并使用返回结果。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "数据类型判断",
+          "text": "数据类型判断：判断一组数据的类型并输出类型名列表。",
+          "description": "判断一组数据的类型并输出类型名列表。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "data = [42, 'hello', 3.14, True, None]\nprint([type(x).__name__ for x in data])",
+          "starter": "data = [42, 'hello', 3.14, True, None]\n# 输出类型名",
+          "expectedOutput": "['int', 'str', 'float', 'bool', 'NoneType']",
+          "answerCode": "data = [42, 'hello', 3.14, True, None]\nprint([type(x).__name__ for x in data])",
+          "taskGoal": "判断一组数据的类型并输出类型名列表。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "数字",
             "字符串",
-            "布尔值",
-            "函数"
+            "布尔值"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "继续挑战"
+              "output": "['int', 'str', 'float', 'bool', 'NoneType']"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "继续挑战"
+              "expected": "['int', 'str', 'float', 'bool', 'NoneType']"
             }
           ],
           "direction": "基础数据类型",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：baratambalaji1-ai/100-python-coding-questions, Quiz: Python's Format Mini-Language for Tidy Strings, death and gravity: Ordered key sharding in DynamoDB"
         },
         {
           "id": "c04-hard-007",
@@ -1391,37 +1389,36 @@
         {
           "id": "c05-hard-008",
           "level": "挑战",
-          "title": "构建输入和输出任务流水线",
-          "text": "构建输入和输出任务流水线：把 raw 中的任务清洗、去空、去重后输出。",
-          "description": "把 raw 中的任务清洗、去空、去重后输出。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "starter": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\n# 清洗并保持顺序去重\n",
-          "expectedOutput": "['练习', '复习', '项目']",
-          "answerCode": "raw = ['  练习  ', '', '复习', '练习', ' 项目 ']\nresult = []\nfor item in raw:\n    clean_item = item.strip()\n    if clean_item and clean_item not in result:\n        result.append(clean_item)\nprint(result)\n",
-          "taskGoal": "把 raw 中的任务清洗、去空、去重后输出。",
-          "analysis": "这是常见脚本流水线：清洗空白、过滤无效值、去重并保持顺序。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "多行格式化输出",
+          "text": "多行格式化输出：输出一份包含标题、分隔线和内容的简易报告。",
+          "description": "输出一份包含标题、分隔线和内容的简易报告。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "title = '学习报告'\ncount = 5\nprint(f\"=== {title} ===\")\nprint(f\"完成 {count} 题\")",
+          "starter": "title = '学习报告'\ncount = 5\n# 输出带分隔线的报告",
+          "expectedOutput": "=== 学习报告 ===\n完成 5 题",
+          "answerCode": "title = '学习报告'\ncount = 5\nprint(f\"=== {title} ===\")\nprint(f\"完成 {count} 题\")",
+          "taskGoal": "输出一份包含标题、分隔线和内容的简易报告。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "输出",
             "字符串格式化",
-            "交互思维",
-            "数据清洗"
+            "交互思维"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "['练习', '复习', '项目']"
+              "output": "=== 学习报告 ===\n完成 5 题"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "['练习', '复习', '项目']"
+              "expected": "=== 学习报告 ===\n完成 5 题"
             }
           ],
           "direction": "输入输出",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Quiz: How to Read User Input From the Keyboard in Python, Eli Bendersky: Plugins case study: mdBook preprocessors, Real Python: Quiz: How to Read User Input From the Keyboard in Python"
         }
       ]
     },
@@ -3186,37 +3183,36 @@
         {
           "id": "c12-easy-003",
           "level": "基础",
-          "title": "整理字典和集合关键词",
-          "text": "整理字典和集合关键词：把 3 个关键词放入列表并输出列表长度。",
-          "description": "把 3 个关键词放入列表并输出列表长度。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "starter": "keywords = []\n# 添加 3 个关键词并输出数量\n",
-          "expectedOutput": "关键词数量：3",
-          "answerCode": "keywords = [\"概念\", \"语法\", \"练习\"]\nprint(\"关键词数量：\" + str(len(keywords)))\n",
-          "taskGoal": "把 3 个关键词放入列表并输出列表长度。",
-          "analysis": "列表适合保存一组同类信息，len 可以快速获得数量。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "集合去重",
+          "text": "集合去重：用集合去除重复标签。",
+          "description": "用集合去除重复标签。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "tags = ['python', 'loop', 'python', 'list', 'loop']\nunique = set(tags)\nprint(unique)",
+          "starter": "tags = ['python', 'loop', 'python', 'list', 'loop']\n# 去重",
+          "expectedOutput": "{'python', 'loop', 'list'}",
+          "answerCode": "tags = ['python', 'loop', 'python', 'list', 'loop']\nunique = set(tags)\nprint(unique)",
+          "taskGoal": "用集合去除重复标签。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "字典",
             "集合",
-            "统计",
-            "列表"
+            "统计"
           ],
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "关键词数量：3"
+              "output": "{'python', 'loop', 'list'}"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "关键词数量：3"
+              "expected": "{'python', 'loop', 'list'}"
             }
           ],
           "direction": "字典与集合",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Harshita0875/Quiz-Management-System, Piyali-Narnaware/AI-based-Skincare-routine-recommendation, slinax/quiz-poo-python"
         },
         {
           "id": "c12-medium-004",
@@ -8522,5 +8518,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-06-04T18:00:30.383540+00:00"
+  "updatedAt": "2026-06-08T18:03:11.834356+00:00"
 }
