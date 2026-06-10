@@ -80,15 +80,15 @@
         {
           "id": "c01-easy-003",
           "level": "基础",
-          "title": "输出课程欢迎信息",
-          "text": "输出课程欢迎信息：用 print 输出'欢迎来到 PyStart Academy'。",
-          "description": "用 print 输出'欢迎来到 PyStart Academy'。",
+          "title": "多行输出学习路线",
+          "text": "多行输出学习路线：用三条 print 语句分别输出'基础→进阶→挑战'。",
+          "description": "用三条 print 语句分别输出'基础→进阶→挑战'。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "print(\"欢迎来到 PyStart Academy\")",
-          "starter": "# 输出欢迎信息",
-          "expectedOutput": "欢迎来到 PyStart Academy",
-          "answerCode": "print(\"欢迎来到 PyStart Academy\")",
-          "taskGoal": "用 print 输出'欢迎来到 PyStart Academy'。",
+          "answer": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
+          "starter": "# 输出学习路线",
+          "expectedOutput": "基础\n进阶\n挑战",
+          "answerCode": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
+          "taskGoal": "用三条 print 语句分别输出'基础→进阶→挑战'。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "print",
@@ -98,18 +98,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "欢迎来到 PyStart Academy"
+              "output": "基础\n进阶\n挑战"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "欢迎来到 PyStart Academy"
+              "expected": "基础\n进阶\n挑战"
             }
           ],
           "direction": "Python 基础语法",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：EuroPython Society: EuroPython Society at PyCon US 2026, Adrarsh Divakaran: Building AI Agents in Python"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Bhavitha-indugu/-30-Days-Coding-Challenge-Phase-1-7-Day-Sprint-Completed-"
         },
         {
           "id": "c01-medium-004",
@@ -1883,16 +1883,16 @@
         {
           "id": "c07-medium-006",
           "level": "进阶",
-          "title": "库存告警",
-          "text": "库存告警：stock 为 3，threshold 为 5，库存不足时输出“需要补货”。",
-          "description": "stock 为 3，threshold 为 5，库存不足时输出“需要补货”。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "stock = 3\nthreshold = 5\nif stock < threshold:\n    print(\"需要补货\")\nelse:\n    print(\"库存充足\")\n",
-          "starter": "stock = 3\nthreshold = 5\n# 判断库存\n",
-          "expectedOutput": "需要补货",
-          "answerCode": "stock = 3\nthreshold = 5\nif stock < threshold:\n    print(\"需要补货\")\nelse:\n    print(\"库存充足\")\n",
-          "taskGoal": "stock 为 3，threshold 为 5，库存不足时输出“需要补货”。",
-          "analysis": "条件判断常用于业务告警，把阈值单独存成变量方便维护。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "多条件优惠判断",
+          "text": "多条件优惠判断：会员且消费满100打8折，否则原价。",
+          "description": "会员且消费满100打8折，否则原价。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "is_member = True\namount = 150\nif is_member and amount >= 100:\n    pay = amount * 0.8\nelse:\n    pay = amount\nprint(f\"应付：{pay}\")",
+          "starter": "is_member = True\namount = 150\n# 计算应付金额",
+          "expectedOutput": "应付：120.0",
+          "answerCode": "is_member = True\namount = 150\nif is_member and amount >= 100:\n    pay = amount * 0.8\nelse:\n    pay = amount\nprint(f\"应付：{pay}\")",
+          "taskGoal": "会员且消费满100打8折，否则原价。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "if",
             "elif",
@@ -1901,18 +1901,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "需要补货"
+              "output": "应付：120.0"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "需要补货"
+              "expected": "应付：120.0"
             }
           ],
           "direction": "条件判断",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：jyothsnagokavalasa196-blip/30-Days-Coding-Challenge-Phase-1-Python-Problem-Solving-Journey, Python GUIs: How to Set Row Background Colors in a QTableView — Use Qt's BackgroundRole to color entire rows based on your data"
         },
         {
           "id": "c07-hard-007",
@@ -2443,15 +2443,15 @@
         {
           "id": "c09-medium-006",
           "level": "进阶",
-          "title": "查找第一个偶数",
-          "text": "查找第一个偶数：在列表中找到第一个偶数并停止。",
-          "description": "在列表中找到第一个偶数并停止。",
+          "title": "跳过负数求和",
+          "text": "跳过负数求和：遍历列表，跳过负数，求正数之和。",
+          "description": "遍历列表，跳过负数，求正数之和。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
-          "starter": "nums = [1, 3, 4, 6, 8]\n# 找到第一个偶数",
-          "expectedOutput": "找到：4",
-          "answerCode": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
-          "taskGoal": "在列表中找到第一个偶数并停止。",
+          "answer": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
+          "starter": "nums = [3, -1, 5, -2, 8]\n# 求正数之和",
+          "expectedOutput": "16",
+          "answerCode": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
+          "taskGoal": "遍历列表，跳过负数，求正数之和。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "break",
@@ -2461,18 +2461,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "找到：4"
+              "output": "16"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "找到：4"
+              "expected": "16"
             }
           ],
           "direction": "循环控制",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：PyPy: PyPy v7.3.23 release"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Hynek Schlawack: How to Ditch Codecov for Python Projects"
         },
         {
           "id": "c09-hard-007",
@@ -8518,5 +8518,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-06-08T18:03:11.834356+00:00"
+  "updatedAt": "2026-06-10T18:00:41.915912+00:00"
 }
