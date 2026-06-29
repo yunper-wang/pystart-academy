@@ -80,15 +80,15 @@
         {
           "id": "c01-easy-003",
           "level": "基础",
-          "title": "多行输出学习路线",
-          "text": "多行输出学习路线：用三条 print 语句分别输出'基础→进阶→挑战'。",
-          "description": "用三条 print 语句分别输出'基础→进阶→挑战'。",
+          "title": "输出课程欢迎信息",
+          "text": "输出课程欢迎信息：用 print 输出'欢迎来到 PyStart Academy'。",
+          "description": "用 print 输出'欢迎来到 PyStart Academy'。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
-          "starter": "# 输出学习路线",
-          "expectedOutput": "基础\n进阶\n挑战",
-          "answerCode": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
-          "taskGoal": "用三条 print 语句分别输出'基础→进阶→挑战'。",
+          "answer": "print(\"欢迎来到 PyStart Academy\")",
+          "starter": "# 输出欢迎信息",
+          "expectedOutput": "欢迎来到 PyStart Academy",
+          "answerCode": "print(\"欢迎来到 PyStart Academy\")",
+          "taskGoal": "用 print 输出'欢迎来到 PyStart Academy'。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "print",
@@ -98,18 +98,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "基础\n进阶\n挑战"
+              "output": "欢迎来到 PyStart Academy"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "基础\n进阶\n挑战"
+              "expected": "欢迎来到 PyStart Academy"
             }
           ],
           "direction": "Python 基础语法",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Bhavitha-indugu/-30-Days-Coding-Challenge-Phase-1-7-Day-Sprint-Completed-"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Go Deh: Sparse Ranges, Bob Belderbos: There Is No Magic: An AI Agent in 60 Lines of Python, PyCharm: Explicit Lazy Imports Are Coming to Python 3.15"
         },
         {
           "id": "c01-medium-004",
@@ -2229,16 +2229,16 @@
         {
           "id": "c08-hard-008",
           "level": "挑战",
-          "title": "循环生成学习报告",
-          "text": "循环生成学习报告：根据 records 输出每门课是否达标。",
-          "description": "根据 records 输出每门课是否达标。",
-          "hint": "先写出固定数据，再按“处理数据 → print 输出”的顺序完成。",
-          "answer": "records = [(\"变量\", 80), (\"循环\", 55)]\nfor name, score in records:\n    status = \"达标\" if score >= 60 else \"复习\"\n    print(f\"{name}：{status}\")\n",
-          "starter": "records = [(\"变量\", 80), (\"循环\", 55)]\n# 输出课程状态\n",
-          "expectedOutput": "变量：达标\n循环：复习",
-          "answerCode": "records = [(\"变量\", 80), (\"循环\", 55)]\nfor name, score in records:\n    status = \"达标\" if score >= 60 else \"复习\"\n    print(f\"{name}：{status}\")\n",
-          "taskGoal": "根据 records 输出每门课是否达标。",
-          "analysis": "循环、解包、条件表达式组合后可以生成简短报表。 这类题训练的是把需求翻译成清晰代码的能力，先保证结果正确，再关注写法是否容易阅读。",
+          "title": "while 猜数字",
+          "text": "while 猜数字：模拟猜数字：target=7，guesses=[3,8,5,7]，输出猜了几次。",
+          "description": "模拟猜数字：target=7，guesses=[3,8,5,7]，输出猜了几次。",
+          "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+          "answer": "target = 7\nguesses = [3, 8, 5, 7]\nfor i, g in enumerate(guesses, 1):\n    if g == target:\n        print(f\"第{i}次猜对！\")\n        break",
+          "starter": "target = 7\nguesses = [3, 8, 5, 7]\n# 统计猜了几次",
+          "expectedOutput": "第4次猜对！",
+          "answerCode": "target = 7\nguesses = [3, 8, 5, 7]\nfor i, g in enumerate(guesses, 1):\n    if g == target:\n        print(f\"第{i}次猜对！\")\n        break",
+          "taskGoal": "模拟猜数字：target=7，guesses=[3,8,5,7]，输出猜了几次。",
+          "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "for",
             "while",
@@ -2247,18 +2247,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "变量：达标\n循环：复习"
+              "output": "第4次猜对！"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "变量：达标\n循环：复习"
+              "expected": "第4次猜对！"
             }
           ],
           "direction": "循环",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "原创 curated v2 题：题干有真实小场景，起始代码不直接暴露答案，参考答案可运行，输出可自动校验。"
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：akshatas28/python-problem-solving, Deepukumar12/Python-Mastery-Notes-Practice-Projects, shruthi1814/daily_python"
         }
       ]
     },
@@ -2443,15 +2443,15 @@
         {
           "id": "c09-medium-006",
           "level": "进阶",
-          "title": "跳过负数求和",
-          "text": "跳过负数求和：遍历列表，跳过负数，求正数之和。",
-          "description": "遍历列表，跳过负数，求正数之和。",
+          "title": "查找第一个偶数",
+          "text": "查找第一个偶数：在列表中找到第一个偶数并停止。",
+          "description": "在列表中找到第一个偶数并停止。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
-          "starter": "nums = [3, -1, 5, -2, 8]\n# 求正数之和",
-          "expectedOutput": "16",
-          "answerCode": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
-          "taskGoal": "遍历列表，跳过负数，求正数之和。",
+          "answer": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "starter": "nums = [1, 3, 4, 6, 8]\n# 找到第一个偶数",
+          "expectedOutput": "找到：4",
+          "answerCode": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "taskGoal": "在列表中找到第一个偶数并停止。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "break",
@@ -2461,18 +2461,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "16"
+              "output": "找到：4"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "16"
+              "expected": "找到：4"
             }
           ],
           "direction": "循环控制",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Hynek Schlawack: How to Ditch Codecov for Python Projects"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Django Weblog: How the Django Software Foundation Became a CNA, Bob Belderbos: Python Is Not Enough: Why Pythonistas Love Rust (Podcast)"
         },
         {
           "id": "c09-hard-007",
@@ -3287,15 +3287,15 @@
         {
           "id": "c12-medium-006",
           "level": "进阶",
-          "title": "统计练习题标签热度",
-          "text": "统计练习题标签热度：给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
-          "description": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+          "title": "字典计数统计",
+          "text": "字典计数统计：统计列表中每个元素出现次数。",
+          "description": "统计列表中每个元素出现次数。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "starter": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\n# 统计最高频标签\n",
-          "expectedOutput": "dict:3",
-          "answer": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
-          "answerCode": "tags = ['list', 'dict', 'quiz', 'dict', 'quiz', 'dict']\ncounts = {}\nfor tag in tags:\n    counts[tag] = counts.get(tag, 0) + 1\ntop = max(counts, key=counts.get)\nprint(f'{top}:{counts[top]}')\n",
-          "taskGoal": "给定一组从公开练习仓库归纳出的标签，统计每个标签出现次数，并输出出现次数最多的标签。",
+          "answer": "words = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts)",
+          "starter": "words = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\n# 统计次数",
+          "expectedOutput": "{'apple': 3, 'banana': 2, 'cherry': 1}",
+          "answerCode": "words = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts)",
+          "taskGoal": "统计列表中每个元素出现次数。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "字典",
@@ -3305,18 +3305,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "dict:3"
+              "output": "{'apple': 3, 'banana': 2, 'cherry': 1}"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "dict:3"
+              "expected": "{'apple': 3, 'banana': 2, 'cherry': 1}"
             }
           ],
-          "direction": "结构化数据",
-          "source": "pystart-curated-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；未复制第三方题目正文或答案。 趋势信号：Cathaedulissnowbird524/kahoot-auto-answer-bot、c-akanksha/learniverse-backend、suryakantsamantray2005/MindQuiz"
+          "direction": "字典与集合",
+          "source": "pystart-web-trend-original-v2",
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：A-may-a/InterviewPrep-AI, Jatzk/Calc-quiz-Project-, Maryum06/interactive-physics-quiz-python"
         },
         {
           "id": "c12-hard-007",
@@ -8518,5 +8518,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-06-10T18:00:41.915912+00:00"
+  "updatedAt": "2026-06-29T18:02:30.554573+00:00"
 }
