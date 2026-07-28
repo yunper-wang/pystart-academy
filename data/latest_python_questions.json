@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-07-27T18:00:33.374362+00:00",
+  "generatedAt": "2026-07-28T18:00:38.793941+00:00",
   "sourcePolicy": "Use public web metadata as trend signals only; do not copy third-party question text.",
   "signals": [
     {
-      "full_name": "OmPatil121/PythonPractice-by-Om",
-      "url": "https://github.com/OmPatil121/PythonPractice-by-Om",
-      "updated_at": "2026-07-27T17:59:56Z",
-      "description": "Python practice problems - loops, functions, lists, strings, file handling",
-      "chapterId": "c04",
-      "direction": "基础数据类型",
+      "full_name": "jadhavrutwik111-debug/Rutwik_Jadhav_FBS_Work",
+      "url": "https://github.com/jadhavrutwik111-debug/Rutwik_Jadhav_FBS_Work",
+      "updated_at": "2026-07-28T17:59:27Z",
+      "description": "This repository contains Python classwork and assignments, including practice programs, problem-solving exercises, and project files. It serves as a record of learning progress, demonstrating concepts such as data structures, functions, and object-oriented programming with clear and organized code examples.",
+      "chapterId": "c13",
+      "direction": "函数",
       "tags": [
-        "数字",
-        "字符串",
-        "布尔值"
+        "参数",
+        "默认值",
+        "职责拆分"
       ],
       "source": "github"
     },
     {
       "full_name": "JOD-NONU/python-dsa",
       "url": "https://github.com/JOD-NONU/python-dsa",
-      "updated_at": "2026-07-27T17:55:06Z",
+      "updated_at": "2026-07-28T17:59:16Z",
       "description": "My Python Data Structures and Algorithms journey with notes, solutions, and problem-solving practice.",
       "chapterId": "c23",
       "direction": "列表进阶",
@@ -31,10 +31,10 @@
       "source": "github"
     },
     {
-      "full_name": "manas-yenegure/python-mini-projects",
-      "url": "https://github.com/manas-yenegure/python-mini-projects",
-      "updated_at": "2026-07-27T17:55:35Z",
-      "description": "A collection of Python mini projects built to practice programming concepts, strengthen problem-solving skills, and gain hands-on experience with Python.",
+      "full_name": "AyeshaAbdullah2026/SMIT-PROJECTS",
+      "url": "https://github.com/AyeshaAbdullah2026/SMIT-PROJECTS",
+      "updated_at": "2026-07-28T17:54:01Z",
+      "description": "A collection of Python assignments demonstrating programming concepts, problem-solving, and coding best practices.",
       "chapterId": "c29",
       "direction": "学习记录项目",
       "tags": [
@@ -45,72 +45,86 @@
       "source": "github"
     },
     {
-      "full_name": "TanishMhatre124/Python-From-Scratch",
-      "url": "https://github.com/TanishMhatre124/Python-From-Scratch",
-      "updated_at": "2026-07-27T17:49:07Z",
-      "description": "A structured Python learning repository covering Python fundamentals, Object-Oriented Programming, problem-solving, and advanced concepts through hands-on coding practice.",
-      "chapterId": "c19",
-      "direction": "类与对象",
+      "full_name": "sumit200412/Coding_FBS",
+      "url": "https://github.com/sumit200412/Coding_FBS",
+      "updated_at": "2026-07-28T17:51:20Z",
+      "description": "Python programs, practice problems, and solved exercises completed during my learning journey. This repository contains beginner to intermediate Python concepts, coding challenges, and hands-on examples to improve problem-solving skills and strengthen programming fundamentals.",
+      "chapterId": "c03",
+      "direction": "变量与命名",
       "tags": [
-        "__init__",
-        "实例",
-        "对象列表"
+        "变量",
+        "命名",
+        "赋值"
       ],
       "source": "github"
     },
     {
-      "full_name": "anushavk851/Python-Learning",
-      "url": "https://github.com/anushavk851/Python-Learning",
-      "updated_at": "2026-07-27T17:31:47Z",
-      "description": "My Python learning journey with practice programs and problem-solving.",
-      "chapterId": "c23",
-      "direction": "列表进阶",
+      "full_name": "sarangkate/leetcode_solutions",
+      "url": "https://github.com/sarangkate/leetcode_solutions",
+      "updated_at": "2026-07-28T17:39:07Z",
+      "description": "My LeetCode solutions in Python with clean code, explanations, and optimized approaches. Continuously updated as I practice data structures, algorithms, and coding interview problems.",
+      "chapterId": "c21",
+      "direction": "脚本组织",
       "tags": [
-        "筛选",
-        "排序",
-        "推导式"
+        "main",
+        "函数组合",
+        "可读性"
       ],
       "source": "github"
     },
     {
-      "full_name": "PranaliPatil2210/Python-Programming",
-      "url": "https://github.com/PranaliPatil2210/Python-Programming",
-      "updated_at": "2026-07-27T17:29:01Z",
-      "description": "Python programming programs and practice for problem solving, automation, and placement preparation.",
-      "chapterId": "c28",
-      "direction": "日期时间",
+      "full_name": "catherineEdge/Hacker_rank",
+      "url": "https://github.com/catherineEdge/Hacker_rank",
+      "updated_at": "2026-07-28T17:11:11Z",
+      "description": "This repository contains my solutions to HackerRank programming challenges.serves as a record of my coding practice and learning journey, covering problem-solving techniques, Python programming, algorithms, and data structures.solutions focuses on correctness, readability, and continuous improvement as I strengthen my programming skills.",
+      "chapterId": "c29",
+      "direction": "学习记录项目",
       "tags": [
-        "datetime",
-        "日志",
-        "打卡"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "PradeepSaptasagar/Advance_DSA_Python",
-      "url": "https://github.com/PradeepSaptasagar/Advance_DSA_Python",
-      "updated_at": "2026-07-27T17:10:58Z",
-      "description": "A structured repository showcasing my journey in mastering Advanced Data Structures and Algorithms using Python through topic-wise implementations, coding challenges, optimized solutions, and consistent problem-solving practice.",
-      "chapterId": "c24",
-      "direction": "结构化数据",
-      "tags": [
-        "嵌套字典",
+        "记录",
         "汇总",
-        "查询"
+        "报告"
       ],
       "source": "github"
     },
     {
-      "full_name": "VijethKepulagudde/HackerRank-Python",
-      "url": "https://github.com/VijethKepulagudde/HackerRank-Python",
-      "updated_at": "2026-07-27T16:55:51Z",
-      "description": "Python solution for HackerRank practice problem.",
-      "chapterId": "c23",
-      "direction": "列表进阶",
+      "full_name": "Shehbaz-Hussain/Python-Fundamentals",
+      "url": "https://github.com/Shehbaz-Hussain/Python-Fundamentals",
+      "updated_at": "2026-07-28T17:09:08Z",
+      "description": "A comprehensive, beginner-friendly Python learning repository covering Python fundamentals through structured modules, well-documented code examples, exercises, challenge problems, and best practices for aspiring software developers, AI engineers, and computer science students.",
+      "chapterId": "c03",
+      "direction": "变量与命名",
       "tags": [
-        "筛选",
-        "排序",
-        "推导式"
+        "变量",
+        "命名",
+        "赋值"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "OmPatil121/PythonPractice-by-Om",
+      "url": "https://github.com/OmPatil121/PythonPractice-by-Om",
+      "updated_at": "2026-07-28T16:47:07Z",
+      "description": "Python practice problems - loops, functions, lists, strings, file handling",
+      "chapterId": "c04",
+      "direction": "基础数据类型",
+      "tags": [
+        "数字",
+        "字符串",
+        "布尔值"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "Rahul9504/Python-from-Scratch",
+      "url": "https://github.com/Rahul9504/Python-from-Scratch",
+      "updated_at": "2026-07-28T16:04:39Z",
+      "description": "A complete Python learning repository covering fundamentals, OOP, file handling, modules, SQL, Django, Django REST Framework, projects, interview questions, and coding exercises.",
+      "chapterId": "c15",
+      "direction": "模块",
+      "tags": [
+        "import",
+        "math",
+        "random"
       ],
       "source": "github"
     },
@@ -213,10 +227,122 @@
       "source": "github"
     },
     {
-      "full_name": "MauryaManshi777/Day-04_Python_Code-and-Challenge-Questions-",
-      "url": "https://github.com/MauryaManshi777/Day-04_Python_Code-and-Challenge-Questions-",
-      "updated_at": "2026-07-04T06:26:52Z",
-      "description": "A day-wise collection of Python programs, practice exercises, notes, and challenge questions as part of my Python learning journey.",
+      "full_name": "sharjeelahmed-928/General-Knowledge-Quiz",
+      "url": "https://github.com/sharjeelahmed-928/General-Knowledge-Quiz",
+      "updated_at": "2026-07-28T17:31:30Z",
+      "description": "🧠 A beginner-friendly Python quiz application that randomly asks general knowledge questions, tracks scores, and provides instant feedback. Developed as part of the DecodLabs Internship – Week 4 Project.",
+      "chapterId": "c03",
+      "direction": "变量与命名",
+      "tags": [
+        "变量",
+        "命名",
+        "赋值"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "gholapaarti/IQ-Test-haha",
+      "url": "https://github.com/gholapaarti/IQ-Test-haha",
+      "updated_at": "2026-07-28T16:42:18Z",
+      "description": "A simple Python quiz game featuring multiple-choice questions, user input, score tracking, and a timer. Test your knowledge and challenge yourself to get the highest score.",
+      "chapterId": "c05",
+      "direction": "输入输出",
+      "tags": [
+        "输出",
+        "字符串格式化",
+        "交互思维"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "xqsmek1d/geography_quiz",
+      "url": "https://github.com/xqsmek1d/geography_quiz",
+      "updated_at": "2026-07-28T15:15:17Z",
+      "description": "A configurable geography quiz game built in Python, featuring multiple question types, dynamic answer generation, country data integration, and an extensible architecture for adding new categories, difficulty levels, and game modes.",
+      "chapterId": "c12",
+      "direction": "字典与集合",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "legendary278939-cloud/world-quiz-game",
+      "url": "https://github.com/legendary278939-cloud/world-quiz-game",
+      "updated_at": "2026-07-28T14:05:16Z",
+      "description": "A Python Tkinter desktop quiz application featuring a custom graphical user interface. Users can Log in with a nick name or continue as a guest, answer multiple-choice questions and view their score. The  project demonstrates GUI development, event handling and JSON-based question management.",
+      "chapterId": "c09",
+      "direction": "循环控制",
+      "tags": [
+        "break",
+        "continue",
+        "搜索"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "vineetvyas7/AI-MCQ-Generator",
+      "url": "https://github.com/vineetvyas7/AI-MCQ-Generator",
+      "updated_at": "2026-07-28T13:42:26Z",
+      "description": "AI-powered Django application that generates multiple-choice questions (MCQs) from PDF notes using NLP and Hugging Face FLAN-T5, with quiz evaluation, score tracking, and PDF report generation.",
+      "chapterId": "c12",
+      "direction": "字典与集合",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "agarwalkishu789-commits/EduGenie-AI",
+      "url": "https://github.com/agarwalkishu789-commits/EduGenie-AI",
+      "updated_at": "2026-07-28T13:30:37Z",
+      "description": "AI-powered Study Assistant using RAG, LangChain, FAISS, and Streamlit for intelligent document-based question answering, quiz generation, flashcards, summaries, and learning analytics.",
+      "chapterId": "c12",
+      "direction": "字典与集合",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "prishachakraborty1-ops/python-quiz-app",
+      "url": "https://github.com/prishachakraborty1-ops/python-quiz-app",
+      "updated_at": "2026-07-28T11:05:45Z",
+      "description": "A beginner-friendly Quiz App built with Python featuring multiple-choice questions, score tracking, and clean code.",
+      "chapterId": "c03",
+      "direction": "变量与命名",
+      "tags": [
+        "变量",
+        "命名",
+        "赋值"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "Pawan2500423/-python-quiz-project-",
+      "url": "https://github.com/Pawan2500423/-python-quiz-project-",
+      "updated_at": "2026-07-28T09:18:26Z",
+      "description": "It's a code for a quiz game with three general knowledge questions",
+      "chapterId": "c12",
+      "direction": "字典与集合",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "saurabhahuja71/learning-path",
+      "url": "https://github.com/saurabhahuja71/learning-path",
+      "updated_at": "2026-07-28T09:58:44Z",
+      "description": "Curated learning labs for college students & new engineers — start here",
       "chapterId": "c23",
       "direction": "列表进阶",
       "tags": [
@@ -227,24 +353,10 @@
       "source": "github"
     },
     {
-      "full_name": "alisoftwareengineer26-collab/flash-card-learning-app",
-      "url": "https://github.com/alisoftwareengineer26-collab/flash-card-learning-app",
-      "updated_at": "2026-07-27T17:05:29Z",
-      "description": "A Flash Card Quiz application built with Python, Tkinter, Pandas, and CSV. Loads questions from a CSV file, validates answers, tracks the score, and provides an interactive learning experience.",
-      "chapterId": "c16",
-      "direction": "文件读写",
-      "tags": [
-        "读取",
-        "写入",
-        "with"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "harshinichintapalli2007-star/Simple-Quiz-App",
-      "url": "https://github.com/harshinichintapalli2007-star/Simple-Quiz-App",
-      "updated_at": "2026-07-27T13:50:50Z",
-      "description": "A beginner-friendly Python quiz application that asks multiple-choice questions and displays the final score.",
+      "full_name": "AnusreeSunilkumar/python-for-absolute-beginners",
+      "url": "https://github.com/AnusreeSunilkumar/python-for-absolute-beginners",
+      "updated_at": "2026-07-28T00:52:22Z",
+      "description": "Python Tutorial for Absolute Beginners",
       "chapterId": "c03",
       "direction": "变量与命名",
       "tags": [
@@ -255,86 +367,16 @@
       "source": "github"
     },
     {
-      "full_name": "Tehmina124/Smart-Quiz-Application",
-      "url": "https://github.com/Tehmina124/Smart-Quiz-Application",
-      "updated_at": "2026-07-27T10:36:53Z",
-      "description": "A Python-based Smart Quiz Application with multiple categories, difficulty levels, timer, random questions, and score tracking.",
-      "chapterId": "c12",
-      "direction": "字典与集合",
-      "tags": [
-        "字典",
-        "集合",
-        "统计"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "srr217/quiz-agent-v2-final",
-      "url": "https://github.com/srr217/quiz-agent-v2-final",
-      "updated_at": "2026-07-27T10:18:53Z",
-      "description": "An AI-powered assessment tool that extracts concepts from lecture videos & documents, builds Bloom's Taxonomy-aligned questions with RAG quality control, and automates grading via Google Workspace.",
-      "chapterId": "c12",
-      "direction": "字典与集合",
-      "tags": [
-        "字典",
-        "集合",
-        "统计"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "ShaikMaviya2007/quizmaster-app",
-      "url": "https://github.com/ShaikMaviya2007/quizmaster-app",
-      "updated_at": "2026-07-27T09:52:32Z",
-      "description": "QuizMaster is a productiongrade web application built to facilitate online testing across multiple domains ( Java, Python, React, SQL, and Web Development). It provides an intuitive interface for students to test their knowledge under timed conditions while giving administrators full control over questions, quizzes, users, and performance analytics",
-      "chapterId": "c07",
-      "direction": "条件判断",
-      "tags": [
-        "if",
-        "elif",
-        "else"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "ppravallika938-max/AI-Quiz-generator",
-      "url": "https://github.com/ppravallika938-max/AI-Quiz-generator",
-      "updated_at": "2026-07-27T09:39:59Z",
-      "description": "A simple Python quiz generator that asks random multiple-choice questions, checks answers, and displays the final score. Perfect for beginners learning Python.",
+      "full_name": "zunairashahbazsehgal/Python-Beginner-Tutorials",
+      "url": "https://github.com/zunairashahbazsehgal/Python-Beginner-Tutorials",
+      "updated_at": "2026-07-28T14:02:49Z",
+      "description": "A collection of Python tutorials, practice exercises, OOP concepts, and mini projects created while learning Python.",
       "chapterId": "c03",
       "direction": "变量与命名",
       "tags": [
         "变量",
         "命名",
         "赋值"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "anantapandey-blip/Random-questions",
-      "url": "https://github.com/anantapandey-blip/Random-questions",
-      "updated_at": "2026-07-27T08:17:45Z",
-      "description": "An enhanced Python quiz game featuring randomized questions, score tracking, grading, and a replay option. Built to practice lists, dictionaries, loops, and the random module.",
-      "chapterId": "c08",
-      "direction": "循环",
-      "tags": [
-        "for",
-        "while",
-        "累计"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "humma2730-collab/decodes_lab_task4_the_general-knowledge-quiz",
-      "url": "https://github.com/humma2730-collab/decodes_lab_task4_the_general-knowledge-quiz",
-      "updated_at": "2026-07-27T05:43:37Z",
-      "description": "A Professional General Knowledge Quiz Application built with Python featuring random questions, score tracking, grades, high score management, and input validation.",
-      "chapterId": "c05",
-      "direction": "输入输出",
-      "tags": [
-        "输出",
-        "字符串格式化",
-        "交互思维"
       ],
       "source": "github"
     },
@@ -395,20 +437,6 @@
       "source": "github"
     },
     {
-      "full_name": "AnusreeSunilkumar/python-for-absolute-beginners",
-      "url": "https://github.com/AnusreeSunilkumar/python-for-absolute-beginners",
-      "updated_at": "2026-07-27T01:10:53Z",
-      "description": "Python Tutorial for Absolute Beginners",
-      "chapterId": "c03",
-      "direction": "变量与命名",
-      "tags": [
-        "变量",
-        "命名",
-        "赋值"
-      ],
-      "source": "github"
-    },
-    {
       "full_name": "ggmxip/py-game",
       "url": "https://github.com/ggmxip/py-game",
       "updated_at": "2026-07-26T19:22:04Z",
@@ -423,37 +451,9 @@
       "source": "github"
     },
     {
-      "full_name": "SabihMaqsood/Generative-AI",
-      "url": "https://github.com/SabihMaqsood/Generative-AI",
-      "updated_at": "2026-07-26T16:26:00Z",
-      "description": "Master Generative AI from application development to model architecture! Hands-on Python code, tutorials, and daily notes covering LangChain, RAG systems, AI Agents, Fine-Tuning, and Transformers. Perfect for beginners and developers building real-world AI projects.",
-      "chapterId": "c03",
-      "direction": "变量与命名",
-      "tags": [
-        "变量",
-        "命名",
-        "赋值"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "zunairashahbazsehgal-ctrl/Python-Beginner-Tutorials",
-      "url": "https://github.com/zunairashahbazsehgal-ctrl/Python-Beginner-Tutorials",
-      "updated_at": "2026-07-26T13:56:49Z",
-      "description": "A collection of Python tutorials, practice exercises, OOP concepts, and mini projects created while learning Python.",
-      "chapterId": "c03",
-      "direction": "变量与命名",
-      "tags": [
-        "变量",
-        "命名",
-        "赋值"
-      ],
-      "source": "github"
-    },
-    {
       "full_name": "jyothika-pasupuleti/leetcode-solutions",
       "url": "https://github.com/jyothika-pasupuleti/leetcode-solutions",
-      "updated_at": "2026-07-27T17:55:31Z",
+      "updated_at": "2026-07-28T17:56:57Z",
       "description": "Collection of my LeetCode solutions in python with clean and optimized code.",
       "chapterId": "c23",
       "direction": "列表进阶",
@@ -465,10 +465,10 @@
       "source": "github"
     },
     {
-      "full_name": "humaisali/Leetcode-Problems",
-      "url": "https://github.com/humaisali/Leetcode-Problems",
-      "updated_at": "2026-07-27T17:52:11Z",
-      "description": "Auto-synced collection of my solved LeetCode problems with C++ and Python solutions, organized by problem number and difficulty, tracked via LeetHub.",
+      "full_name": "Anshulupadhyay61/Leetcode-Daily",
+      "url": "https://github.com/Anshulupadhyay61/Leetcode-Daily",
+      "updated_at": "2026-07-28T17:48:14Z",
+      "description": "🚀 Daily LeetCode solutions in Python . Consistently solving Data Structures & Algorithms problems to strengthen problem-solving skills and prepare for software engineering interviews.",
       "chapterId": "c23",
       "direction": "列表进阶",
       "tags": [
@@ -479,10 +479,38 @@
       "source": "github"
     },
     {
-      "full_name": "Bhagyashree-hub06/LeetCode-Solutions",
-      "url": "https://github.com/Bhagyashree-hub06/LeetCode-Solutions",
-      "updated_at": "2026-07-27T17:50:49Z",
-      "description": "My Leetcode DSA solutions in Python",
+      "full_name": "diyajoby-maker/DSA-LeetCode",
+      "url": "https://github.com/diyajoby-maker/DSA-LeetCode",
+      "updated_at": "2026-07-28T17:42:23Z",
+      "description": "LeetCode solutions in Python with explanations, algorithms, and notes for placement preparation.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "筛选",
+        "排序",
+        "推导式"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "Kiyyappan973/LeetCode-Solutions",
+      "url": "https://github.com/Kiyyappan973/LeetCode-Solutions",
+      "updated_at": "2026-07-28T17:35:05Z",
+      "description": "My solutions to LeetCode problems using Python.",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "筛选",
+        "排序",
+        "推导式"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "DevashishM20/dsa-python",
+      "url": "https://github.com/DevashishM20/dsa-python",
+      "updated_at": "2026-07-28T17:31:42Z",
+      "description": "DSA practice in Python with LeetCode solutions",
       "chapterId": "c23",
       "direction": "列表进阶",
       "tags": [
@@ -495,7 +523,7 @@
     {
       "full_name": "KavinKumar73-coder/Leetcode-Solutions",
       "url": "https://github.com/KavinKumar73-coder/Leetcode-Solutions",
-      "updated_at": "2026-07-27T17:45:25Z",
+      "updated_at": "2026-07-28T17:24:30Z",
       "description": "My Leetcode  solution in python with clean and beginner-friendly code",
       "chapterId": "c03",
       "direction": "变量与命名",
@@ -507,23 +535,9 @@
       "source": "github"
     },
     {
-      "full_name": "Anshulupadhyay61/Leetcode-Daily",
-      "url": "https://github.com/Anshulupadhyay61/Leetcode-Daily",
-      "updated_at": "2026-07-27T17:44:52Z",
-      "description": "🚀 Daily LeetCode solutions in Python . Consistently solving Data Structures & Algorithms problems to strengthen problem-solving skills and prepare for software engineering interviews.",
-      "chapterId": "c23",
-      "direction": "列表进阶",
-      "tags": [
-        "筛选",
-        "排序",
-        "推导式"
-      ],
-      "source": "github"
-    },
-    {
       "full_name": "momojaffer1804/DSA",
       "url": "https://github.com/momojaffer1804/DSA",
-      "updated_at": "2026-07-27T17:38:11Z",
+      "updated_at": "2026-07-28T17:21:54Z",
       "description": "A collection of my LeetCode problem solutions, written in Python.",
       "chapterId": "c23",
       "direction": "列表进阶",
@@ -535,37 +549,23 @@
       "source": "github"
     },
     {
-      "full_name": "peddireddyvanitha7-ux/leetcode-solutions",
-      "url": "https://github.com/peddireddyvanitha7-ux/leetcode-solutions",
-      "updated_at": "2026-07-27T17:25:27Z",
-      "description": "My LeetCode solutions in Python",
-      "chapterId": "c23",
-      "direction": "列表进阶",
+      "full_name": "AI-ML-ENG/Python-core-logics",
+      "url": "https://github.com/AI-ML-ENG/Python-core-logics",
+      "updated_at": "2026-07-28T17:52:13Z",
+      "description": "Daily scripts and logical challenges built during my first 50 days of coding.",
+      "chapterId": "c21",
+      "direction": "脚本组织",
       "tags": [
-        "筛选",
-        "排序",
-        "推导式"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "superstar-14/LeetCode",
-      "url": "https://github.com/superstar-14/LeetCode",
-      "updated_at": "2026-07-27T17:19:33Z",
-      "description": "My solutions to LeetCode problems, written in Python while learning data structures & algorithms.",
-      "chapterId": "c08",
-      "direction": "循环",
-      "tags": [
-        "for",
-        "while",
-        "累计"
+        "main",
+        "函数组合",
+        "可读性"
       ],
       "source": "github"
     },
     {
       "full_name": "pramodjadhav2004/Daily_Python_Coding_Challenges",
       "url": "https://github.com/pramodjadhav2004/Daily_Python_Coding_Challenges",
-      "updated_at": "2026-07-27T17:57:11Z",
+      "updated_at": "2026-07-28T17:45:32Z",
       "description": null,
       "chapterId": "c23",
       "direction": "列表进阶",
@@ -579,7 +579,7 @@
     {
       "full_name": "anuragsaini03/365-Days-of-Code",
       "url": "https://github.com/anuragsaini03/365-Days-of-Code",
-      "updated_at": "2026-07-27T17:27:27Z",
+      "updated_at": "2026-07-28T16:39:58Z",
       "description": "🚀 Welcome to my #365DaysOfCode journey! I'm learning Full Stack AI Web Development with Java by building projects, solving challenges, and mastering Java, Spring Boot, React, Python, AI/ML, databases, and deployment. Follow my progress as I code, learn, and grow every day! 💻✨",
       "chapterId": "c29",
       "direction": "学习记录项目",
@@ -591,10 +591,10 @@
       "source": "github"
     },
     {
-      "full_name": "cc-code-examples/good-otter-548630",
-      "url": "https://github.com/cc-code-examples/good-otter-548630",
-      "updated_at": "2026-07-27T17:22:14Z",
-      "description": "Python code example for the Shell challenge",
+      "full_name": "samch0203/HackerRank_30Days_Challenge",
+      "url": "https://github.com/samch0203/HackerRank_30Days_Challenge",
+      "updated_at": "2026-07-28T16:24:24Z",
+      "description": "My 30 Days of HackerRank Challenge using Python. Documenting daily solutions to improve problem-solving, coding skills, and algorithmic thinking.",
       "chapterId": "c23",
       "direction": "列表进阶",
       "tags": [
@@ -605,94 +605,24 @@
       "source": "github"
     },
     {
-      "full_name": "cc-code-examples/lively-caribou-345111",
-      "url": "https://github.com/cc-code-examples/lively-caribou-345111",
-      "updated_at": "2026-07-27T17:22:08Z",
-      "description": "Python code example for the Shell challenge",
-      "chapterId": "c23",
-      "direction": "列表进阶",
+      "full_name": "PradeepSaptasagar/Advance_DSA_Python",
+      "url": "https://github.com/PradeepSaptasagar/Advance_DSA_Python",
+      "updated_at": "2026-07-28T16:09:55Z",
+      "description": "A structured repository showcasing my journey in mastering Advanced Data Structures and Algorithms using Python through topic-wise implementations, coding challenges, optimized solutions, and consistent problem-solving practice.",
+      "chapterId": "c24",
+      "direction": "结构化数据",
       "tags": [
-        "筛选",
-        "排序",
-        "推导式"
+        "嵌套字典",
+        "汇总",
+        "查询"
       ],
       "source": "github"
     },
     {
-      "full_name": "cc-code-examples/proud-hyena-715565",
-      "url": "https://github.com/cc-code-examples/proud-hyena-715565",
-      "updated_at": "2026-07-27T17:23:15Z",
-      "description": "Python code example for the Shell challenge",
-      "chapterId": "c23",
-      "direction": "列表进阶",
-      "tags": [
-        "筛选",
-        "排序",
-        "推导式"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "cc-code-examples/joyous-elk-919214",
-      "url": "https://github.com/cc-code-examples/joyous-elk-919214",
-      "updated_at": "2026-07-27T17:22:41Z",
-      "description": "Python code example for the Shell challenge",
-      "chapterId": "c23",
-      "direction": "列表进阶",
-      "tags": [
-        "筛选",
-        "排序",
-        "推导式"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "AI-ML-ENG/Python-core-logics",
-      "url": "https://github.com/AI-ML-ENG/Python-core-logics",
-      "updated_at": "2026-07-27T17:21:21Z",
-      "description": "Daily scripts and logical challenges built during my first 50 days of coding.",
-      "chapterId": "c21",
-      "direction": "脚本组织",
-      "tags": [
-        "main",
-        "函数组合",
-        "可读性"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "BIMBA-K/10Days-30Problems-Coding-Challenge",
-      "url": "https://github.com/BIMBA-K/10Days-30Problems-Coding-Challenge",
-      "updated_at": "2026-07-27T17:21:23Z",
-      "description": "Every expert was once a beginner. This repository documents my 10-day Python coding challenge—3 problems a day, 30 challenges in total, and continuous growth through consistency. 🚀",
-      "chapterId": "c03",
-      "direction": "变量与命名",
-      "tags": [
-        "变量",
-        "命名",
-        "赋值"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "siddhes07/python-learning",
-      "url": "https://github.com/siddhes07/python-learning",
-      "updated_at": "2026-07-27T17:52:55Z",
-      "description": "My Python learning journey with notes, practice programs, and exercises.",
-      "chapterId": "c23",
-      "direction": "列表进阶",
-      "tags": [
-        "筛选",
-        "排序",
-        "推导式"
-      ],
-      "source": "github"
-    },
-    {
-      "full_name": "Ghaidaalzhrani/python-learning-journey",
-      "url": "https://github.com/Ghaidaalzhrani/python-learning-journey",
-      "updated_at": "2026-07-27T17:52:12Z",
-      "description": "My Python learning journey, including course exercises and mini-projects",
+      "full_name": "Gyrith/Python-Basics",
+      "url": "https://github.com/Gyrith/Python-Basics",
+      "updated_at": "2026-07-28T17:52:26Z",
+      "description": "Learning Python from scratch with practice exercises and projects.",
       "chapterId": "c29",
       "direction": "学习记录项目",
       "tags": [
@@ -701,11 +631,81 @@
         "报告"
       ],
       "source": "github"
+    },
+    {
+      "full_name": "guptavipulmanoj120-bit/python-learning",
+      "url": "https://github.com/guptavipulmanoj120-bit/python-learning",
+      "updated_at": "2026-07-28T17:28:49Z",
+      "description": "A collection of my Python learning journey, featuring fundamentals, coding exercises, mini projects, and practical examples as I build a strong foundation for software development and Machine Learning.",
+      "chapterId": "c29",
+      "direction": "学习记录项目",
+      "tags": [
+        "记录",
+        "汇总",
+        "报告"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "tanviengineer/machine_learning-",
+      "url": "https://github.com/tanviengineer/machine_learning-",
+      "updated_at": "2026-07-28T17:27:52Z",
+      "description": "My journey of learning Machine Learning with Python, including datasets, algorithms, projects, and daily practice exercises.",
+      "chapterId": "c12",
+      "direction": "字典与集合",
+      "tags": [
+        "字典",
+        "集合",
+        "统计"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "abdulrehmanhussain2007-blip/Python-Projects",
+      "url": "https://github.com/abdulrehmanhussain2007-blip/Python-Projects",
+      "updated_at": "2026-07-28T17:25:30Z",
+      "description": "A collection of Python projects, programming exercises, data analysis, and machine learning practice using NumPy, Pandas, Matplotlib, Seaborn, and Scikit-learn.",
+      "chapterId": "c29",
+      "direction": "学习记录项目",
+      "tags": [
+        "记录",
+        "汇总",
+        "报告"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "Nike-Cyber/Day-54-of-60-Data-Analysis",
+      "url": "https://github.com/Nike-Cyber/Day-54-of-60-Data-Analysis",
+      "updated_at": "2026-07-28T17:11:15Z",
+      "description": "Day 54 of my 60-day Data Analysis journey. Documenting my learning, projects, exercises, and progress as I build skills in Excel, SQL, Python, statistics, data visualization, and business analytics",
+      "chapterId": "c29",
+      "direction": "学习记录项目",
+      "tags": [
+        "记录",
+        "汇总",
+        "报告"
+      ],
+      "source": "github"
+    },
+    {
+      "full_name": "PeterYK/OTUS.PYB.homeworks",
+      "url": "https://github.com/PeterYK/OTUS.PYB.homeworks",
+      "updated_at": "2026-07-28T14:01:49Z",
+      "description": "Python .basic course homework assignments",
+      "chapterId": "c23",
+      "direction": "列表进阶",
+      "tags": [
+        "筛选",
+        "排序",
+        "推导式"
+      ],
+      "source": "github"
     }
   ],
   "exercises": [
     {
-      "id": "daily-2026-07-28-01",
+      "id": "daily-2026-07-29-01",
       "chapterId": "c01",
       "level": "基础",
       "title": "输出课程欢迎信息",
@@ -745,7 +745,7 @@
       ]
     },
     {
-      "id": "daily-2026-07-28-02",
+      "id": "daily-2026-07-29-02",
       "chapterId": "c03",
       "level": "基础",
       "title": "变量交换练习",
@@ -777,26 +777,26 @@
       ],
       "direction": "变量与命名",
       "source": "pystart-web-trend-original-v2",
-      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：NishantTM/Python_learning_roadmap, gouravcoding4all/Python-Study-Content, harshinichintapalli2007-star/Simple-Quiz-App",
+      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：sumit200412/Coding_FBS, Shehbaz-Hussain/Python-Fundamentals, NishantTM/Python_learning_roadmap",
       "webSignals": [
-        "NishantTM/Python_learning_roadmap",
-        "gouravcoding4all/Python-Study-Content",
-        "harshinichintapalli2007-star/Simple-Quiz-App"
+        "sumit200412/Coding_FBS",
+        "Shehbaz-Hussain/Python-Fundamentals",
+        "NishantTM/Python_learning_roadmap"
       ]
     },
     {
-      "id": "daily-2026-07-28-03",
+      "id": "daily-2026-07-29-03",
       "chapterId": "c04",
-      "level": "进阶",
-      "title": "数据类型判断",
-      "text": "数据类型判断：判断一组数据的类型并输出类型名列表。",
-      "description": "判断一组数据的类型并输出类型名列表。",
+      "level": "基础",
+      "title": "类型转换练习",
+      "text": "类型转换练习：把字符串 '42' 转为整数，与 8 相加后输出。",
+      "description": "把字符串 '42' 转为整数，与 8 相加后输出。",
       "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-      "starter": "data = [42, 'hello', 3.14, True, None]\n# 输出类型名",
-      "expectedOutput": "['int', 'str', 'float', 'bool', 'NoneType']",
-      "answer": "data = [42, 'hello', 3.14, True, None]\nprint([type(x).__name__ for x in data])",
-      "answerCode": "data = [42, 'hello', 3.14, True, None]\nprint([type(x).__name__ for x in data])",
-      "taskGoal": "判断一组数据的类型并输出类型名列表。",
+      "starter": "value = '42'\n# 转换并求和",
+      "expectedOutput": "50",
+      "answer": "value = '42'\nresult = int(value) + 8\nprint(result)",
+      "answerCode": "value = '42'\nresult = int(value) + 8\nprint(result)",
+      "taskGoal": "把字符串 '42' 转为整数，与 8 相加后输出。",
       "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
       "tags": [
         "数字",
@@ -806,13 +806,13 @@
       "examples": [
         {
           "input": "题目内置固定数据",
-          "output": "['int', 'str', 'float', 'bool', 'NoneType']"
+          "output": "50"
         }
       ],
       "tests": [
         {
           "name": "参考答案输出校验",
-          "expected": "['int', 'str', 'float', 'bool', 'NoneType']"
+          "expected": "50"
         }
       ],
       "direction": "基础数据类型",
@@ -825,18 +825,18 @@
       ]
     },
     {
-      "id": "daily-2026-07-28-04",
+      "id": "daily-2026-07-29-04",
       "chapterId": "c05",
-      "level": "进阶",
-      "title": "格式化输出名片",
-      "text": "格式化输出名片：用 f-string 输出姓名和年龄。",
-      "description": "用 f-string 输出姓名和年龄。",
+      "level": "挑战",
+      "title": "多行格式化输出",
+      "text": "多行格式化输出：输出一份包含标题、分隔线和内容的简易报告。",
+      "description": "输出一份包含标题、分隔线和内容的简易报告。",
       "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-      "starter": "name = '小明'\nage = 20\n# 输出：小明，20岁",
-      "expectedOutput": "小明，20岁",
-      "answer": "name = '小明'\nage = 20\nprint(f\"{name}，{age}岁\")",
-      "answerCode": "name = '小明'\nage = 20\nprint(f\"{name}，{age}岁\")",
-      "taskGoal": "用 f-string 输出姓名和年龄。",
+      "starter": "title = '学习报告'\ncount = 5\n# 输出带分隔线的报告",
+      "expectedOutput": "=== 学习报告 ===\n完成 5 题",
+      "answer": "title = '学习报告'\ncount = 5\nprint(f\"=== {title} ===\")\nprint(f\"完成 {count} 题\")",
+      "answerCode": "title = '学习报告'\ncount = 5\nprint(f\"=== {title} ===\")\nprint(f\"完成 {count} 题\")",
+      "taskGoal": "输出一份包含标题、分隔线和内容的简易报告。",
       "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
       "tags": [
         "输出",
@@ -846,62 +846,24 @@
       "examples": [
         {
           "input": "题目内置固定数据",
-          "output": "小明，20岁"
+          "output": "=== 学习报告 ===\n完成 5 题"
         }
       ],
       "tests": [
         {
           "name": "参考答案输出校验",
-          "expected": "小明，20岁"
+          "expected": "=== 学习报告 ===\n完成 5 题"
         }
       ],
       "direction": "输入输出",
       "source": "pystart-web-trend-original-v2",
-      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：humma2730-collab/decodes_lab_task4_the_general-knowledge-quiz",
+      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：gholapaarti/IQ-Test-haha",
       "webSignals": [
-        "humma2730-collab/decodes_lab_task4_the_general-knowledge-quiz"
+        "gholapaarti/IQ-Test-haha"
       ]
     },
     {
-      "id": "daily-2026-07-28-05",
-      "chapterId": "c07",
-      "level": "进阶",
-      "title": "多条件优惠判断",
-      "text": "多条件优惠判断：会员且消费满100打8折，否则原价。",
-      "description": "会员且消费满100打8折，否则原价。",
-      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-      "starter": "is_member = True\namount = 150\n# 计算应付金额",
-      "expectedOutput": "应付：120.0",
-      "answer": "is_member = True\namount = 150\nif is_member and amount >= 100:\n    pay = amount * 0.8\nelse:\n    pay = amount\nprint(f\"应付：{pay}\")",
-      "answerCode": "is_member = True\namount = 150\nif is_member and amount >= 100:\n    pay = amount * 0.8\nelse:\n    pay = amount\nprint(f\"应付：{pay}\")",
-      "taskGoal": "会员且消费满100打8折，否则原价。",
-      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
-      "tags": [
-        "if",
-        "elif",
-        "else"
-      ],
-      "examples": [
-        {
-          "input": "题目内置固定数据",
-          "output": "应付：120.0"
-        }
-      ],
-      "tests": [
-        {
-          "name": "参考答案输出校验",
-          "expected": "应付：120.0"
-        }
-      ],
-      "direction": "条件判断",
-      "source": "pystart-web-trend-original-v2",
-      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：ShaikMaviya2007/quizmaster-app",
-      "webSignals": [
-        "ShaikMaviya2007/quizmaster-app"
-      ]
-    },
-    {
-      "id": "daily-2026-07-28-06",
+      "id": "daily-2026-07-29-05",
       "chapterId": "c08",
       "level": "基础",
       "title": "循环求和 1 到 100",
@@ -933,26 +895,25 @@
       ],
       "direction": "循环",
       "source": "pystart-web-trend-original-v2",
-      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：anantapandey-blip/Random-questions, superstar-14/LeetCode, Yogeshsueyawanshi/Yogesh__FBS__Work",
+      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Python Software Foundation: Announcing a 2026 PSF Grants Program Funding Round, Talk Python to Me: #556: Updates on Django's Async Story",
       "webSignals": [
-        "anantapandey-blip/Random-questions",
-        "superstar-14/LeetCode",
-        "Yogeshsueyawanshi/Yogesh__FBS__Work"
+        "Python Software Foundation: Announcing a 2026 PSF Grants Program Funding Round",
+        "Talk Python to Me: #556: Updates on Django's Async Story"
       ]
     },
     {
-      "id": "daily-2026-07-28-07",
+      "id": "daily-2026-07-29-06",
       "chapterId": "c09",
       "level": "进阶",
-      "title": "查找第一个偶数",
-      "text": "查找第一个偶数：在列表中找到第一个偶数并停止。",
-      "description": "在列表中找到第一个偶数并停止。",
+      "title": "跳过负数求和",
+      "text": "跳过负数求和：遍历列表，跳过负数，求正数之和。",
+      "description": "遍历列表，跳过负数，求正数之和。",
       "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-      "starter": "nums = [1, 3, 4, 6, 8]\n# 找到第一个偶数",
-      "expectedOutput": "找到：4",
-      "answer": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
-      "answerCode": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
-      "taskGoal": "在列表中找到第一个偶数并停止。",
+      "starter": "nums = [3, -1, 5, -2, 8]\n# 求正数之和",
+      "expectedOutput": "16",
+      "answer": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
+      "answerCode": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
+      "taskGoal": "遍历列表，跳过负数，求正数之和。",
       "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
       "tags": [
         "break",
@@ -962,35 +923,36 @@
       "examples": [
         {
           "input": "题目内置固定数据",
-          "output": "找到：4"
+          "output": "16"
         }
       ],
       "tests": [
         {
           "name": "参考答案输出校验",
-          "expected": "找到：4"
+          "expected": "16"
         }
       ],
       "direction": "循环控制",
       "source": "pystart-web-trend-original-v2",
-      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Python Software Foundation: Announcing Python Software Foundation Fellow Members for Q2 2026! 🎉",
+      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：legendary278939-cloud/world-quiz-game, Python Software Foundation: Announcing Python Software Foundation Fellow Members for Q2 2026! 🎉",
       "webSignals": [
+        "legendary278939-cloud/world-quiz-game",
         "Python Software Foundation: Announcing Python Software Foundation Fellow Members for Q2 2026! 🎉"
       ]
     },
     {
-      "id": "daily-2026-07-28-08",
+      "id": "daily-2026-07-29-07",
       "chapterId": "c10",
-      "level": "进阶",
-      "title": "解析 CSV 行",
-      "text": "解析 CSV 行：把 CSV 行拆成字段列表。",
-      "description": "把 CSV 行拆成字段列表。",
+      "level": "基础",
+      "title": "清洗用户名",
+      "text": "清洗用户名：去掉空格并转小写。",
+      "description": "去掉空格并转小写。",
       "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-      "starter": "line = 'Python,85,进阶'\n# 解析为列表",
-      "expectedOutput": "['Python', '85', '进阶']",
-      "answer": "line = 'Python,85,进阶'\nfields = line.split(',')\nprint(fields)",
-      "answerCode": "line = 'Python,85,进阶'\nfields = line.split(',')\nprint(fields)",
-      "taskGoal": "把 CSV 行拆成字段列表。",
+      "starter": "username = '  Alice_01  '\n# 清洗",
+      "expectedOutput": "alice_01",
+      "answer": "username = '  Alice_01  '\nprint(username.strip().lower())",
+      "answerCode": "username = '  Alice_01  '\nprint(username.strip().lower())",
+      "taskGoal": "去掉空格并转小写。",
       "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
       "tags": [
         "strip",
@@ -1000,13 +962,13 @@
       "examples": [
         {
           "input": "题目内置固定数据",
-          "output": "['Python', '85', '进阶']"
+          "output": "alice_01"
         }
       ],
       "tests": [
         {
           "name": "参考答案输出校验",
-          "expected": "['Python', '85', '进阶']"
+          "expected": "alice_01"
         }
       ],
       "direction": "字符串",
@@ -1014,6 +976,44 @@
       "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Armin Ronacher: Codeberg Divides",
       "webSignals": [
         "Armin Ronacher: Codeberg Divides"
+      ]
+    },
+    {
+      "id": "daily-2026-07-29-08",
+      "chapterId": "c11",
+      "level": "基础",
+      "title": "列表切片练习",
+      "text": "列表切片练习：取列表的前3个元素。",
+      "description": "取列表的前3个元素。",
+      "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
+      "starter": "nums = [10, 20, 30, 40, 50]\n# 取前3个",
+      "expectedOutput": "[10, 20, 30]",
+      "answer": "nums = [10, 20, 30, 40, 50]\nprint(nums[:3])",
+      "answerCode": "nums = [10, 20, 30, 40, 50]\nprint(nums[:3])",
+      "taskGoal": "取列表的前3个元素。",
+      "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
+      "tags": [
+        "列表",
+        "切片",
+        "元组"
+      ],
+      "examples": [
+        {
+          "input": "题目内置固定数据",
+          "output": "[10, 20, 30]"
+        }
+      ],
+      "tests": [
+        {
+          "name": "参考答案输出校验",
+          "expected": "[10, 20, 30]"
+        }
+      ],
+      "direction": "列表与元组",
+      "source": "pystart-web-trend-original-v2",
+      "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Python Software Foundation: Get Ready: PSF Board Nominations Opening Soon!",
+      "webSignals": [
+        "Python Software Foundation: Get Ready: PSF Board Nominations Opening Soon!"
       ]
     }
   ]
