@@ -2443,15 +2443,15 @@
         {
           "id": "c09-medium-006",
           "level": "进阶",
-          "title": "跳过负数求和",
-          "text": "跳过负数求和：遍历列表，跳过负数，求正数之和。",
-          "description": "遍历列表，跳过负数，求正数之和。",
+          "title": "查找第一个偶数",
+          "text": "查找第一个偶数：在列表中找到第一个偶数并停止。",
+          "description": "在列表中找到第一个偶数并停止。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
-          "starter": "nums = [3, -1, 5, -2, 8]\n# 求正数之和",
-          "expectedOutput": "16",
-          "answerCode": "nums = [3, -1, 5, -2, 8]\ntotal = 0\nfor n in nums:\n    if n < 0:\n        continue\n    total += n\nprint(total)",
-          "taskGoal": "遍历列表，跳过负数，求正数之和。",
+          "answer": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "starter": "nums = [1, 3, 4, 6, 8]\n# 找到第一个偶数",
+          "expectedOutput": "找到：4",
+          "answerCode": "nums = [1, 3, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f\"找到：{n}\")\n        break",
+          "taskGoal": "在列表中找到第一个偶数并停止。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "break",
@@ -2461,18 +2461,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "16"
+              "output": "找到：4"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "16"
+              "expected": "找到：4"
             }
           ],
           "direction": "循环控制",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：legendary278939-cloud/world-quiz-game, Python Software Foundation: Announcing Python Software Foundation Fellow Members for Q2 2026! 🎉"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Talk Python to Me: #558: Hyper-Personal Software with Python, Django Weblog: Django 6.1 released, Marc-André Lemburg: Pymmich – an AI-first OSS project 🐍✨"
         },
         {
           "id": "c09-hard-007",
@@ -8518,5 +8518,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-07-28T18:00:38.793941+00:00"
+  "updatedAt": "2026-08-10T18:00:35.800589+00:00"
 }
