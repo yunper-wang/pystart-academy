@@ -80,15 +80,15 @@
         {
           "id": "c01-easy-003",
           "level": "基础",
-          "title": "输出课程欢迎信息",
-          "text": "输出课程欢迎信息：用 print 输出'欢迎来到 PyStart Academy'。",
-          "description": "用 print 输出'欢迎来到 PyStart Academy'。",
+          "title": "多行输出学习路线",
+          "text": "多行输出学习路线：用三条 print 语句分别输出'基础→进阶→挑战'。",
+          "description": "用三条 print 语句分别输出'基础→进阶→挑战'。",
           "hint": "先把固定样例数据跑通，再考虑如何替换成真实输入。",
-          "answer": "print(\"欢迎来到 PyStart Academy\")",
-          "starter": "# 输出欢迎信息",
-          "expectedOutput": "欢迎来到 PyStart Academy",
-          "answerCode": "print(\"欢迎来到 PyStart Academy\")",
-          "taskGoal": "用 print 输出'欢迎来到 PyStart Academy'。",
+          "answer": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
+          "starter": "# 输出学习路线",
+          "expectedOutput": "基础\n进阶\n挑战",
+          "answerCode": "print(\"基础\")\nprint(\"进阶\")\nprint(\"挑战\")",
+          "taskGoal": "用三条 print 语句分别输出'基础→进阶→挑战'。",
           "analysis": "本题由近期公开 Python 练习仓库的主题趋势启发，但题干、数据和参考答案均为 PyStart 原创内容，适合补充到对应章节。",
           "tags": [
             "print",
@@ -98,18 +98,18 @@
           "examples": [
             {
               "input": "题目内置固定数据",
-              "output": "欢迎来到 PyStart Academy"
+              "output": "基础\n进阶\n挑战"
             }
           ],
           "tests": [
             {
               "name": "参考答案输出校验",
-              "expected": "欢迎来到 PyStart Academy"
+              "expected": "基础\n进阶\n挑战"
             }
           ],
           "direction": "Python 基础语法",
           "source": "pystart-web-trend-original-v2",
-          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Go Deh: Sparse Ranges, Bob Belderbos: There Is No Magic: An AI Agent in 60 Lines of Python, PyCharm: Explicit Lazy Imports Are Coming to Python 3.15"
+          "qualityNotes": "基于公开仓库元数据趋势生成；信号来源：Brett Cannon: My nomination statement for the 2026 Python packaging council, James Bennett: Breaking up (lines) is hard to do, Django Weblog: Call for applicants for a Django Executive Director"
         },
         {
           "id": "c01-medium-004",
@@ -8518,5 +8518,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-08-10T18:00:35.800589+00:00"
+  "updatedAt": "2026-08-11T18:00:37.551548+00:00"
 }
